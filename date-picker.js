@@ -43,6 +43,7 @@ export const BPDatePicker = ({label, onChange}) => {
   return (
     <div
       style={{
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -52,8 +53,15 @@ export const BPDatePicker = ({label, onChange}) => {
       <ClickAwayListener
         onClickAway={handlePopoverClose}
       >
-        <div>
+        <div
+          style={{
+            width: '100%',
+          }}
+        >
           <BPTextInput
+            style={{
+              width: '100%',
+            }}
             label={label}
             boxRef={(ref) => {
               boxRef.current = ref;
