@@ -114,7 +114,7 @@ export const BPDatePicker = ({label, onChange}) => {
             >
               <div
                 style={{
-                  overflowY: 'scroll',
+                  overflowY: 'auto',
                 }}
               >
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
