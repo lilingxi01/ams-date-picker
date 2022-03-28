@@ -108,9 +108,6 @@ export const BPDatePicker = ({label, onChange, baseDate, callBack}) => {
     }
 
     const input = inputValue;
-    // if (inputValue.includes('-') || inputValue.includes('+')) {
-
-    // }
     const inputValueArr = input.split(/[:\s]/i);
 
     const parsedValue = inputValueArr[0];
@@ -233,7 +230,6 @@ export const BPDatePicker = ({label, onChange, baseDate, callBack}) => {
                     openTo="day"
                     value={value}
                     onChange={(newValue) => {
-                      // console.log(newValue);
                       setValue(newValue);
                       callBack(newValue);
                     }}
