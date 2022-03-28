@@ -80,17 +80,16 @@ export const BPDatePicker = ({label, onChange, baseDate, callBack}) => {
   // Process the input value into datepicker value.
   useEffect(() => {
     const changeFlag = false;
-    console.log(baseDate);
     const updatedDate = new Date(baseDate);
 
     // console.log(baseDate);
     if (inputValue.includes('-') || inputValue.includes('+')) {
-      if (inputValue.length >= 4) {
+      if (inputValue.includes(' ')) {
+        inputValue.replace(' ', ', ');
         const reviseList = inputValue.split(' ');
         reviseList.forEach((action) => {
-          // console.log(updatedDate);
-          const amount = action.charAt(1);
-          const flag = action.substring(2);
+          const amount = action.replace(/\D/g, '');
+          const flag = action.replace(/\W/g, '').replace(/\d/g, '');
           if (action.charAt(0) == '+') {
             addAction(updatedDate, amount, flag);
             changeFlag = true;
