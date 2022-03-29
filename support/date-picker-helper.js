@@ -159,7 +159,12 @@ const HelperModalContentContainer = ({title, icon, color = BPColors.brand, child
 };
 
 export const DatePickerHelper = ({onOpen, onClose}) => {
+  const [hasMounted, setHasMounted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   useEffect(() => {
     if (isModalOpen && onOpen) {
@@ -168,6 +173,10 @@ export const DatePickerHelper = ({onOpen, onClose}) => {
       onClose();
     }
   }, [isModalOpen]);
+
+  if (!hasMounted) {
+    return null;
+  }
 
   return (
     <>
