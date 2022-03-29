@@ -89,19 +89,26 @@ export function parseDate(userInput, baseDate) {
       updatedDate.setHours(hourInt + ampmInt);
       updatedDate.setMinutes(minuteInt);
     } else if (currentModifier.toLowerCase().match(/\d+\/\d+\/\d+[,]?/g) /* If this is a date. */) {
-      // TODO: Parse the date. WIP.
-      const date = currentModifier.match(/\d+\/\d+\/\d+/g)[0];
-      const dateArray = date.split('/');
+      // Parse the date.
+      const matches = currentModifier.toLowerCase().match(/(\d+\/\d+\/\d+)[,]?/);
+      if (matches.length < 1) {
+        continue;
+      }
+
+      const dateArray = matches[1].split('/');
       const month = dateArray[0];
       const day = dateArray[1];
       const year = dateArray[2];
-      updatedDate.setMonth(month - 1);
-      updatedDate.setDate(day);
-      updatedDate.setFullYear(year);
+      updatedDate.setMonth((parseInt(month) || 1) - 1); // -1 because the month starts from 0.
+      updatedDate.setDate(parseInt(day) || 1);
+      updatedDate.setFullYear(parseInt(year) || new Date().getFullYear());
     }
   }
 
   // TODO.
+
+  // Below is the old version of the date parsing function.
+  // The parsing logic is a bit tricky so I updated it to the newer function above.
 
   // const input = inputValue;
   // const inputValueArr = input.split(/[:\s]/i);
