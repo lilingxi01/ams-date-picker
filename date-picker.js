@@ -3,8 +3,6 @@ import {BPDimens, BPStandards} from '../../../utils/business-process/standards';
 
 import BPTextInput from './text-input';
 
-import InfoIcon from '@mui/icons-material/Info';
-import Tooltip from '@mui/material/Tooltip';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -12,6 +10,7 @@ import StaticDateTimePicker from '@mui/lab/StaticDateTimePicker';
 import {ClickAwayListener, Popper} from '@mui/material';
 
 import {dateOptions} from '../../../utils/business-process/date-options';
+import {DatePickerHelper} from "./support/date-picker-helper";
 
 export const BPDatePicker = ({label, onChange, baseDate, callBack}) => {
   // Date picker value.
@@ -148,12 +147,6 @@ export const BPDatePicker = ({label, onChange, baseDate, callBack}) => {
     }
   }, [value]);
 
-  const IconWithTooltip = () => (
-    <Tooltip title='Input could revise the base date. Date modifier h (hour), m (minute), d (day), mo (month), y (year). It includes three parts: modifier prefix (- or +), the modifying amount (a number), and the modifying unit (the shortcut for time units). e.g. +1d represents plus one day' arrow>
-      <InfoIcon fontSize="small"/>
-    </Tooltip>
-  );
-
   return (
     <div
       style={{
@@ -176,13 +169,19 @@ export const BPDatePicker = ({label, onChange, baseDate, callBack}) => {
             style={{
               width: '100%',
             }}
-            label={
-              <div>
+            label={(
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
                 {label}
-                <IconWithTooltip />
+                <DatePickerHelper/>
               </div>
-
-            }
+            )}
             boxRef={(ref) => {
               boxRef.current = ref;
             }}
