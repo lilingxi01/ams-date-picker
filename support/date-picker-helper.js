@@ -1,8 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import {IconBolt, IconHelp, IconWand, IconX} from '@tabler/icons';
+import {IconBolt, IconHelp, IconRotateClockwise2, IconWand, IconX} from '@tabler/icons';
 import {Modal} from '@mui/material';
 import styled from 'styled-components';
 import {BPColors, BPDimens, BPStandards} from '../../../../utils/business-process/standards';
+
+const HelperModalOpenButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 4px;
+  cursor: pointer;
+  
+  &:hover {
+    color: ${BPColors.gray[900]};
+  }
+`;
 
 // The styled div for the helper modal root.
 const HelperModalDiv = styled.div`
@@ -36,7 +48,7 @@ const HelperModalDiv = styled.div`
     justify-content: center;
     column-gap: 4px;
     padding: 10px 11px 10px 14px;
-    margin: 0 10px;
+    margin: 0 13px;
     border-radius: ${BPDimens.smallRadius}px;
     font-size: 16px;
     font-weight: 500;
@@ -106,12 +118,13 @@ const HelperModalContentContainer = ({title, icon, color = BPColors.brand, child
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          marginLeft: 50,
+          marginLeft: 45,
+          marginRight: 5,
           borderRadius: BPDimens.smallRadius,
-          backgroundColor: color + '0f', // Fade out the color for background.
+          backgroundColor: color + '16', // Fade out the color for background.
         }}
       >
-        <TitleIconComponent width={26} height={26} strokeWidth={1.9} color={color}/>
+        <TitleIconComponent width={28} height={28} strokeWidth={1.9} color={color}/>
       </div>
       <div
         className='helper-modal-content-children'
@@ -125,7 +138,8 @@ const HelperModalContentContainer = ({title, icon, color = BPColors.brand, child
       >
         <h1
           style={{
-            height: 42,
+            height: 50,
+            paddingBottom: 8,
             fontSize: 42,
             fontWeight: '500',
             lineHeight: 1.0,
@@ -157,15 +171,7 @@ export const DatePickerHelper = ({onOpen, onClose}) => {
 
   return (
     <>
-      <div
-        style={{
-          flex: 1,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: '0 4px',
-          cursor: 'pointer',
-        }}
+      <HelperModalOpenButton
         onClick={() => setIsModalOpen(true)}
       >
         <IconHelp
@@ -173,7 +179,7 @@ export const DatePickerHelper = ({onOpen, onClose}) => {
           height={16}
           strokeWidth={2.2}
         />
-      </div>
+      </HelperModalOpenButton>
       <Modal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -239,13 +245,21 @@ export const DatePickerHelper = ({onOpen, onClose}) => {
                 One modifier is assembled by three parts: <b>Prefix</b>, <b>Amount</b> and <b>Unit</b>. Here are some examples: <code>+1d</code> (add a day), <code>-10h</code> (subtract 10 hours).
               </p>
               <p>
-                A prefix could be <code>+</code> or <code>-</code> to indicate the direction of the adjustment. If you want to pick a date (or time) that is in the past (need to subtract some times), you can use the prefix <code>-</code>. And if you want to pick a date (or time) that is in the future (need to add some times), you can use the prefix <code>+</code>.
+                A <b>prefix</b> could be <code>+</code> or <code>-</code> to indicate the direction of the adjustment. If you want to pick a date (or time) that is in the past (need to subtract some times), you can use the prefix <code>-</code>. And if you want to pick a date (or time) that is in the future (need to add some times), you can use the prefix <code>+</code>.
               </p>
               <p>
-                To be continued...
+                The <b>amount</b> is an integer (no decimals allowed) that indicates how many units you want to adjust. For example, <code>+1d</code> means add one day, <code>-10h</code> means subtract 10 hours. And it could also be like <code>-90m</code> to subtract 90 minutes because the amount is not necessary to be less than 60 minutes or 24 hours.
               </p>
             </HelperModalContentContainer>
-            <HelperModalContentContainer title={'Supercharge Input'} icon={IconBolt} color={'#1d4ed8'}>
+            <HelperModalContentContainer title={'Quick Interval'} icon={IconRotateClockwise2} color={'#059669'}>
+              <p>
+                This is the most convenient way to &quot;paste&quot; a date and time.
+              </p>
+              <p>
+                To be continued.
+              </p>
+            </HelperModalContentContainer>
+            <HelperModalContentContainer title={'Input Supercharge'} icon={IconBolt} color={'#1d4ed8'}>
               <p>
                 This is the most convenient way to &quot;paste&quot; a date and time.
               </p>
