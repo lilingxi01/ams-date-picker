@@ -83,14 +83,15 @@ export function parseDate(userInput, baseDate) {
         throw new Error('Invalid minute.');
       }
 
-      const hourInt = parseInt(hour);
+      // If the user types `12am`, we need to set the hour to 0.
+      const hourInt = hour === '12' ? 0 : parseInt(hour);
       const minuteInt = parseInt(minute);
       const ampmInt = (matches[1] || 'am') === 'am' ? 0 : 12;
       updatedDate.setHours(hourInt + ampmInt);
       updatedDate.setMinutes(minuteInt);
-    } else if (currentModifier.toLowerCase().match(/\d+\/\d+\/\d+[,]?/g) /* If this is a date. */) {
+    } else if (currentModifier.toLowerCase().match(/^\d{1,2}\/\d\d{1,2}(?:|\/\d{2}|\/\d{4})[,]?$/g) /* If this is a date. */) {
       // Parse the date.
-      const matches = currentModifier.toLowerCase().match(/(\d+\/\d+\/\d+)[,]?/);
+      const matches = currentModifier.toLowerCase().match(/^(\d{1,2}\/\d\d{1,2}(?:|\/\d{2}|\/\d{4}))[,]?$/);
       if (matches.length < 1) {
         continue;
       }
@@ -98,14 +99,20 @@ export function parseDate(userInput, baseDate) {
       const dateArray = matches[1].split('/');
       const month = dateArray[0];
       const day = dateArray[1];
-      const year = dateArray[2];
+      const year = dateArray[2] || updatedDate.getFullYear();
       updatedDate.setMonth((parseInt(month) || 1) - 1); // -1 because the month starts from 0.
       updatedDate.setDate(parseInt(day) || 1);
       updatedDate.setFullYear(parseInt(year) || new Date().getFullYear());
+    } else if (['am', 'pm'].includes(currentModifier.toLowerCase()) /* If this is a standalone `am` or `pm`. */) {
+      // Parse the am/pm and add that to the updatedDate if needed.
+      const hour = updatedDate.getHours();
+      if (currentModifier.toLowerCase() === 'pm' && hour < 12) {
+        updatedDate.setHours(hour + 12);
+      }
     }
   }
 
-  // TODO.
+  // TODO: Remove the old version (below) after reviewing.
 
   // Below is the old version of the date parsing function.
   // The parsing logic is a bit tricky so I updated it to the newer function above.

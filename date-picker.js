@@ -48,7 +48,7 @@ export const BPDatePicker = ({label, onChange, baseDate}) => {
 
   const onInputFinish = (text) => {
     try {
-      const parsedDate = parseDate(text, baseDate);
+      const parsedDate = parseDate(text, baseDate || new Date());
       setValue(parsedDate);
     } catch (e) {
       console.error(e.toString());
