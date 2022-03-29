@@ -10,9 +10,9 @@ import StaticDateTimePicker from '@mui/lab/StaticDateTimePicker';
 import {ClickAwayListener, Popper} from '@mui/material';
 
 import {dateOptions} from '../../../utils/business-process/date-options';
-import {DatePickerHelper} from "./support/date-picker-helper";
+import {DatePickerHelper} from './support/date-picker-helper';
 
-export const BPDatePicker = ({label, onChange, baseDate, callBack}) => {
+export const BPDatePicker = ({label, onChange, baseDate}) => {
   // Date picker value.
   const [value, setValue] = useState(null);
 
@@ -80,7 +80,7 @@ export const BPDatePicker = ({label, onChange, baseDate, callBack}) => {
 
   // Process the input value into datepicker value.
   useEffect(() => {
-    const changeFlag = false;
+    let changeFlag = false;
     const updatedDate = new Date(baseDate);
 
     // console.log(baseDate);
@@ -91,7 +91,7 @@ export const BPDatePicker = ({label, onChange, baseDate, callBack}) => {
         reviseList.forEach((action) => {
           const amount = action.replace(/\D/g, '');
           const flag = action.replace(/\W/g, '').replace(/\d/g, '');
-          if (action.charAt(0) == '+') {
+          if (action.charAt(0) === '+') {
             addAction(updatedDate, amount, flag);
             changeFlag = true;
           } else {
@@ -110,9 +110,9 @@ export const BPDatePicker = ({label, onChange, baseDate, callBack}) => {
     const input = inputValue;
     const inputValueArr = input.split(/[:\s]/i);
 
-    const parsedValue = inputValueArr[0];
-    const hour = '00';
-    const minutes = '00';
+    let parsedValue = inputValueArr[0];
+    let hour = '00';
+    let minutes = '00';
 
     if (inputValueArr.length > 1) {
       hour = inputValueArr[1].replace(/\D/g, '');
@@ -144,6 +144,9 @@ export const BPDatePicker = ({label, onChange, baseDate, callBack}) => {
     // TODO
     if (value) {
       setInputValue(value.toLocaleString('en-US', dateOptions));
+      if (onChange) {
+        onChange(value);
+      }
     }
   }, [value]);
 
@@ -244,7 +247,6 @@ export const BPDatePicker = ({label, onChange, baseDate, callBack}) => {
                     value={value}
                     onChange={(newValue) => {
                       setValue(newValue);
-                      callBack(newValue);
                     }}
                     onAccept={() => {
                       handlePopoverClose();
