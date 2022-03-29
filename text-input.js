@@ -26,15 +26,9 @@ const BPTextInput = ({label, boxRef, value, onChange, onTextChange, placeholder,
         alignItems: 'flex-start',
         ...style,
       }}
-      onMouseEnter={() => {
-        setIsHovered(true);
-      }}
-      onMouseLeave={() => {
-        setIsHovered(false);
-      }}
     >
       {label ? (
-        <p style={labelStyle}>{label}</p>
+        <div style={labelStyle}>{label}</div>
       ) : <></>}
       <div
         style={{
@@ -55,6 +49,12 @@ const BPTextInput = ({label, boxRef, value, onChange, onTextChange, placeholder,
           if (onClick) {
             onClick(event);
           }
+        }}
+        onMouseEnter={() => {
+          setIsHovered(true);
+        }}
+        onMouseLeave={() => {
+          setIsHovered(false);
         }}
       >
         {beforeField || <></>}
