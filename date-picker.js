@@ -11,7 +11,8 @@ import {ClickAwayListener, Popper} from '@mui/material';
 
 import {dateOptions} from '../../../utils/business-process/date-options';
 import {DatePickerHelper} from './support/date-picker-helper';
-import {parseDate} from "./support/date-picker-processor";
+
+import {parseDate} from './support/date-picker-processor';
 
 export const BPDatePicker = ({label, onChange, baseDate}) => {
   // Date picker value.
