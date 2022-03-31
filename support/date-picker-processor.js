@@ -43,7 +43,7 @@ export function parseDate(userInput, baseDate) {
   let updatedDate = new Date(baseDate);
 
   // Separate the user input string into an array of strings (in order to determine each modifier).
-  const modifiers = userInput.split(' ');
+  const modifiers = userInput.split(/[ ,]+/);
 
   while (modifiers.length > 0) {
     // Get the first element from the array.
@@ -53,7 +53,10 @@ export function parseDate(userInput, baseDate) {
       continue;
     }
 
-    if (['-', '+'].includes(currentModifier.charAt(0)) /* If this is a date modifier. */) {
+    if (
+      /* If this is a date modifier. */
+      ['-', '+'].includes(currentModifier.charAt(0))
+    ) {
       const prefix = currentModifier.charAt(0);
       const amount = currentModifier.replace(/\D/g, '');
       const flag = currentModifier.replace(/\W/g, '').replace(/\d/g, '').toLowerCase();
@@ -62,10 +65,16 @@ export function parseDate(userInput, baseDate) {
       } else {
         changeDateByAmount(updatedDate, -amount, flag);
       }
-    } else if (currentModifier.toLowerCase() === 'now' /* If this is a now modifier. */) {
+    } else if (
+      /* If this is a now modifier. */
+      currentModifier.toLowerCase() === 'now'
+    ) {
       // Override the updatedDate to the current date.
       updatedDate = new Date();
-    } else if (currentModifier.toLowerCase().match(/^\d+:?\d*(am|pm)?$/g) /* If this is a time. */) {
+    } else if (
+      /* If this is a time. */
+      currentModifier.toLowerCase().match(/^\d+:?\d*(am|pm)?$/g)
+    ) {
       // Parse the time.
       const matches = currentModifier.toLowerCase().match(/^\d+:?\d*(am|pm)?$/);
       if (matches.length < 1) {
@@ -89,62 +98,41 @@ export function parseDate(userInput, baseDate) {
       const ampmInt = (matches[1] || 'am') === 'am' ? 0 : 12;
       updatedDate.setHours(hourInt + ampmInt);
       updatedDate.setMinutes(minuteInt);
-    } else if (currentModifier.toLowerCase().match(/^\d{1,2}\/\d\d{1,2}(?:|\/\d{2}|\/\d{4})[,]?$/g) /* If this is a date. */) {
+    } else if (
+      /* If this is a date. */
+      currentModifier.toLowerCase().match(/^\d{1,2}\/\d{1,2}(?:|\/\d{2}|\/\d{4})$/g)
+    ) {
       // Parse the date.
-      const matches = currentModifier.toLowerCase().match(/^(\d{1,2}\/\d\d{1,2}(?:|\/\d{2}|\/\d{4}))[,]?$/);
+      const matches = currentModifier.toLowerCase().match(
+          /^(\d{1,2}\/\d{1,2}(?:|\/\d{2}|\/\d{4}))$/
+      );
       if (matches.length < 1) {
         continue;
       }
 
       const dateArray = matches[1].split('/');
-      const month = dateArray[0];
-      const day = dateArray[1];
-      const year = dateArray[2] || updatedDate.getFullYear();
-      updatedDate.setMonth((parseInt(month) || 1) - 1); // -1 because the month starts from 0.
-      updatedDate.setDate(parseInt(day) || 1);
-      updatedDate.setFullYear(parseInt(year) || new Date().getFullYear());
-    } else if (['am', 'pm'].includes(currentModifier.toLowerCase()) /* If this is a standalone `am` or `pm`. */) {
+      const month = parseInt(dateArray[0]) || 1;
+      const day = parseInt(dateArray[1]) || 1;
+      const year = parseInt(dateArray[2]) || updatedDate.getFullYear();
+
+      // TODO: Throw errors if the date is invalid.
+
+      // -1 because the month starts from 0.
+      updatedDate.setMonth(month - 1, day);
+      updatedDate.setFullYear(year);
+    } else if (
+      /* If this is a standalone `am` or `pm`. */
+      ['am', 'pm'].includes(currentModifier.toLowerCase())
+    ) {
       // Parse the am/pm and add that to the updatedDate if needed.
       const hour = updatedDate.getHours();
       if (currentModifier.toLowerCase() === 'pm' && hour < 12) {
         updatedDate.setHours(hour + 12);
       }
+    } else {
+      // TODO: Invalid format.
     }
   }
-
-  // TODO: Remove the old version (below) after reviewing.
-
-  // Below is the old version of the date parsing function.
-  // The parsing logic is a bit tricky so I updated it to the newer function above.
-
-  // const input = inputValue;
-  // const inputValueArr = input.split(/[:\s]/i);
-  //
-  // let parsedValue = inputValueArr[0];
-  // let hour = '00';
-  // let minutes = '00';
-  //
-  // if (inputValueArr.length > 1) {
-  //   hour = inputValueArr[1].replace(/\D/g, '');
-  //   parsedValue += ' ' + hour;
-  // }
-  // if (inputValueArr.length > 2) {
-  //   minutes = inputValueArr[2].replace(/\D/g, '');
-  //   if (/^\d+$/.test(minutes)) {
-  //     parsedValue += ':' + minutes;
-  //   }
-  // }
-  // if (input.toLowerCase().includes('am')) {
-  //   if (! /^\d+$/.test(minutes)) {
-  //     parsedValue += ':' + '00';
-  //   }
-  //   parsedValue += ' AM';
-  // } else if (input.toLowerCase().includes('pm')) {
-  //   if (! /^\d+$/.test(minutes)) {
-  //     parsedValue += ':' + '00';
-  //   }
-  //   parsedValue += ' PM';
-  // }
 
   return updatedDate;
 }
