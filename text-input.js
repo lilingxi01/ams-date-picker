@@ -3,7 +3,30 @@ import {BPColors, BPDimens, BPStandards} from '../../../utils/business-process/s
 
 import {InputBase} from '@mui/material';
 
-const BPTextInput = ({label, boxRef, value, onChange, onTextChange, placeholder, style, boxStyle, inputStyle, onFocus, onClick, onBlur, onEnterPress, onEscPress, disableInput, beforeField, afterField, ...props}) => {
+/**
+ * [BP] The text input component.
+ * @param {string} id - The id of the input. If you want to focus on the input field, use the id with `-field` trailing to input the content.
+ * @param {string|React.ReactNode} label - The label of the input.
+ * @param {function} boxRef - To get the input box (not input field) reference.
+ * @param {string} value - The value of the input.
+ * @param {function} onChange - The callback function (with event) when the input value is changed.
+ * @param {function} onTextChange - The callback function (with text value only) when the input value is changed.
+ * @param {string} placeholder - The placeholder of the input.
+ * @param {object} style - The style of the component root.
+ * @param {object} boxStyle - The style of the input box.
+ * @param {object} inputStyle - The style of the input field.
+ * @param {function} onFocus - The callback function when the input field is focused.
+ * @param {function} onClick - The callback function when the input field is clicked.
+ * @param {function} onBlur - The callback function when the input field is blurred.
+ * @param {function} onEnterPress - The callback function when the enter key is pressed.
+ * @param {function} onEscPress - The callback function when the esc key is pressed.
+ * @param {boolean} disableInput - The flag to disable the input field.
+ * @param {string|React.ReactNode} beforeField - The content before the input field.
+ * @param {string|React.ReactNode} afterField - The content after the input field.
+ * @param {object} props - The other properties of the component.
+ * @return {JSX.Element} - The component.
+ */
+const BPTextInput = ({id = 'bp-text-input', label, boxRef, value, onChange, onTextChange, placeholder, style, boxStyle, inputStyle, onFocus, onClick, onBlur, onEnterPress, onEscPress, disableInput, beforeField, afterField, ...props}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -31,6 +54,7 @@ const BPTextInput = ({label, boxRef, value, onChange, onTextChange, placeholder,
         <div style={labelStyle}>{label}</div>
       ) : <></>}
       <div
+        id={id}
         style={{
           display: 'flex',
           flexDirection: 'row',
@@ -59,6 +83,7 @@ const BPTextInput = ({label, boxRef, value, onChange, onTextChange, placeholder,
       >
         {beforeField || <></>}
         <InputBase
+          id={`${id}-field`}
           placeholder={placeholder}
           type={props.type || 'text'}
           style={{

@@ -14,7 +14,7 @@ import {DatePickerHelper} from './support/date-picker-helper';
 
 import {parseDate} from './support/date-picker-processor';
 
-export const BPDatePicker = ({label, onChange, baseDate}) => {
+export const BPDatePicker = ({id = 'bp-datepicker', label, onChange, baseDate}) => {
   // Date picker value.
   const [value, setValue] = useState(null);
 
@@ -30,11 +30,6 @@ export const BPDatePicker = ({label, onChange, baseDate}) => {
   const handlePopoverClose = () => {
     setIsOpen(false);
   };
-
-  // Process the input value into datepicker value.
-  useEffect(() => {
-    // setValue(parseDate(inputValue, baseDate));
-  }, [inputValue]);
 
   // Process the datepicker value into input value.
   useEffect(() => {
@@ -76,6 +71,7 @@ export const BPDatePicker = ({label, onChange, baseDate}) => {
           }}
         >
           <BPTextInput
+            id={id}
             style={{
               width: '100%',
             }}
@@ -111,7 +107,7 @@ export const BPDatePicker = ({label, onChange, baseDate}) => {
           />
 
           <Popper
-            id={isOpen ? 'bp-date-picker' : undefined}
+            id={isOpen ? `${id}-popper` : undefined}
             open={isOpen}
             anchorEl={boxRef.current}
             onClose={handlePopoverClose}
