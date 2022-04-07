@@ -115,7 +115,20 @@ export function parseDate(userInput, baseDate) {
       const day = parseInt(dateArray[1]) || 1;
       const year = parseInt(dateArray[2]) || updatedDate.getFullYear();
 
-      // TODO: Throw errors if the date is invalid.
+      // Throw errors if the date is invalid.
+      if (month > 12) {
+        throw new Error('Invalid month.');
+      } else if (month === 2 && day > 29) {
+        throw new Error('Invalid day.');
+      } else if (day > 30) {
+        if ([4, 6, 9, 11].includes(month)) {
+          throw new Error('Invalid day.');
+        }
+      } else if (month === 2 && day === 29 && year % 4 !== 0) {
+        throw new Error('Invalid day.');
+      } else if (year < 0 || year > 9999) {
+        throw new Error('Invalid year.');
+      }
 
       // -1 because the month starts from 0.
       updatedDate.setMonth(month - 1, day);
