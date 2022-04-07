@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {BPColors, BPDimens, BPStandards} from '../../../utils/business-process/standards';
 
 import {InputBase} from '@mui/material';
+import {IconAlertCircle, IconExclamationMark, IconInfoCircle} from "@tabler/icons";
 
 /**
  * [BP] The text input component.
@@ -23,10 +24,12 @@ import {InputBase} from '@mui/material';
  * @param {boolean} disableInput - The flag to disable the input field.
  * @param {string|React.ReactNode} beforeField - The content before the input field.
  * @param {string|React.ReactNode} afterField - The content after the input field.
+ * @param {string|null} hint - The hint of the input field.
+ * @param {string|null} error - The error message.
  * @param {object} props - The other properties of the component.
  * @return {JSX.Element} - The component.
  */
-const BPTextInput = ({id = 'bp-text-input', label, boxRef, value, onChange, onTextChange, placeholder, style, boxStyle, inputStyle, onFocus, onClick, onBlur, onEnterPress, onEscPress, disableInput, beforeField, afterField, ...props}) => {
+const BPTextInput = ({id = 'bp-text-input', label, boxRef, value, onChange, onTextChange, placeholder, style, boxStyle, inputStyle, onFocus, onClick, onBlur, onEnterPress, onEscPress, disableInput, beforeField, afterField, hint, error, ...props}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -37,7 +40,9 @@ const BPTextInput = ({id = 'bp-text-input', label, boxRef, value, onChange, onTe
     padding: 0,
     marginTop: 0,
     marginBottom: 3,
-    color: isFocused || isHovered ? BPColors.green[600] : BPColors.gray[400],
+    color: error ?
+      BPColors.red[600] :
+      isFocused || isHovered ? BPColors.green[600] : BPColors.gray[400],
     transition: 'color 0.15s ease-in-out',
   };
 
@@ -63,7 +68,9 @@ const BPTextInput = ({id = 'bp-text-input', label, boxRef, value, onChange, onTe
           height: BPDimens.textInputHeight,
           color: isFocused ? BPColors.gray[900] : BPColors.gray[400],
           borderRadius: BPDimens.smallRadius,
-          border: isFocused || isHovered ? BPStandards.borderFocus : BPStandards.border,
+          border: error ?
+            `1px solid ${BPColors.red[600]}` :
+            isFocused || isHovered ? BPStandards.borderFocus : BPStandards.border,
           background: isFocused ? BPColors.white : BPColors.gray[30],
           transition: 'all 0.15s ease-in-out',
           ...boxStyle,
@@ -140,6 +147,46 @@ const BPTextInput = ({id = 'bp-text-input', label, boxRef, value, onChange, onTe
           {...props}
         />
         {afterField || <></>}
+      </div>
+      <div
+        style={{
+          display: error || hint ? 'flex' : 'none',
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+          justifyContent: 'flex-start',
+          width: '100%',
+          paddingTop: 4,
+          color: error ? BPColors.red[600] : BPColors.gray[400],
+        }}
+      >
+        <IconAlertCircle
+          width={14}
+          height={14}
+          style={{
+            flexShrink: 0,
+            display: error ? 'flex' : 'none',
+            marginTop: 0.5,
+            marginRight: 5,
+          }}
+        />
+        <IconInfoCircle
+          width={14}
+          height={14}
+          style={{
+            flexShrink: 0,
+            display: hint && !error ? 'flex' : 'none',
+            marginTop: 0.5,
+            marginRight: 5,
+          }}
+        />
+        <span
+          style={{
+            fontSize: 12,
+            fontWeight: '500',
+          }}
+        >
+          {error || hint || ''}
+        </span>
       </div>
     </div>
   );

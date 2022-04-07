@@ -143,7 +143,8 @@ export function parseDate(userInput, baseDate) {
         updatedDate.setHours(hour + 12);
       }
     } else {
-      // TODO: Invalid format.
+      // Invalid format.
+      throw new Error('Invalid format.');
     }
   }
 
