@@ -124,6 +124,8 @@ export function parseDate(userInput, baseDate) {
         if ([4, 6, 9, 11].includes(month)) {
           throw new Error('Invalid day.');
         }
+      } else if (day > 31) {
+        throw new Error('Invalid day.');
       } else if (month === 2 && day === 29 && year % 4 !== 0) {
         throw new Error('Invalid day.');
       } else if (year < 0 || year > 9999) {
