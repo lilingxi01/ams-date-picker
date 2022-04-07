@@ -113,28 +113,35 @@ export function parseDate(userInput, baseDate) {
       const dateArray = matches[1].split('/');
       const month = parseInt(dateArray[0]) || 1;
       const day = parseInt(dateArray[1]) || 1;
-      const year = parseInt(dateArray[2]) || updatedDate.getFullYear();
+      const year = parseInt(dateArray[2]) || new Date().getFullYear();
 
       // Throw errors if the date is invalid.
       if (month > 12) {
         throw new Error('Invalid month.');
-      } else if (month === 2 && day > 29) {
-        throw new Error('Invalid day.');
+      } else if (month === 2) {
+        if ((0 === year % 4) && (0 !== year % 100) || (0 === year % 400)) {
+          // This is a leap year.
+          if (day > 29) {
+            throw new Error('Invalid day. February has only 29 days in a leap year.');
+          }
+        } else if (day > 28) {
+          throw new Error('Invalid day. February only has 28 days in a non-leap year.');
+        }
       } else if (day > 30) {
         if ([4, 6, 9, 11].includes(month)) {
           throw new Error('Invalid day.');
         }
-      } else if (day > 31) {
-        throw new Error('Invalid day.');
-      } else if (month === 2 && day === 29 && year % 4 !== 0) {
-        throw new Error('Invalid day.');
+        if (day > 31) {
+          throw new Error('Invalid day.');
+        }
       } else if (year < 0 || year > 9999) {
         throw new Error('Invalid year.');
       }
 
+      updatedDate.setFullYear(year);
+
       // -1 because the month starts from 0.
       updatedDate.setMonth(month - 1, day);
-      updatedDate.setFullYear(year);
     } else if (
       /* If this is a standalone `am` or `pm`. */
       ['am', 'pm'].includes(currentModifier.toLowerCase())
