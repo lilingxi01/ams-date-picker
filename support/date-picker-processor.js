@@ -24,6 +24,11 @@ const changeDateByAmount = (base, amount, flag) => {
   }
 };
 
+const parseMonthName = (monthNumber) => {
+  return new Date(0, monthNumber - 1)
+      .toLocaleString('en-US', {month: 'long'});
+};
+
 /**
  * This function takes the user input string and returns the parsed date in the format of DateTime object.
  *
@@ -86,16 +91,16 @@ export function parseDate(userInput, baseDate) {
       const hour = timeArray[0];
       const minute = timeArray[1] || 0;
 
-      if ((hour > 12 && matches[1] === 'pm') || hour >= 24) {
-        throw new Error('Invalid hour.');
+      if (hour >= 24) {
+        throw new Error('Invalid hour. The hour must be between 0 and 23.');
       } else if (minute >= 60) {
-        throw new Error('Invalid minute.');
+        throw new Error('Invalid minute. The minute must be between 0 and 59.');
       }
 
       // If the user types `12am`, we need to set the hour to 0.
       const hourInt = hour === '12' ? 0 : parseInt(hour);
       const minuteInt = parseInt(minute);
-      const ampmInt = (matches[1] || 'am') === 'am' ? 0 : 12;
+      const ampmInt = (matches[1] || 'am') === 'am' ? 0 : (hourInt > 11 ? 0 : 12);
       updatedDate.setHours(hourInt + ampmInt);
       updatedDate.setMinutes(minuteInt);
     } else if (
@@ -117,7 +122,7 @@ export function parseDate(userInput, baseDate) {
 
       // Throw errors if the date is invalid.
       if (month > 12) {
-        throw new Error('Invalid month.');
+        throw new Error('Invalid month. The month must be between 1 and 12.');
       } else if (month === 2) {
         if ((0 === year % 4) && (0 !== year % 100) || (0 === year % 400)) {
           // This is a leap year.
@@ -129,10 +134,10 @@ export function parseDate(userInput, baseDate) {
         }
       } else if (day > 30) {
         if ([4, 6, 9, 11].includes(month)) {
-          throw new Error('Invalid day.');
+          throw new Error(`Invalid day. ${parseMonthName(month)} only has 30 days.`);
         }
         if (day > 31) {
-          throw new Error('Invalid day.');
+          throw new Error(`Invalid day. ${parseMonthName(month)} only has 31 days.`);
         }
       } else if (year < 0 || year > 9999) {
         throw new Error('Invalid year.');
