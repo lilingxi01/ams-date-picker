@@ -1,28 +1,30 @@
 // This function is a mix of the `addAction` and `minusAction` functions because we can pass a negative value in.
 
 const changeDateByAmount = (base, amount, flag) => {
+  const baseDate = new Date(base);
+
   switch (flag) {
     case 'h':
-      const newHour = parseInt(base.getHours()) + parseInt(amount);
-      base.setHours(newHour);
+      baseDate.setTime(baseDate.getTime() + (amount * 60 * 60 * 1000));
       break;
     case 'd':
-      const newDate = parseInt(base.getDate()) + parseInt(amount);
-      base.setDate(newDate);
+      const newDate = parseInt(baseDate.getDate()) + parseInt(amount);
+      baseDate.setDate(newDate);
       break;
     case 'm':
-      const newMinute = parseInt(base.getMinutes()) + parseInt(amount);
-      base.setMinutes(newMinute);
+      baseDate.setTime(baseDate.getTime() + (amount * 60 * 1000));
       break;
     case 'mo':
-      const newMonth = parseInt(base.getMonth()) + parseInt(amount);
-      base.setMonth(newMonth);
+      const newMonth = parseInt(baseDate.getMonth()) + parseInt(amount);
+      baseDate.setMonth(newMonth);
       break;
     case 'y':
-      const newYear = parseInt(base.getFullYear()) + parseInt(amount);
-      base.setFullYear(newYear);
+      const newYear = parseInt(baseDate.getFullYear()) + parseInt(amount);
+      baseDate.setFullYear(newYear);
       break;
   }
+
+  return baseDate;
 };
 
 // A function parse the month number to a string of the month name.
@@ -131,9 +133,9 @@ export function parseDate(userInput, baseDate) {
       const amount = currentModifier.replace(/\D/g, '');
       const flag = currentModifier.replace(/\W/g, '').replace(/\d/g, '').toLowerCase();
       if (prefix === '+') {
-        changeDateByAmount(updatedDate, amount, flag);
+        updatedDate = changeDateByAmount(updatedDate, amount, flag);
       } else {
-        changeDateByAmount(updatedDate, -amount, flag);
+        updatedDate = changeDateByAmount(updatedDate, -amount, flag);
       }
     } else if (
       /* If this is a now modifier. */
