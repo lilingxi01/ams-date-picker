@@ -24,10 +24,45 @@ const changeDateByAmount = (base, amount, flag) => {
   }
 };
 
+// A function parse the month number to a string of the month name.
 const parseMonthName = (monthNumber) => {
   return new Date(0, monthNumber - 1)
       .toLocaleString('en-US', {month: 'long'});
 };
+
+// A function checking if the current area is in Daylight Saving Time area.
+const isDaylightSavingArea = () => {
+  const date = new Date();
+  const january = new Date(date.getFullYear(), 0, 1); // January 1st.
+  const july = new Date(date.getFullYear(), 6, 1); // July 1st.
+  return january.getTimezoneOffset() !== july.getTimezoneOffset(); // If the timezone offset is not the same, it is in DST area.
+};
+
+/**
+ * Check if it is the first sunday in November.
+ * @param {Date} date - The date to check.
+ * @return {boolean} - True if it is under the conflict of daylight saving time.
+ */
+export function isInDaylightSavingConflictTime(date) {
+  if (!isDaylightSavingArea()) { // If it is not in DST area, it will never be in a conflict time.
+    return false;
+  }
+
+  const month = date.getMonth();
+  const dateOfMonth = date.getDate();
+  const dayOfWeek = date.getDay();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+
+  // Check if the day matches the first sunday in November.
+  if (month === 10 && dateOfMonth <= 7 && dayOfWeek === 0) {
+    // Check if it is in the DST conflict time.
+    if ((hour === 1 && minute >= 0 && minute <= 59) || (hour === 2 && minute === 0)) {
+      return true;
+    }
+  }
+  return false;
+}
 
 /**
  * This function takes the user input string and returns the parsed date in the format of DateTime object.
