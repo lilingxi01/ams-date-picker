@@ -19,11 +19,11 @@ const BPDatePickerConflictOption = styled.div`
   background-color: ${(props) => props.isActive ? BPColors.green[600] : BPColors.transparent};
   
   &:hover {
-    background-color: ${(props) => props.isActive ? BPColors.green[700] : BPColors.gray[150]};
+    background-color: ${(props) => props.isActive ? BPColors.green[600] : BPColors.gray[150]};
   }
   
   &:active {
-    background-color: ${(props) => props.isActive ? BPColors.green[800] : BPColors.gray[300]};
+    background-color: ${(props) => props.isActive ? BPColors.green[700] : BPColors.gray[300]};
   }
 `;
 
