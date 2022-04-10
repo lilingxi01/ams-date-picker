@@ -40,12 +40,16 @@ export const BPDatePicker = ({id = 'bp-datepicker', label, hint, error, onChange
 
   // Update hint state when hint prop changes.
   useEffect(() => {
-    setHintState(hint);
+    if (hint) {
+      setHintState(hint);
+    }
   }, [hint]);
 
   // Update error state when error prop changes.
   useEffect(() => {
-    setErrorState(error);
+    if (error) {
+      setErrorState(error);
+    }
   }, [error]);
 
   // Process the datepicker value into input value.
