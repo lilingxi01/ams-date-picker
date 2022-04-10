@@ -1,4 +1,5 @@
 // This function is a mix of the `addAction` and `minusAction` functions because we can pass a negative value in.
+
 const changeDateByAmount = (base, amount, flag) => {
   switch (flag) {
     case 'h':
@@ -39,7 +40,7 @@ const isDaylightSavingArea = () => {
 };
 
 /**
- * Check if it is the first sunday in November.
+ * Check if the given time in under a potential conflict of the daylight saving time.
  * @param {Date} date - The date to check.
  * @return {boolean} - True if it is under the conflict of daylight saving time.
  */
@@ -48,20 +49,49 @@ export function isInDaylightSavingConflictTime(date) {
     return false;
   }
 
-  const month = date.getMonth();
-  const dateOfMonth = date.getDate();
-  const dayOfWeek = date.getDay();
+  // Get the 12PM of the day before the given date.
+  const yesterdayNoon = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1, 12);
+
+  // Get the 12PM of the given date.
+  const todayNoon = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12);
+
   const hour = date.getHours();
   const minute = date.getMinutes();
 
-  // Check if the day matches the first sunday in November.
-  if (month === 10 && dateOfMonth <= 7 && dayOfWeek === 0) {
-    // Check if it is in the DST conflict time.
-    if ((hour === 1 && minute >= 0 && minute <= 59) || (hour === 2 && minute === 0)) {
+  // If the 12PM of the day before the given date is before the 12PM of the given date, it is in the conflict time.
+  if (yesterdayNoon.getTimezoneOffset() < todayNoon.getTimezoneOffset()) {
+    if ((hour === 1 && minute >= 0 && minute <= 59)) {
       return true;
     }
   }
   return false;
+}
+
+/**
+ * Set the timezone of a date to the given timezone.
+ *
+ * @param {Date} date - The date to set the timezone.
+ * @param {number | null} offset - The offset of the timezone.
+ * @return {Date} - The date with the timezone set.
+ */
+export function setTimezoneByOffset(date, offset) {
+  if (!offset) {
+    return date;
+  }
+
+  const newDate = new Date(date);
+  newDate.setTime(date.getTime() - (date.getTimezoneOffset() - offset) * 60 * 1000);
+  return newDate;
+
+  // Below is the original code.
+  // I was considering the case that we may have a duplicated 2AM, so I wrote this solution.
+  // But after digging into the problem, I found that we do not have a duplicated 2AM.
+  // The overlapping area is from 1:00AM to 1:59AM.
+  // Just keep this here for a while in case of a future reference.
+
+  // const timezoneModifier = offset / -60 > 0 ? '+' : '-';
+  // const timezoneHour = Math.abs(offset / 60);
+  // return DateTime.fromJSDate(date).setZone(`UTC${timezoneModifier}${timezoneHour}`, {keepLocalTime: true}).toJSDate();
 }
 
 /**
@@ -153,7 +183,7 @@ export function parseDate(userInput, baseDate) {
       const dateArray = matches[1].split('/');
       const month = parseInt(dateArray[0]) || 1;
       const day = parseInt(dateArray[1]) || 1;
-      const year = parseInt(dateArray[2]) || new Date().getFullYear();
+      const year = parseInt(dateArray[2]) || updatedDate.getFullYear();
 
       // Throw errors if the date is invalid.
       if (month > 12) {
