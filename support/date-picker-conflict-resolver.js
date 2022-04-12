@@ -162,7 +162,7 @@ export const BPDatePickerConflictResolver = ({date, onChange}) => {
                 ),
               }}
             />
-            <span>Before</span>
+            <span>Earlier</span>
           </div>
           <div style={optionTimeStyle(earlierOption.current)}>{displayedTime}</div>
           <div style={optionTimezoneStyle(earlierOption.current)}>
@@ -191,7 +191,7 @@ export const BPDatePickerConflictResolver = ({date, onChange}) => {
                 ),
               }}
             />
-            <span>After</span>
+            <span>Later</span>
           </div>
           <div style={optionTimeStyle(laterOption.current)}>{displayedTime}</div>
           <div style={optionTimezoneStyle(laterOption.current)}>
