@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {BPColors, BPDimens, BPStandards} from '../../../utils/business-process/standards';
 
 import {InputBase} from '@mui/material';
-import {IconAlertCircle, IconExclamationMark, IconInfoCircle} from "@tabler/icons";
+import {IconAlertCircle, IconExclamationMark, IconInfoCircle} from '@tabler/icons';
 
 /**
  * [BP] The text input component.
