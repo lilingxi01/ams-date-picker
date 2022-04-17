@@ -1,5 +1,4 @@
 // This function is a mix of the `addAction` and `minusAction` functions because we can pass a negative value in.
-
 const changeDateByAmount = (base, amount, flag) => {
   const baseDate = new Date(base);
 
@@ -113,9 +112,13 @@ export function setTimezoneByOffset(date, offset) {
 export function parseDate(userInput, baseDate) {
   // The date object to be returned.
   let updatedDate = new Date(baseDate);
-
   // Separate the user input string into an array of strings (in order to determine each modifier).
   const modifiers = userInput.split(/[ ,]+/);
+  let gmtFlag = false;
+  if (modifiers[0].toLowerCase() == 'gmt') {
+    gmtFlag = true;
+    modifiers.shift();
+  }
 
   while (modifiers.length > 0) {
     // Get the first element from the array.
@@ -178,6 +181,7 @@ export function parseDate(userInput, baseDate) {
       const matches = currentModifier.toLowerCase().match(
           /^(\d{1,2}\/\d{1,2}(?:|\/\d{2}|\/\d{4}))$/
       );
+
       if (matches.length < 1) {
         continue;
       }
@@ -228,6 +232,9 @@ export function parseDate(userInput, baseDate) {
       throw new Error('Invalid format.');
     }
   }
-
+  if (gmtFlag) {
+    const diff = new Date(updatedDate.toLocaleString('en-US', {timeZone: 'UTC'})).getTime() - updatedDate.getTime();
+    updatedDate.setTime(updatedDate.getTime() - diff);
+  }
   return updatedDate;
 }
