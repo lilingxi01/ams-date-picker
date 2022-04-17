@@ -141,6 +141,7 @@ export const BPDatePickerConflictResolver = ({date, onChange}) => {
         }}
       >
         <BPDatePickerConflictOption
+          id='bp-date-picker-conflict-option-earlier'
           isActive={date && date.getTimezoneOffset() === earlierOption.current}
           onClick={() => {
             if (onChange && date.getTimezoneOffset() !== earlierOption.current) {
@@ -170,6 +171,7 @@ export const BPDatePickerConflictResolver = ({date, onChange}) => {
           </div>
         </BPDatePickerConflictOption>
         <BPDatePickerConflictOption
+          id='bp-date-picker-conflict-option-later'
           isActive={date && date.getTimezoneOffset() === laterOption.current}
           onClick={() => {
             if (onChange && date.getTimezoneOffset() !== laterOption.current) {
