@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {BPColors, BPDimens, BPStandards} from '../../../utils/business-process/standards';
+import {BPDimens, BPStandards} from '../../../utils/business-process/standards';
 
 import BPTextInput from './text-input';
 

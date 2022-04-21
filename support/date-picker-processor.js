@@ -76,10 +76,6 @@ export function isInDaylightSavingConflictTime(date) {
  * @return {Date} - The date with the timezone set.
  */
 export function setTimezoneByOffset(date, offset) {
-  if (!offset) {
-    return date;
-  }
-
   const newDate = new Date(date);
   newDate.setTime(date.getTime() - (date.getTimezoneOffset() - offset) * 60 * 1000);
   return newDate;
@@ -114,8 +110,9 @@ export function parseDate(userInput, baseDate) {
   let updatedDate = new Date(baseDate);
   // Separate the user input string into an array of strings (in order to determine each modifier).
   const modifiers = userInput.split(/[ ,]+/);
+
   let gmtFlag = false;
-  if (modifiers[0].toLowerCase() == 'gmt') {
+  if (modifiers[0].toLowerCase() === 'gmt') {
     gmtFlag = true;
     modifiers.shift();
   }
@@ -129,6 +126,43 @@ export function parseDate(userInput, baseDate) {
     }
 
     if (
+      // Match the ISO 8601 format. Experimental!
+      currentModifier.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d+)?)(Z|([+-])(\d{2}):(\d{2}))$/)
+    ) {
+      const matches = currentModifier.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d+)?)(Z|([+-])(\d{2}):(\d{2}))$/);
+      const year = parseInt(matches[1], 0);
+      const month = parseInt(matches[2], 0) - 1;
+      const day = parseInt(matches[3], 0);
+      const hour = parseInt(matches[4], 0);
+      const minute = parseInt(matches[5], 0);
+      const secondAndMillisecond = matches[6].split('.');
+      const [second, millisecond] = (
+        secondAndMillisecond.length > 1 ?
+          [parseInt(secondAndMillisecond[0]), parseInt(secondAndMillisecond[1])] :
+          [parseInt(secondAndMillisecond[0]), 0]
+      );
+      const timezone = matches[7];
+
+      if (timezone !== 'Z') {
+        // In non-UTC timezone.
+        const timezonePrefix = matches[8];
+        const timezoneHour = parseInt(matches[9], 0);
+        const timezoneMinute = parseInt(matches[10], 0);
+        const timezoneOffset = (timezonePrefix === '-' ? 1 : -1) * timezoneHour * 60 + timezoneMinute;
+        updatedDate = new Date(
+            year,
+            month,
+            day,
+            hour,
+            minute,
+            second,
+            millisecond,
+        );
+        updatedDate = setTimezoneByOffset(updatedDate, timezoneOffset);
+      } else {
+        updatedDate = new Date(Date.UTC(year, month, day, hour, minute, second, millisecond));
+      }
+    } else if (
       /* If this is a date modifier. */
       ['-', '+'].includes(currentModifier.charAt(0))
     ) {
@@ -233,8 +267,10 @@ export function parseDate(userInput, baseDate) {
     }
   }
   if (gmtFlag) {
-    const diff = new Date(updatedDate.toLocaleString('en-US', {timeZone: 'UTC'})).getTime() - updatedDate.getTime();
-    updatedDate.setTime(updatedDate.getTime() - diff);
+    const utcTime = Date.UTC(updatedDate.getFullYear(), updatedDate.getMonth(), updatedDate.getDate(), updatedDate.getHours(), updatedDate.getMinutes(), updatedDate.getSeconds(), updatedDate.getMilliseconds());
+
+    // Convert the date to GMT without changing the absolute value of each term.
+    return new Date(utcTime);
   }
   return updatedDate;
 }
