@@ -3,6 +3,9 @@ const changeDateByAmount = (base, amount, flag) => {
   const baseDate = new Date(base);
 
   switch (flag) {
+    case 's':
+      baseDate.setSeconds(baseDate.getTime() + (amount * 1000));
+      break;
     case 'h':
       baseDate.setTime(baseDate.getTime() + (amount * 60 * 60 * 1000));
       break;
@@ -182,31 +185,36 @@ export function parseDate(userInput, baseDate) {
       updatedDate = new Date();
     } else if (
       /* If this is a time. */
-      currentModifier.toLowerCase().match(/^\d+:?\d*(am|pm)?$/g)
+      currentModifier.toLowerCase().match(/^\d+:?\d+:?\d*(am|pm)?$/g)
     ) {
       // Parse the time.
-      const matches = currentModifier.toLowerCase().match(/^\d+:?\d*(am|pm)?$/);
+      const matches = currentModifier.toLowerCase().match(/^\d+:?\d+:?\d*(am|pm)?$/);
       if (matches.length < 1) {
         continue;
       }
 
       const time = matches[0].replace(/(am|pm)/g, '');
       const timeArray = time.split(':');
+      console.log(timeArray);
       const hour = timeArray[0];
       const minute = timeArray[1] || 0;
+      const second = timeArray[2] || 0;
 
       if (hour >= 24) {
         throw new Error('Invalid hour. The hour must be between 0 and 23.');
       } else if (minute >= 60) {
         throw new Error('Invalid minute. The minute must be between 0 and 59.');
+      } else if (second >= 60) {
+        throw new Error('Invalid second. The second must be between 0 and 59.');
       }
-
       // If the user types `12am`, we need to set the hour to 0.
       const hourInt = hour === '12' ? 0 : parseInt(hour);
       const minuteInt = parseInt(minute);
+      const secondInt = parseInt(second);
       const ampmInt = (matches[1] || 'am') === 'am' ? 0 : (hourInt > 11 ? 0 : 12);
       updatedDate.setHours(hourInt + ampmInt);
       updatedDate.setMinutes(minuteInt);
+      updatedDate.setSeconds(secondInt);
     } else if (
       /* If this is a date. */
       currentModifier.toLowerCase().match(/^\d{1,2}\/\d{1,2}(?:|\/\d{2}|\/\d{4})$/g)

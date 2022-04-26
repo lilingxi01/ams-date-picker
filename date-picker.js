@@ -78,7 +78,7 @@ export const BPDatePicker = ({id = 'bp-datepicker', label, hint, error, onChange
   const isValidOnBlur = () => {
     return (
       inputValue.length > 0 &&
-      !inputValue.match(/^\d{1,2}\/\d{1,2}\/\d{4}, \d{1,2}:\d{2} (?:AM|PM)?$/)
+      !inputValue.match(/^\d{1,2}\/\d{1,2}\/\d{4}, \d{1,2}:\d{2}:\d{2} (?:AM|PM)?$/)
     );
   };
 
@@ -123,7 +123,7 @@ export const BPDatePicker = ({id = 'bp-datepicker', label, hint, error, onChange
             }}
             hint={hintState}
             error={errorState}
-            placeholder={'mm/dd/yyyy hh:mm'}
+            placeholder={'mm/dd/yyyy hh:mm:ss'}
             value={inputValue}
             onTextChange={(newValue) => {
               setHintState(null);
