@@ -4,7 +4,7 @@ const changeDateByAmount = (base, amount, flag) => {
 
   switch (flag) {
     case 's':
-      baseDate.setSeconds(baseDate.getTime() + (amount * 1000));
+      baseDate.setTime(baseDate.getTime() + (amount * 1000));
       break;
     case 'h':
       baseDate.setTime(baseDate.getTime() + (amount * 60 * 60 * 1000));
@@ -185,17 +185,17 @@ export function parseDate(userInput, baseDate) {
       updatedDate = new Date();
     } else if (
       /* If this is a time. */
-      currentModifier.toLowerCase().match(/^\d+:?\d+:?\d*(am|pm)?$/g)
+      currentModifier.toLowerCase().match(/^\d+:?\d?(:?\d)*(am|pm)?$/g)
     ) {
       // Parse the time.
-      const matches = currentModifier.toLowerCase().match(/^\d+:?\d+:?\d*(am|pm)?$/);
+      const matches = currentModifier.toLowerCase().match(/^\d+:?\d?(:?\d)*(am|pm)?$/);
+
       if (matches.length < 1) {
         continue;
       }
 
       const time = matches[0].replace(/(am|pm)/g, '');
       const timeArray = time.split(':');
-      console.log(timeArray);
       const hour = timeArray[0];
       const minute = timeArray[1] || 0;
       const second = timeArray[2] || 0;
@@ -211,7 +211,8 @@ export function parseDate(userInput, baseDate) {
       const hourInt = hour === '12' ? 0 : parseInt(hour);
       const minuteInt = parseInt(minute);
       const secondInt = parseInt(second);
-      const ampmInt = (matches[1] || 'am') === 'am' ? 0 : (hourInt > 11 ? 0 : 12);
+      const ampmInt = (matches[2] || 'am') === 'am' ? 0 : (hourInt > 11 ? 0 : 12);
+
       updatedDate.setHours(hourInt + ampmInt);
       updatedDate.setMinutes(minuteInt);
       updatedDate.setSeconds(secondInt);
