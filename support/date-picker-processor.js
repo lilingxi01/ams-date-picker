@@ -185,10 +185,12 @@ export function parseDate(userInput, baseDate) {
       updatedDate = new Date();
     } else if (
       /* If this is a time. */
-      currentModifier.toLowerCase().match(/^\d+:?\d?(:?\d)*(am|pm)?$/g)
+      currentModifier.toLowerCase().match(/^\d{1,2}(?::\d{2}){0,2}(am|pm)?$/g)
     ) {
       // Parse the time.
-      const matches = currentModifier.toLowerCase().match(/^\d+:?\d?(:?\d)*(am|pm)?$/);
+      const matches = currentModifier
+          .toLowerCase()
+          .match(/^\d{1,2}(?::\d{2}){0,2}(am|pm)?$/);
 
       if (matches.length < 1) {
         continue;
@@ -211,7 +213,7 @@ export function parseDate(userInput, baseDate) {
       const hourInt = hour === '12' ? 0 : parseInt(hour);
       const minuteInt = parseInt(minute);
       const secondInt = parseInt(second);
-      const ampmInt = (matches[2] || 'am') === 'am' ? 0 : (hourInt > 11 ? 0 : 12);
+      const ampmInt = (matches[1] || 'am') === 'am' ? 0 : (hourInt > 11 ? 0 : 12);
 
       updatedDate.setHours(hourInt + ampmInt);
       updatedDate.setMinutes(minuteInt);
