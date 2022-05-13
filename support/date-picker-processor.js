@@ -210,7 +210,7 @@ export function parseDate(userInput, baseDate) {
         throw new Error('Invalid second. The second must be between 0 and 59.');
       }
       // If the user types `12am`, we need to set the hour to 0.
-      const hourInt = hour === '12' ? 0 : parseInt(hour);
+      const hourInt = ((matches[1] === 'am') && (hour === '12')) ? 0 : parseInt(hour);
       const minuteInt = parseInt(minute);
       const secondInt = parseInt(second);
       const ampmInt = (matches[1] || 'am') === 'am' ? 0 : (hourInt > 11 ? 0 : 12);

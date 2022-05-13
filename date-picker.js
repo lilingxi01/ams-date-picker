@@ -15,7 +15,7 @@ import {DatePickerHelper} from './support/date-picker-helper';
 import {parseDate} from './support/date-picker-processor';
 import {BPDatePickerConflictResolver} from './support/date-picker-conflict-resolver';
 
-export const BPDatePicker = ({id = 'bp-datepicker', label, hint, error, onChange, baseDate}) => {
+export const BPDatePicker = ({id = 'bp-datepicker', label, hint, error, onChange, baseDate, outsideDate}) => {
   // Date picker value.
   const [value, setValue] = useState(null);
 
@@ -65,6 +65,12 @@ export const BPDatePicker = ({id = 'bp-datepicker', label, hint, error, onChange
       }
     }
   }, [value]);
+
+  useEffect(() => {
+    if (outsideDate && outsideDate instanceof Date) {
+      setValue(outsideDate);
+    }
+  }, [outsideDate]);
 
   const onInputFinish = (text) => {
     try {
