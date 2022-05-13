@@ -1,0 +1,10 @@
+.DS_Store
+
+.idea/
+.vscode/
+.nova/
+
+node_modules/
+package-lock.json
+
+yarn.lock
