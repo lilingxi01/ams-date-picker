@@ -1,12 +1,12 @@
 {
-  "name": "defined-date-picker-react",
+  "name": "ams-date-picker",
   "version": "0.0.1",
   "description": "A magic date picker component for React.",
   "main": "index.js",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lilingxi01/defined-date-picker-react.git"
+    "url": "git+https://github.com/lilingxi01/ams-date-picker.git"
   },
   "keywords": [
     "date-picker"
@@ -14,9 +14,9 @@
   "author": "Lingxi Li",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lilingxi01/defined-date-picker-react/issues"
+    "url": "https://github.com/lilingxi01/ams-date-picker/issues"
   },
-  "homepage": "https://github.com/lilingxi01/defined-date-picker-react",
+  "homepage": "https://github.com/lilingxi01/ams-date-picker",
   "peerDependencies": {
     "react": ">=17.0.0"
   },
