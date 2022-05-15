@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/lilingxi01/ams-date-picker",
   "peerDependencies": {
-    "react": ">=17.0.0"
+    "react": ">=16.8.0"
   },
   "dependencies": {
     "moment": "^2.29.3",

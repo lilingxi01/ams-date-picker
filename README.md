@@ -4,7 +4,7 @@
 
 Ams Date Picker (in code known as `AmsDatePicker`) is a simple date picker component for React. It not only provides a modern look of date/time picker, but also provides a bunch of powerful magic modifiers to boost the user experience while inputting a date/time.
 
-# Notice: WIP
+# WIP ([Roadmap](https://github.com/lilingxi01/ams-date-picker/issues/2))
 
 This project is still **in development**. It is not yet ready for use. We will release it as soon as it is ready. Stay tuned and check back soon!
 
