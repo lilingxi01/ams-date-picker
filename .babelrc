@@ -1,0 +1,23 @@
+{
+  "presets": [
+    "@babel/preset-react"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        ["styled-components", {
+          "displayName": true,
+          "ssr": true
+        }]
+      ]
+    },
+    "production": {
+      "plugins": [
+        ["styled-components", {
+          "displayName": false,
+          "ssr": true
+        }]
+      ]
+    }
+  }
+}

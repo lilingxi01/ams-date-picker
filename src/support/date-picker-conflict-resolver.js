@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {BPColors, BPDimens} from '../../../../utils/business-process/standards';
-import {isInDaylightSavingConflictTime, setTimezoneByOffset} from './date-picker-processor';
+import React, { useEffect, useRef, useState } from 'react';
+import { BPColors, BPDimens } from '../../../../utils/business-process/standards';
+import { isInDaylightSavingConflictTime, setTimezoneByOffset } from './date-picker-processor';
 import styled from 'styled-components';
-import {IconAlertTriangle, IconCheck} from '@tabler/icons';
+import { IconAlertTriangle, IconCheck } from '@tabler/icons';
 
 const BPDatePickerConflictOption = styled.div`
   width: 50%;
@@ -27,7 +27,7 @@ const BPDatePickerConflictOption = styled.div`
   }
 `;
 
-export const BPDatePickerConflictResolver = ({date, onChange}) => {
+export const BPDatePickerConflictResolver = ({ date, onChange }) => {
   const [shouldAppear, setShouldAppear] = useState(false);
   const [displayedTime, setDisplayedTime] = useState('Unknown');
 
@@ -43,7 +43,7 @@ export const BPDatePickerConflictResolver = ({date, onChange}) => {
   useEffect(() => {
     if (date && isInDaylightSavingConflictTime(date)) {
       setShouldAppear(true);
-      setDisplayedTime(date.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}));
+      setDisplayedTime(date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }));
 
       // Parse the date to get the earlier and later options.
       const yesterdayNoon = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1, 12);

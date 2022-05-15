@@ -1,0 +1,8 @@
+{
+  "parser": "@babel/eslint-parser",
+  "extends": ["@taci-tech"],
+  "rules": {
+    "no-unused-vars": "warn",
+    "max-len": "off"
+  }
+}

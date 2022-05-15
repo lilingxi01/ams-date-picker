@@ -32,7 +32,7 @@ const changeDateByAmount = (base, amount, flag) => {
 // A function parse the month number to a string of the month name.
 const parseMonthName = (monthNumber) => {
   return new Date(0, monthNumber - 1)
-      .toLocaleString('en-US', {month: 'long'});
+    .toLocaleString('en-US', { month: 'long' });
 };
 
 // A function checking if the current area is in Daylight Saving Time area.
@@ -153,13 +153,13 @@ export function parseDate(userInput, baseDate) {
         const timezoneMinute = parseInt(matches[10], 0);
         const timezoneOffset = (timezonePrefix === '-' ? 1 : -1) * timezoneHour * 60 + timezoneMinute;
         updatedDate = new Date(
-            year,
-            month,
-            day,
-            hour,
-            minute,
-            second,
-            millisecond,
+          year,
+          month,
+          day,
+          hour,
+          minute,
+          second,
+          millisecond,
         );
         updatedDate = setTimezoneByOffset(updatedDate, timezoneOffset);
       } else {
@@ -189,8 +189,8 @@ export function parseDate(userInput, baseDate) {
     ) {
       // Parse the time.
       const matches = currentModifier
-          .toLowerCase()
-          .match(/^\d{1,2}(?::\d{2}){0,2}(am|pm)?$/);
+        .toLowerCase()
+        .match(/^\d{1,2}(?::\d{2}){0,2}(am|pm)?$/);
 
       if (matches.length < 1) {
         continue;
@@ -224,7 +224,7 @@ export function parseDate(userInput, baseDate) {
     ) {
       // Parse the date.
       const matches = currentModifier.toLowerCase().match(
-          /^(\d{1,2}\/\d{1,2}(?:|\/\d{2}|\/\d{4}))$/
+        /^(\d{1,2}\/\d{1,2}(?:|\/\d{2}|\/\d{4}))$/
       );
 
       if (matches.length < 1) {

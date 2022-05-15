@@ -1,5 +1,5 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {BPDimens, BPStandards} from '../../../utils/business-process/standards';
+import React, { useEffect, useRef, useState } from 'react';
+import { BPDimens, BPStandards } from '../../../utils/business-process/standards';
 
 import BPTextInput from './text-input';
 
@@ -7,15 +7,15 @@ import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import StaticDateTimePicker from '@mui/lab/StaticDateTimePicker';
-import {ClickAwayListener, Popper} from '@mui/material';
+import { ClickAwayListener, Popper } from '@mui/material';
 
-import {dateOptions} from '../../../utils/business-process/date-options';
-import {DatePickerHelper} from './support/date-picker-helper';
+import { dateOptions } from '../../../utils/business-process/date-options';
+import { DatePickerHelper } from './support/date-picker-helper';
 
-import {parseDate} from './support/date-picker-processor';
-import {BPDatePickerConflictResolver} from './support/date-picker-conflict-resolver';
+import { parseDate } from './support/date-picker-processor';
+import { BPDatePickerConflictResolver } from './support/date-picker-conflict-resolver';
 
-export const BPDatePicker = ({id = 'bp-datepicker', label, hint, error, onChange, baseDate, outsideDate}) => {
+export const BPDatePicker = ({ id = 'bp-datepicker', label, hint, error, onChange, baseDate, outsideDate }) => {
   // Date picker value.
   const [value, setValue] = useState(null);
 

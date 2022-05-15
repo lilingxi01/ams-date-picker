@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {BPColors, BPDimens, BPStandards} from '../../../utils/business-process/standards';
+import React, { useState } from 'react';
+import { BPColors, BPDimens, BPStandards } from '../../../utils/business-process/standards';
 
-import {InputBase} from '@mui/material';
-import {IconAlertCircle, IconInfoCircle} from '@tabler/icons';
+import { InputBase } from '@mui/material';
+import { IconAlertCircle, IconInfoCircle } from '@tabler/icons';
 
 /**
  * [BP] The text input component.
@@ -29,7 +29,7 @@ import {IconAlertCircle, IconInfoCircle} from '@tabler/icons';
  * @param {object} props - The other properties of the component.
  * @return {JSX.Element} - The component.
  */
-const BPTextInput = ({id = 'bp-text-input', label, boxRef, value, onChange, onTextChange, placeholder, style, boxStyle, inputStyle, onFocus, onClick, onBlur, onEnterPress, onEscPress, disableInput, beforeField, afterField, hint, error, ...props}) => {
+const BPTextInput = ({ id = 'bp-text-input', label, boxRef, value, onChange, onTextChange, placeholder, style, boxStyle, inputStyle, onFocus, onClick, onBlur, onEnterPress, onEscPress, disableInput, beforeField, afterField, hint, error, ...props }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 

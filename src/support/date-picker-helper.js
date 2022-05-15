@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {IconBolt, IconHelp, IconInfinity, IconRocket, IconRotateClockwise2, IconWand, IconX} from '@tabler/icons';
-import {Modal} from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { IconBolt, IconHelp, IconInfinity, IconRocket, IconRotateClockwise2, IconWand, IconX } from '@tabler/icons';
+import { Modal } from '@mui/material';
 import styled from 'styled-components';
-import {BPColors, BPDimens, BPStandards} from '../../../../utils/business-process/standards';
+import { BPColors, BPDimens, BPStandards } from '../../../../utils/business-process/standards';
 
 const HelperModalOpenButton = styled.div`
   display: flex;
@@ -115,7 +115,7 @@ const HelperModalDiv = styled.div`
 `;
 
 // The subcomponent for the helper modal content.
-const HelperModalContentContainer = ({title, icon, color = BPColors.brand, children}) => {
+const HelperModalContentContainer = ({ title, icon, color = BPColors.brand, children }) => {
   const TitleIconComponent = icon;
   return (
     <div className="helper-modal-content-container">
@@ -167,7 +167,7 @@ const HelperModalContentContainer = ({title, icon, color = BPColors.brand, child
   );
 };
 
-export const DatePickerHelper = ({onOpen, onClose}) => {
+export const DatePickerHelper = ({ onOpen, onClose }) => {
   const [hasMounted, setHasMounted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
