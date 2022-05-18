@@ -2,11 +2,21 @@
   "name": "ams-date-picker",
   "version": "0.0.1",
   "description": "A magic date picker component for React.",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "private": false,
   "scripts": {
+    "dev": "next dev",
+    "dev:build": "next build",
+    "dev:start": "next start",
+    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
     "lint": "eslint --ext .js,.jsx src"
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lilingxi01/ams-date-picker.git"
@@ -24,14 +34,23 @@
     "react": ">=16.8.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@floating-ui/react-dom": "^0.7.0",
     "moment": "^2.29.3",
+    "next": "12.1.5",
+    "prop-types": "^15.8.1",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.10",
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.12",
     "@babel/eslint-parser": "^7.17.0",
+    "@babel/preset-env": "^7.17.12",
     "@babel/preset-react": "^7.16.7",
     "@taci-tech/eslint-config": "^0.0.3",
-    "eslint": "^8.15.0"
+    "eslint": "^8.15.0",
+    "eslint-config-next": "12.1.5"
   }
 }

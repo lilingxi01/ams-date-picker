@@ -1,6 +1,6 @@
 {
   "parser": "@babel/eslint-parser",
-  "extends": ["@taci-tech"],
+  "extends": ["next/core-web-vitals", "@taci-tech"],
   "rules": {
     "no-unused-vars": "warn",
     "max-len": "off"
