@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { BPColors, BPDimens } from '../../../../utils/business-process/standards';
-import { isInDaylightSavingConflictTime, setTimezoneByOffset } from './date-picker-processor';
+import { isInDaylightSavingConflictTime, setTimezoneByOffset } from './date-picker-processor.js';
 import styled from 'styled-components';
 import { IconAlertTriangle, IconCheck } from '@tabler/icons';
 
