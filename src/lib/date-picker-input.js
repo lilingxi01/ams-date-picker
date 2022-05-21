@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { parseDate } from './support/date-picker-processor.js';
 
 export const AmsDatePickerInput = ({
+  className,
   id,
   value,
   baseDate,
   onChange,
+  onError,
+  onKeyPress,
   onFocus,
   onBlur,
   onShouldOpenSelector,
@@ -17,17 +20,19 @@ export const AmsDatePickerInput = ({
     setInputValue(value);
   }, [value]);
 
+  // This function is a callback when the input is finished by user (on finalizing or on blurring).
   const onInputFinish = (text) => {
     try {
       const parsedDate = parseDate(text, baseDate || new Date());
       if (onChange) {
-        onChange(parsedDate,);
+        onChange(parsedDate);
       }
     } catch (e) {
-      onChange(null, e.message); // Return error message.
+      onError(e); // Return error.
     }
   };
 
+  // This function should be called to determine if we should finish the input on blur.
   const isValidOnBlur = () => {
     return (
       inputValue.length > 0 &&
@@ -35,12 +40,37 @@ export const AmsDatePickerInput = ({
     );
   };
 
+  // TODO: Make the input element style-less.
   return (
     <input
-      className={'ams-date-picker-input'}
+      className={`ams-date-picker-input ${className ?? ''}`}
       id={id ?? 'ams-date-picker-input'}
-    >
-      {/* TODO */}
-    </input>
+      onChange={(e) => {
+        setInputValue(e.target.value);
+      }}
+      onKeyPress={(e) => {
+        if (e.key === 'Enter') {
+          onInputFinish(inputValue);
+        }
+        if (onKeyPress) {
+          onKeyPress(e);
+        }
+      }}
+      onFocus={(e) => {
+        // TODO: Determine if we should open the data selector.
+        if (onFocus) {
+          onFocus(e);
+        }
+      }}
+      onBlur={(e) => {
+        // TODO: Determine if we should close the data selector.
+        if (isValidOnBlur()) {
+          onInputFinish(inputValue);
+        }
+        if (onBlur) {
+          onBlur(e);
+        }
+      }}
+    />
   );
 };
