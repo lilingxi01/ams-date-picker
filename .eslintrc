@@ -2,7 +2,9 @@
   "parser": "@babel/eslint-parser",
   "extends": ["next/core-web-vitals", "@taci-tech"],
   "rules": {
+    "operator-linebreak": ["error", "before"],
     "no-unused-vars": "warn",
-    "max-len": "off"
+    "max-len": "off",
+    "quote-props": "off"
   }
 }

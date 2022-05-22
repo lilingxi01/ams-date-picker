@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Home() {
+export default function Home() {
   return (
     <div
       style={{
@@ -12,6 +12,7 @@ export function Home() {
         alignItems: 'center',
       }}
     >
+      hello
       {/* TODO */}
     </div>
   );
