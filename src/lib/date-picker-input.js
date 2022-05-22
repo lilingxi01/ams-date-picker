@@ -22,6 +22,7 @@ export const AmsDatePickerInput = ({
 
   // This function is a callback when the input is finished by user (on finalizing or on blurring).
   const onInputFinish = (text) => {
+    handleCloseDateSelector();
     try {
       const parsedDate = parseDate(text, baseDate || new Date());
       if (onChange) {
@@ -30,6 +31,11 @@ export const AmsDatePickerInput = ({
     } catch (e) {
       onError(e); // Return error.
     }
+  };
+
+  // This function is used to handle the close action of the date selector.
+  const handleCloseDateSelector = () => {
+    // TODO.
   };
 
   // This function should be called to determine if we should finish the input on blur.
