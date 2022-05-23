@@ -157,9 +157,9 @@ export const BPDatePickerConflictResolver = ({ date, onChange }) => {
               style={{
                 marginTop: '1px',
                 display: (
-                  date && date.getTimezoneOffset() === earlierOption.current ?
-                    'block' :
-                    'none'
+                  date && date.getTimezoneOffset() === earlierOption.current
+                    ? 'block'
+                    : 'none'
                 ),
               }}
             />
@@ -187,9 +187,9 @@ export const BPDatePickerConflictResolver = ({ date, onChange }) => {
               style={{
                 marginTop: '1px',
                 display: (
-                  date && date.getTimezoneOffset() === laterOption.current ?
-                    'block' :
-                    'none'
+                  date && date.getTimezoneOffset() === laterOption.current
+                    ? 'block'
+                    : 'none'
                 ),
               }}
             />

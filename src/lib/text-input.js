@@ -40,9 +40,9 @@ const BPTextInput = ({ id = 'bp-text-input', label, boxRef, value, onChange, onT
     padding: 0,
     marginTop: 0,
     marginBottom: 3,
-    color: error ?
-      BPColors.red[600] :
-      isFocused || isHovered ? BPColors.green[600] : BPColors.gray[400],
+    color: error
+      ? BPColors.red[600]
+      : isFocused || isHovered ? BPColors.green[600] : BPColors.gray[400],
     transition: 'color 0.15s ease-in-out',
   };
 
@@ -68,9 +68,9 @@ const BPTextInput = ({ id = 'bp-text-input', label, boxRef, value, onChange, onT
           height: BPDimens.textInputHeight,
           color: isFocused ? BPColors.gray[900] : BPColors.gray[400],
           borderRadius: BPDimens.smallRadius,
-          border: error ?
-            `1px solid ${BPColors.red[600]}` :
-            isFocused || isHovered ? BPStandards.borderFocus : BPStandards.border,
+          border: error
+            ? `1px solid ${BPColors.red[600]}`
+            : isFocused || isHovered ? BPStandards.borderFocus : BPStandards.border,
           background: isFocused ? BPColors.white : BPColors.gray[30],
           transition: 'all 0.15s ease-in-out',
           ...boxStyle,

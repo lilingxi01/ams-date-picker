@@ -38,9 +38,9 @@
     "@radix-ui/react-dialog": "^0.1.7",
     "@radix-ui/react-popover": "^0.1.6",
     "@stitches/react": "^1.2.8",
+    "@tabler/icons": "1.68.0",
     "moment": "^2.29.3",
     "next": "12.1.5",
-    "prop-types": "^15.8.1",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },

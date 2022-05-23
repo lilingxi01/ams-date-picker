@@ -140,9 +140,9 @@ export function parseDate(userInput, baseDate) {
       const minute = parseInt(matches[5], 0);
       const secondAndMillisecond = matches[6].split('.');
       const [second, millisecond] = (
-        secondAndMillisecond.length > 1 ?
-          [parseInt(secondAndMillisecond[0]), parseInt(secondAndMillisecond[1])] :
-          [parseInt(secondAndMillisecond[0]), 0]
+        secondAndMillisecond.length > 1
+          ? [parseInt(secondAndMillisecond[0]), parseInt(secondAndMillisecond[1])]
+          : [parseInt(secondAndMillisecond[0]), 0]
       );
       const timezone = matches[7];
 

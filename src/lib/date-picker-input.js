@@ -41,8 +41,8 @@ export const AmsDatePickerInput = ({
   // This function should be called to determine if we should finish the input on blur.
   const isValidOnBlur = () => {
     return (
-      inputValue.length > 0 &&
-      !inputValue.match(/^\d{1,2}\/\d{1,2}\/\d{4}, \d{1,2}:\d{2}(?::\d{2})? (?:AM|PM)?$/)
+      inputValue.length > 0
+      && !inputValue.match(/^\d{1,2}\/\d{1,2}\/\d{4}, \d{1,2}:\d{2}(?::\d{2})? (?:AM|PM)?$/)
     );
   };
 
