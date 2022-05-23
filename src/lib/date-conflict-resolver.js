@@ -99,8 +99,14 @@ export const AmsDateConflictResolver = ({ date, onChange, design }) => {
   return (
     <AmsDSCRModule.Root
       style={{
-        display: 'flex',
+        width: '100%',
         flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: design?.cornerRadius ?? '8px',
+        backgroundColor: AmsDesign.color.gray[50],
+        border: `1px solid ${AmsDesign.color.gray[150]}`,
+        overflow: 'hidden',
       }}
       date={date}
       onChange={onChange}
@@ -156,7 +162,7 @@ export const AmsDateConflictResolver = ({ date, onChange, design }) => {
 
 const DSCRContext = React.createContext('ams-dscr');
 
-const DSCRRootContainer = styled(DSCRContext.Provider, {});
+const DSCRRootContainer = styled('div', {});
 
 const DSCROptionContainer = styled('div', {});
 
@@ -202,11 +208,7 @@ const DSCRRoot = ({ date, onChange, style, children, ...props }) => {
   };
 
   return (
-    <DSCRRootContainer
-      css={{
-        display: shouldAppear ? 'flex' : 'none',
-        ...style,
-      }}
+    <DSCRContext.Provider
       value={{
         dateState: date,
         options: {
@@ -217,10 +219,17 @@ const DSCRRoot = ({ date, onChange, style, children, ...props }) => {
           getDateBasedOnOptionIndex(optionIndex);
         },
       }}
-      {...props}
     >
-      {children}
-    </DSCRRootContainer>
+      <DSCRRootContainer
+        css={{
+          display: shouldAppear ? 'flex' : 'none',
+          ...style,
+        }}
+        {...props}
+      >
+        {children}
+      </DSCRRootContainer>
+    </DSCRContext.Provider>
   );
 };
 
