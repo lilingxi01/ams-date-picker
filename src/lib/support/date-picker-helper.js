@@ -1,121 +1,137 @@
 import React, { useEffect, useState } from 'react';
-import { IconBolt, IconHelp, IconInfinity, IconRocket, IconRotateClockwise2, IconWand, IconX } from '@tabler/icons';
-import { Modal } from '@mui/material';
-import styled from 'styled-components';
-import { BPColors, BPDimens, BPStandards } from '../../../../utils/business-process/standards';
+import {
+  IconBolt,
+  IconHelp,
+  IconInfinity,
+  IconRocket,
+  IconRotateClockwise2,
+  IconWand,
+  IconX,
+} from '@tabler/icons';
+import { styled } from '@stitches/react';
+import { AmsDesign } from '../utils/standards.js';
 
-const HelperModalOpenButton = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 4px;
-  cursor: pointer;
-  
-  &:hover {
-    color: ${BPColors.gray[900]};
-  }
-`;
+// const HelperModalOpenButton = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 0 4px;
+//   cursor: pointer;
+//
+//   &:hover {
+//     color: ${BPColors.gray[900]};
+//   }
+// `;
+// TODO: Rebuild style above.
+const HelperModalOpenButton = styled('div', {});
 
 // The styled div for the helper modal root.
-const HelperModalDiv = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 700px;
-  max-height: 80vh;
-  background-color: ${BPColors.white};
-  
-  overflow: auto;
-  
-  &:focus {
-    outline: none;
-  }
-  
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  
-  border: ${BPStandards.border};
-  border-radius: ${BPDimens.cornerRadius}px;
-  box-shadow: ${BPStandards.shadow};
-  
-  & .helper-modal-close-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 4px;
-    padding: 10px 11px 10px 14px;
-    margin: 0 13px;
-    border-radius: ${BPDimens.smallRadius}px;
-    font-size: 16px;
-    font-weight: 500;
-    color: ${BPColors.gray[400]};
-    transition: all 0.15s ease-in-out;
-    &:hover {
-      color: ${BPColors.black};
-      cursor: pointer;
-      background-color: ${BPColors.gray[100]};
-    }
-  }
-
-  & .helper-modal-content-container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-  }
-  
-  // Helper modal content styles.
-  & .helper-modal-content-children {
-    line-height: 1.7;
-
-    h1 {
-      margin: 0;
-      padding: 0;
-    }
-    
-    h2 {
-      font-size: 19px;
-      font-weight: 500;
-      color: ${BPColors.gray[900]};
-      margin: 0;
-      padding: 0;
-    }
-    
-    p {
-      font-size: 17px;
-      font-weight: 400;
-      color: ${BPColors.gray[900]};
-      margin: 0;
-      padding: 0;
-    }
-    
-    a {
-      color: ${BPColors.brand};
-      text-decoration: none;
-      
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-    
-    code {
-      font-size: 17px;
-      font-weight: 400;
-      color: ${BPColors.gray[900]};
-      margin: 0 2px;
-      padding: 4px 6px;
-      background-color: ${BPColors.gray[100]};
-      border-radius: ${BPDimens.smallRadius}px;
-    }
-  }
-`;
+// const HelperModalDiv = styled.div`
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   width: 100%;
+//   max-width: 700px;
+//   max-height: 80vh;
+//   background-color: ${BPColors.white};
+//
+//   overflow: auto;
+//
+//   &:focus {
+//     outline: none;
+//   }
+//
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   justify-content: center;
+//
+//   border: ${BPStandards.border};
+//   border-radius: ${BPDimens.cornerRadius}px;
+//   box-shadow: ${BPStandards.shadow};
+//
+//   & .helper-modal-close-btn {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     column-gap: 4px;
+//     padding: 10px 11px 10px 14px;
+//     margin: 0 13px;
+//     border-radius: ${BPDimens.smallRadius}px;
+//     font-size: 16px;
+//     font-weight: 500;
+//     color: ${BPColors.gray[400]};
+//     transition: all 0.15s ease-in-out;
+//     &:hover {
+//       color: ${BPColors.black};
+//       cursor: pointer;
+//       background-color: ${BPColors.gray[100]};
+//     }
+//   }
+//
+//   & .helper-modal-content-container {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: flex-start;
+//     justify-content: center;
+//   }
+//
+//   // Helper modal content styles.
+//   & .helper-modal-content-children {
+//     line-height: 1.7;
+//
+//     h1 {
+//       margin: 0;
+//       padding: 0;
+//     }
+//
+//     h2 {
+//       font-size: 19px;
+//       font-weight: 500;
+//       color: ${BPColors.gray[900]};
+//       margin: 0;
+//       padding: 0;
+//     }
+//
+//     p {
+//       font-size: 17px;
+//       font-weight: 400;
+//       color: ${BPColors.gray[900]};
+//       margin: 0;
+//       padding: 0;
+//     }
+//
+//     a {
+//       color: ${BPColors.brand};
+//       text-decoration: none;
+//
+//       &:hover {
+//         text-decoration: underline;
+//       }
+//     }
+//
+//     code {
+//       font-size: 17px;
+//       font-weight: 400;
+//       color: ${BPColors.gray[900]};
+//       margin: 0 2px;
+//       padding: 4px 6px;
+//       background-color: ${BPColors.gray[100]};
+//       border-radius: ${BPDimens.smallRadius}px;
+//     }
+//   }
+// `;
+// TODO: Rebuild style above.
+const HelperModalDiv = styled('div', {});
 
 // The subcomponent for the helper modal content.
-const HelperModalContentContainer = ({ title, icon, color = BPColors.brand, children }) => {
+const HelperModalContentContainer = ({
+  title,
+  icon,
+  color = AmsDesign.color.accentColor,
+  children,
+}) => {
   const TitleIconComponent = icon;
   return (
     <div className="helper-modal-content-container">
@@ -129,7 +145,7 @@ const HelperModalContentContainer = ({ title, icon, color = BPColors.brand, chil
           justifyContent: 'center',
           marginLeft: 45,
           marginRight: 5,
-          borderRadius: BPDimens.smallRadius,
+          borderRadius: '6px',
           backgroundColor: color + '16', // Fade out the color for background.
         }}
       >
@@ -167,7 +183,11 @@ const HelperModalContentContainer = ({ title, icon, color = BPColors.brand, chil
   );
 };
 
-export const DatePickerHelper = ({ onOpen, onClose }) => {
+// TODO: Use the real modal instead.
+const Modal = styled('div', {});
+
+// TODO: Rebuild the HTML structure with separated Markdown files.
+export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
   const [hasMounted, setHasMounted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -203,7 +223,7 @@ export const DatePickerHelper = ({ onOpen, onClose }) => {
         onClose={() => setIsModalOpen(false)}
         BackdropProps={{
           style: {
-            backgroundColor: BPColors.white,
+            backgroundColor: AmsDesign.color.white,
             opacity: 0.65,
           },
         }}
@@ -217,13 +237,13 @@ export const DatePickerHelper = ({ onOpen, onClose }) => {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-between',
-              backgroundColor: BPColors.gray[50],
-              borderBottom: BPStandards.border,
+              backgroundColor: AmsDesign.color.gray[50],
+              borderBottom: '1px solid ' + AmsDesign.color.gray[100],
             }}
           >
             <div style={{
               padding: '21px 25px',
-              color: BPColors.black,
+              color: AmsDesign.color.black,
               fontSize: 20,
               fontWeight: '500',
             }}>

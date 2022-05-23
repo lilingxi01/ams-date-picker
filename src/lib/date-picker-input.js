@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { styled } from '@stitches/react';
 import { parseDate } from './support/date-picker-processor.js';
+import { dateOptions } from './utils/date.js';
+
+const AmsDatePickerInputContainer = styled('input', {});
 
 export const AmsDatePickerInput = ({
   className,
   id,
+  style,
   value,
   baseDate,
   onChange,
@@ -17,7 +22,7 @@ export const AmsDatePickerInput = ({
   const [inputValue, setInputValue] = useState(value);
 
   useEffect(() => {
-    setInputValue(value);
+    setInputValue(value.toLocaleString('en-US', dateOptions));
   }, [value]);
 
   // This function is a callback when the input is finished by user (on finalizing or on blurring).
@@ -48,9 +53,10 @@ export const AmsDatePickerInput = ({
 
   // TODO: Make the input element style-less.
   return (
-    <input
+    <AmsDatePickerInputContainer
       className={`ams-date-picker-input ${className ?? ''}`}
       id={id ?? 'ams-date-picker-input'}
+      css={style}
       onChange={(e) => {
         setInputValue(e.target.value);
       }}
