@@ -32,6 +32,7 @@ const AmsDateConflictResolverOption = ({
         padding: '6px',
         userSelect: 'none',
         cursor: 'pointer',
+        // TODO: Background color (including default and on hover).
       }}
     >
       <div
