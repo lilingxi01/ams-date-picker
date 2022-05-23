@@ -1,4 +1,4 @@
-![AmsDatePicker Cover](https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/1798990d-162a-4b3d-f6e6-23d231687600/HD)
+![AmsDatePicker Cover](https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/d6bffcf4-bee4-4235-de19-b68a0be89800/HD)
 
 # Get Started
 
@@ -7,6 +7,12 @@ Ams Date Picker (in code known as `AmsDatePicker`) is a simple date picker compo
 # WIP ([Roadmap](https://github.com/lilingxi01/ams-date-picker/issues/2))
 
 This project is still **in development**. It is not yet ready for use. We will release it as soon as it is ready. Stay tuned and check back soon!
+
+# Design Prototype
+
+![Date Selector Prototype](https://user-images.githubusercontent.com/36816148/169880433-96701a89-691f-413f-b954-404882d28dbf.png)
+
+![Date Picker Prototype](https://user-images.githubusercontent.com/36816148/169880375-a60d1198-dd6f-4add-ac62-b86d6cc41918.png)
 
 # FAQ
 
