@@ -10,11 +10,11 @@ This project is still **in development**. It is not yet ready for use. We will r
 
 # Design Prototype
 
-![Date Selector Prototype](https://user-images.githubusercontent.com/36816148/169880433-96701a89-691f-413f-b954-404882d28dbf.png)
-
 ![Date Picker Prototype](https://user-images.githubusercontent.com/36816148/169880375-a60d1198-dd6f-4add-ac62-b86d6cc41918.png)
 
-![Date Conflict Resolver](https://user-images.githubusercontent.com/36816148/169913775-d6bdd025-fdc9-4094-a9ad-a6bd4b8f1b05.png)
+![Date Selector Prototype](https://user-images.githubusercontent.com/36816148/169880433-96701a89-691f-413f-b954-404882d28dbf.png)
+
+![Date Conflict Resolver](https://user-images.githubusercontent.com/36816148/169914518-04e4f845-4614-423d-9b53-08ccd80b1433.png)
 
 # FAQ
 
