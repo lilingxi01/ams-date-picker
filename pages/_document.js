@@ -17,6 +17,10 @@ const AmsExampleDocument = () => {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+          rel="stylesheet"
+        />
         <meta charSet="utf-8"/>
       </Head>
       <body>
