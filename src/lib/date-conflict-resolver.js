@@ -5,7 +5,7 @@ import { IconAlertTriangle, IconCheck } from '@tabler/icons';
 import { AmsDesign } from './utils/standards.js';
 
 /* -----------------------------------------------------------------------------
- * Ams Date Conflict Resolver
+ * Ams Daylight Saving Conflict Resolver
  * ---------------------------------------------------------------------------*/
 
 const AmsDateConflictResolverOption = ({
@@ -40,6 +40,11 @@ const AmsDateConflictResolverOption = ({
           backgroundColor: isActive
             ? design?.accentColor ?? AmsDesign.color.accentColor
             : AmsDesign.color.gray[100],
+        },
+        '&:active': {
+          backgroundColor: isActive
+            ? design?.accentColor ?? AmsDesign.color.accentColor
+            : AmsDesign.color.gray[200],
         },
       }}
     >
@@ -233,7 +238,7 @@ const DSCRRoot = ({ date, onChange, style, children, ...props }) => {
   );
 };
 
-const DSCROption = ({ index, onClick, children, style, ...props }) => {
+const DSCROption = ({ id, index, onClick, children, style, ...props }) => {
   const { dateState, onOptionClick } = useContext(DSCRContext);
   const availableProps = props && Array.isArray(props)
     ? props.filter((key) => !['index', 'css', 'style'].includes(key))
@@ -241,6 +246,7 @@ const DSCROption = ({ index, onClick, children, style, ...props }) => {
 
   return (
     <DSCROptionContainer
+      id={`ams-dscr-option-${id ?? index}`}
       css={style}
       onClick={() => {
         onOptionClick(index);
