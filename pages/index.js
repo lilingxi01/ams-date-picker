@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { AmsDateConflictResolver } from '../src/lib/date-conflict-resolver';
+import moment from 'moment';
 
 export default function Home() {
+  const [date, setDate] = useState(moment('11/07/2021 1:00 AM'));
+
   return (
     <div
       style={{
@@ -12,8 +16,12 @@ export default function Home() {
         alignItems: 'center',
       }}
     >
-      hello
-      {/* TODO */}
+      <AmsDateConflictResolver
+        date={date.toDate()}
+        onChange={(newDate) => {
+          setDate(moment(newDate));
+        }}
+      />
     </div>
   );
 }

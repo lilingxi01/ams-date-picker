@@ -2,6 +2,8 @@ const AmsColor = {
   // TODO
 
   accentColor: '#0688ff',
+
+  transparent: 'transparent',
   white: '#fff',
   black: '#000',
 
@@ -26,7 +28,12 @@ const AmsDimension = {
   // TODO
 };
 
+const AmsTransition = {
+  cubic: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+};
+
 export const AmsDesign = {
   color: AmsColor,
   dimension: AmsDimension,
+  transition: AmsTransition,
 };
