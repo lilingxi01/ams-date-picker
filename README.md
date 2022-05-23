@@ -14,6 +14,8 @@ This project is still **in development**. It is not yet ready for use. We will r
 
 ![Date Picker Prototype](https://user-images.githubusercontent.com/36816148/169880375-a60d1198-dd6f-4add-ac62-b86d6cc41918.png)
 
+![Date Conflict Resolver](https://user-images.githubusercontent.com/36816148/169913775-d6bdd025-fdc9-4094-a9ad-a6bd4b8f1b05.png)
+
 # FAQ
 
 ## Why is this project called `AmsDatePicker`?
