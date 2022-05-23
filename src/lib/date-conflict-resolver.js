@@ -14,7 +14,7 @@ const AmsDateConflictResolverOption = ({
 }) => {
   const { dateState, options } = useContext(DSCRContext);
   const OptionComponent = option;
-  const optionName = Option.OPTION_NAME ?? 'unknown';
+  const optionName = option.OPTION_NAME ?? 'unknown';
   const isActive = dateState && options[optionName] === dateState.getTimezoneOffset();
   const displayTime = dateState.toLocaleTimeString('en-US', {
     hour: '2-digit',
@@ -32,7 +32,15 @@ const AmsDateConflictResolverOption = ({
         padding: '6px',
         userSelect: 'none',
         cursor: 'pointer',
-        // TODO: Background color (including default and on hover).
+        transition: AmsDesign.transition.cubic,
+        backgroundColor: isActive
+          ? design?.accentColor ?? AmsDesign.color.accentColor
+          : AmsDesign.color.transparent,
+        '&:hover': {
+          backgroundColor: isActive
+            ? design?.accentColor ?? AmsDesign.color.accentColor
+            : AmsDesign.color.gray[100],
+        },
       }}
     >
       <div
@@ -61,7 +69,7 @@ const AmsDateConflictResolverOption = ({
           }}
         />
         <span>
-          {optionName === 'ams-dscr-earlier-option' ? 'Earlier' : 'Latter'}
+          {optionName === 'earlier' ? 'Earlier' : 'Latter'}
         </span>
       </div>
       <div
@@ -81,7 +89,7 @@ const AmsDateConflictResolverOption = ({
           opacity: isActive ? 0.70 : 0.55,
         }}
       >
-        {options && options[optionName] ? `UTC${options[optionName] / -60}` : 'Unknown'}
+        {options && options[optionName] ? `UTC${options[optionName] / -60}` : ''}
       </div>
     </OptionComponent>
   );
@@ -129,8 +137,14 @@ export const AmsDateConflictResolver = ({ date, onChange, design }) => {
           flexDirection: 'row',
         }}
       >
-        <AmsDateConflictResolverOption option={AmsDSCRModule.EarlierOption} />
-        <AmsDateConflictResolverOption option={AmsDSCRModule.LatterOption} />
+        <AmsDateConflictResolverOption
+          option={AmsDSCRModule.EarlierOption}
+          design={design}
+        />
+        <AmsDateConflictResolverOption
+          option={AmsDSCRModule.LatterOption}
+          design={design}
+        />
       </div>
     </AmsDSCRModule.Root>
   );
@@ -148,12 +162,11 @@ const DSCROptionContainer = styled('div', {});
 
 const DSCRRoot = ({ date, onChange, style, children, ...props }) => {
   const [shouldAppear, setShouldAppear] = useState(false);
-  const earlierOption = useRef(null);
-  const latterOption = useRef(null);
+  const earlierOption = useRef(0);
+  const latterOption = useRef(0);
 
   useEffect(() => {
     if (date && isInDaylightSavingConflictTime(date)) {
-      setShouldAppear(true);
       // Parse the date to get the earlier options.
       earlierOption.current = new Date(
         date.getFullYear(),
@@ -168,6 +181,7 @@ const DSCRRoot = ({ date, onChange, style, children, ...props }) => {
         date.getDate(),
         12,
       ).getTimezoneOffset();
+      setShouldAppear(true);
     } else {
       setShouldAppear(false);
     }
@@ -195,7 +209,10 @@ const DSCRRoot = ({ date, onChange, style, children, ...props }) => {
       }}
       value={{
         dateState: date,
-        options: [earlierOption, latterOption],
+        options: {
+          'earlier': earlierOption.current,
+          'latter': latterOption.current,
+        },
         onOptionClick: (optionIndex) => {
           getDateBasedOnOptionIndex(optionIndex);
         },
@@ -209,6 +226,9 @@ const DSCRRoot = ({ date, onChange, style, children, ...props }) => {
 
 const DSCROption = ({ index, onClick, children, style, ...props }) => {
   const { dateState, onOptionClick } = useContext(DSCRContext);
+  const availableProps = props && Array.isArray(props)
+    ? props.filter((key) => !['index', 'css', 'style'].includes(key))
+    : props;
 
   return (
     <DSCROptionContainer
@@ -219,7 +239,7 @@ const DSCROption = ({ index, onClick, children, style, ...props }) => {
           onClick();
         }
       }}
-      {...props.filter((key) => !['index', 'css', 'style'].includes(key))}
+      {...availableProps}
     >
       {children ?? dateState.toLocaleTimeString('en-US', {
         hour: '2-digit',
@@ -232,12 +252,12 @@ const DSCROption = ({ index, onClick, children, style, ...props }) => {
 const DSCREarlierOption = (props) => (
   <DSCROption index={0} {...props} />
 );
-DSCREarlierOption.OPTION_NAME = 'ams-dscr-earlier-option';
+DSCREarlierOption.OPTION_NAME = 'earlier';
 
 const DSCRLatterOption = (props) => (
   <DSCROption index={1} {...props} />
 );
-DSCRLatterOption.OPTION_NAME = 'ams-dscr-latter-option';
+DSCRLatterOption.OPTION_NAME = 'latter';
 
 export const AmsDSCRModule = {
   Root: DSCRRoot,
