@@ -14,7 +14,7 @@ This project is still **in development**. It is not yet ready for use. We will r
 
 ![Date Selector Prototype](https://user-images.githubusercontent.com/36816148/169880433-96701a89-691f-413f-b954-404882d28dbf.png)
 
-![Date Conflict Resolver](https://user-images.githubusercontent.com/36816148/169914518-04e4f845-4614-423d-9b53-08ccd80b1433.png)
+![Date Conflict Resolver](https://user-images.githubusercontent.com/36816148/169919720-1828b8d7-0862-4868-abb9-2a89a2170c33.png)
 
 # FAQ
 
