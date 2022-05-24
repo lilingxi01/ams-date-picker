@@ -9,7 +9,7 @@ import {
   IconX,
 } from '@tabler/icons';
 import { styled } from '@stitches/react';
-import { AmsDesign } from '../utils/standards.js';
+import { AmsDesign } from '../date-picker/utils/standards.js';
 
 // const HelperModalOpenButton = styled.div`
 //   display: flex;

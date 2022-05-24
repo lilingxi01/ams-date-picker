@@ -2,7 +2,9 @@ import React from 'react';
 import { styled } from '@stitches/react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { IconQuestionMark } from '@tabler/icons';
-import { AmsDesign } from './utils/standards.js';
+
+// TODO: Resolve dependency issue while releasing.
+import { AmsDesign } from '../date-picker/utils/standards.js';
 
 const UMTrigger = styled(Dialog.Trigger, {
   background: 'transparent',
