@@ -42,7 +42,8 @@
     "moment": "^2.29.3",
     "next": "12.1.5",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "react-markdown": "^8.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
