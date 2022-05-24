@@ -32,6 +32,7 @@ This project is called `AmsDatePicker` because it was born in Amherst, MA. The o
 <table>
   <tr>
     <td align="center"><a href="https://lingxi.li"><img src="https://avatars.githubusercontent.com/u/36816148?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lingxi Li</b></sub></a><br /><a href="#design-lilingxi01" title="Design">🎨</a> <a href="https://github.com/lilingxi01/ams-date-picker/commits?author=lilingxi01" title="Code">💻</a> <a href="https://github.com/lilingxi01/ams-date-picker/commits?author=lilingxi01" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/limbo-yan"><img src="https://avatars.githubusercontent.com/u/46770483?v=4?s=100" width="100px;" alt=""/><br /><sub><b>limbo-yan</b></sub></a><br /><a href="https://github.com/lilingxi01/ams-date-picker/commits?author=limbo-yan" title="Code">💻</a></td>
   </tr>
 </table>
 
