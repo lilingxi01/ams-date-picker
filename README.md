@@ -1,5 +1,7 @@
 ![AmsDatePicker Cover](https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/d6bffcf4-bee4-4235-de19-b68a0be89800/HD)
 
+![WIP](https://img.shields.io/badge/Release-Work%20in%20progress-red.svg?style=flat-square)
+
 # Get Started
 
 Ams Date Picker (in code known as `AmsDatePicker`) is a simple date picker component for React. It not only provides a modern look of date/time picker, but also provides a bunch of powerful magic modifiers to boost the user experience while inputting a date/time.
@@ -21,6 +23,24 @@ This project is still **in development**. It is not yet ready for use. We will r
 ## Why is this project called `AmsDatePicker`?
 
 This project is called `AmsDatePicker` because it was born in Amherst, MA. The original group members are all coming from University of Massachusetts Amherst in [Indigo Development](https://github.com/mbucc/320-S22-Track2/wiki/Indigo).
+
+# Contributors ✨
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://lingxi.li"><img src="https://avatars.githubusercontent.com/u/36816148?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lingxi Li</b></sub></a><br /><a href="#design-lilingxi01" title="Design">🎨</a> <a href="https://github.com/lilingxi01/ams-date-picker/commits?author=lilingxi01" title="Code">💻</a> <a href="https://github.com/lilingxi01/ams-date-picker/commits?author=lilingxi01" title="Tests">⚠️</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key))!
 
 # Credits
 

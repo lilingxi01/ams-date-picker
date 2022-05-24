@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "lilingxi01",
+      "name": "Lingxi Li",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36816148?v=4",
+      "profile": "https://lingxi.li",
+      "contributions": [
+        "design",
+        "code",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "ams-date-picker",
+  "projectOwner": "lilingxi01",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
