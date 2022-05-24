@@ -1,7 +1,6 @@
 ![AmsDatePicker Cover](https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/d6bffcf4-bee4-4235-de19-b68a0be89800/HD)
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+![WIP](https://img.shields.io/badge/Release-Work%20in%20progress-red.svg?style=flat-square)
 
 # Get Started
 
@@ -25,13 +24,7 @@ This project is still **in development**. It is not yet ready for use. We will r
 
 This project is called `AmsDatePicker` because it was born in Amherst, MA. The original group members are all coming from University of Massachusetts Amherst in [Indigo Development](https://github.com/mbucc/320-S22-Track2/wiki/Indigo).
 
-# Credits
-
-It was originated in project [here](https://github.com/mbucc/320-S22-Track2), but it was now separated and moved to here (keeping all old contributions from Git).
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+# Contributors ✨
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -47,4 +40,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key))!
+
+# Credits
+
+It was originated in project [here](https://github.com/mbucc/320-S22-Track2), but it was now separated and moved to here (keeping all old contributions from Git).
