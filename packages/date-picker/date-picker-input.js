@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from '@stitches/react';
-import { parseDate } from './support/date-picker-processor.js';
-import { dateOptions } from './utils/date.js';
+import { parseDate } from './processor.js';
+import { dateOptions } from '../support/date.js';
 
 const AmsDatePickerInputContainer = styled('input', {});
 

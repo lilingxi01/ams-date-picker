@@ -18,6 +18,8 @@ This project is still **in development**. It is not yet ready for use. We will r
 
 ![Date Conflict Resolver](https://user-images.githubusercontent.com/36816148/169919720-1828b8d7-0862-4868-abb9-2a89a2170c33.png)
 
+![Date Picker User Manual](https://user-images.githubusercontent.com/36816148/170132516-99c20992-d004-4a4e-b420-b1cfa76e6ca7.png)
+
 # FAQ
 
 ## Why is this project called `AmsDatePicker`?

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { styled } from '@stitches/react';
-import { isInDaylightSavingConflictTime } from './support/date-picker-processor.js';
+import { isInDaylightSavingConflictTime } from './processor.js';
 import { IconAlertTriangle, IconCheck } from '@tabler/icons';
-import { AmsDesign } from './utils/standards.js';
+import { AmsDesign } from '../support/standards.js';
 
 /* -----------------------------------------------------------------------------
  * Ams Daylight Saving Conflict Resolver
