@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IconAlertCircle, IconInfoCircle } from '@tabler/icons';
 import { styled } from '@stitches/react';
-import { AmsDesign } from './utils/standards.js';
+import { AmsDesign } from '../support/standards.js';
 
 const AmsInput = styled('input', {});
 

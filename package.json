@@ -1,21 +1,13 @@
 {
-  "name": "ams-date-picker",
+  "name": "ams-date-picker-root",
   "version": "0.0.1",
-  "description": "A magic date picker component for React.",
+  "description": "The root project of Ams Date Picker.",
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "private": false,
   "scripts": {
     "dev": "next dev",
     "dev:build": "next build",
     "dev:start": "next start",
-    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
-    "lint": "eslint --ext .js,.jsx src"
+    "lint": "eslint --ext .js,.jsx packages"
   },
   "repository": {
     "type": "git",
@@ -30,9 +22,6 @@
     "url": "https://github.com/lilingxi01/ams-date-picker/issues"
   },
   "homepage": "https://github.com/lilingxi01/ams-date-picker",
-  "peerDependencies": {
-    "react": ">=16.8.0"
-  },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@mdx-js/loader": "^2.1.1",
