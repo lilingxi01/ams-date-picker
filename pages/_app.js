@@ -6,7 +6,7 @@ import { AmsNavigationBar } from '../components/navbar.js';
 
 const WebsiteBody = styled('div', {
   width: '100%',
-  maxWidth: '860px',
+  maxWidth: '960px',
   minHeight: '100vh',
   position: 'relative',
   margin: '0 auto',

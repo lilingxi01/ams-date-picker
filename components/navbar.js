@@ -43,7 +43,7 @@ export const AmsNavigationBar = () => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: AmsDesign.color.gray[30],
+        backgroundColor: '#fefefe',
         borderBottom: `1px solid ${AmsDesign.color.gray[200]}`,
       }}
     >
