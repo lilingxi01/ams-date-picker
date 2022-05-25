@@ -6,11 +6,12 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "support"
   ],
   "private": false,
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production babel . --out-dir dist --copy-files",
+    "build": "rm -rf dist && NODE_ENV=production babel . --out-dir dist --copy-files && NODE_ENV=production babel ../support --out-dir dist/support --copy-files",
     "lint": "eslint --ext .js,.jsx ."
   },
   "repository": {
@@ -42,7 +43,6 @@
     "@babel/eslint-parser": "^7.17.0",
     "@babel/preset-env": "^7.17.12",
     "@babel/preset-react": "^7.16.7",
-    "@taci-tech/eslint-config": "^0.0.3",
     "@tabler/icons": "1.68.0",
     "eslint": "^8.15.0",
     "eslint-config-next": "12.1.5",

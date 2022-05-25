@@ -7,6 +7,8 @@
     "dev": "next dev",
     "dev:build": "next build",
     "dev:start": "next start",
+    "build": "cd packages/date-picker && yarn build",
+    "build:manual": "cd packages/user-manual && yarn build",
     "lint": "eslint --ext .js,.jsx packages"
   },
   "repository": {
