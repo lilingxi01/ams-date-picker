@@ -11,7 +11,7 @@ const WebsiteBody = styled('div', {
   position: 'relative',
   margin: '0 auto',
   background: AmsDesign.color.white,
-  boxShadow: '0px 0px 100px rgba(0, 0, 0, 0.02)',
+  boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.06)',
   borderLeft: `1px solid ${AmsDesign.color.gray[200]}`,
   borderRight: `1px solid ${AmsDesign.color.gray[200]}`,
 });
