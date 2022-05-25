@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { AmsDateConflictResolver } from '../src/lib/date-conflict-resolver';
 import moment from 'moment';
-import { AmsUserManual } from '../src/lib/user-manual.js';
+import { AmsDateConflictResolver } from '../packages/date-picker/date-conflict-resolver.js';
+import { AmsUserManual } from '../packages/user-manual/index.js';
 
 export default function Home() {
   const [date, setDate] = useState(moment('11/07/2021 1:00 AM'));
