@@ -2,7 +2,6 @@
   "name": "ams-date-picker-root",
   "version": "0.0.1",
   "description": "The root project of Ams Date Picker.",
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "dev:build": "next build",
