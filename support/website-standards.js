@@ -1,5 +1,6 @@
 const AmsWebsiteDimension = {
-  navigationBarHeight: '76px',
+  navigationBarHeight: 68,
+  pageWidth: 1024,
 };
 
 export const AmsWebsiteStandards = {

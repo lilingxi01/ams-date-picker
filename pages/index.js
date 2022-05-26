@@ -2,8 +2,20 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import { AmsDateConflictResolver } from '../packages/date-picker/date-conflict-resolver.js';
 import { AmsUserManual } from '../packages/user-manual';
-import { styled } from '@stitches/react';
+import { Layout, styled } from '../packages/support/stitches.config';
 import { AmsDesign } from '../packages/support/standards.js';
+import { ContentBody } from '../components/body';
+import { AmsWebsiteStandards } from '../support/website-standards';
+
+const HeroTitleTag = styled('div', {
+  fontSize: '13px',
+  fontWeight: '400',
+  color: AmsDesign.color.gray[400],
+  letterSpacing: '-0.01em',
+  '& b': {
+    color: AmsDesign.color.gray[700],
+  },
+});
 
 const HeroSubtitle = styled('div', {
   fontSize: '18px',
@@ -15,81 +27,95 @@ const HeroSubtitle = styled('div', {
   },
 });
 
+const NpmCommandBox = styled('div', {
+  fontFamily: 'Fira Code, monospace',
+  fontSize: '16px',
+  fontWeight: '500',
+  color: AmsDesign.color.gray[700],
+  letterSpacing: '-0.01em',
+  backgroundColor: AmsDesign.color.gray[100],
+  padding: '10px 18px',
+  borderRadius: 999,
+  cursor: 'pointer',
+  '&:hover': {
+    color: AmsDesign.color.accentColor,
+  },
+});
+
 export default function Home() {
   const [date, setDate] = useState(moment('11/07/2021 1:00 AM'));
 
   return (
-    <div
+    <ContentBody
       style={{
-        width: '100%',
-        height: '100%',
-        padding: '0 10px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        padding: '0 15px',
       }}
     >
       <div
         style={{
           width: '100%',
-          height: '60px',
-          backgroundColor: AmsDesign.color.gray[70],
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginTop: '10px',
-          borderRadius: '8px',
-        }}
-      >
-        <HeroSubtitle
-          css={{
-            padding: '40px 20px',
-          }}
-        >
-          This project is still a <b>work in progress</b>.
-        </HeroSubtitle>
-      </div>
-      <div
-        style={{
-          width: '100%',
-          minHeight: '400px',
+          paddingTop: AmsWebsiteStandards.dimension.navigationBarHeight + 58,
+          paddingBottom: 52,
+          paddingLeft: '15px',
+          paddingRight: '15px',
+          flexShrink: 1,
           display: 'flex',
           flexDirection: 'column',
+          alignItems: 'flex-start',
           justifyContent: 'center',
-          alignItems: 'center',
-          padding: '20px',
-          rowGap: '15px',
-          borderBottom: `1px solid ${AmsDesign.color.gray[200]}`,
+          rowGap: '10px',
         }}
       >
         <div
           style={{
-            fontSize: '50px',
-            fontWeight: '600',
-            background: '-webkit-linear-gradient(#0688ff4f, #0f0f0f)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            letterSpacing: '-0.01em',
+            backgroundColor: AmsDesign.color.gray[70],
+            border: `1px solid ${AmsDesign.color.gray[200]}`,
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
-            columnGap: '20px',
-            paddingBottom: '3px',
-            userSelect: 'none',
+            borderRadius: '10px',
           }}
         >
-          <div>Modern</div>
-          <div>Magical</div>
-          <div>Comfortable</div>
+          <HeroTitleTag
+            css={{
+              padding: '8px 12px',
+            }}
+          >
+            This project is still a <b>work in progress</b>.
+          </HeroTitleTag>
         </div>
+        <Layout
+          style={{
+            fontSize: '40px',
+            fontWeight: '600',
+            letterSpacing: '-0.01em',
+            lineHeight: '1.18',
+            padding: '5px 0px 10px 0px',
+            '@sm': {
+              fontSize: '52px',
+            },
+            '@md': {
+              fontSize: '60px',
+            },
+          }}
+        >
+          A <span
+            style={{
+              background: '-webkit-linear-gradient(#0688FF, #015CAF)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            magical
+          </span> React date picker you always wanted.
+        </Layout>
         <HeroSubtitle>
           A <b>modern</b>, <b>efficient</b>, and <b>intuitive</b> way to select the date and time.
-        </HeroSubtitle>
-        <HeroSubtitle>
-          A <b>magical</b> React date picker you always wanted.
         </HeroSubtitle>
         <HeroSubtitle>
           Users will thank you <b>so much</b> by having this.
@@ -98,12 +124,17 @@ export default function Home() {
       <div
         style={{
           width: '100%',
-          padding: '30px 20px',
+          minHeight: '600px',
+          flexShrink: 1,
           display: 'flex',
           flexDirection: 'column',
+          alignItems: 'flex-start',
           justifyContent: 'center',
-          alignItems: 'center',
-          rowGap: '20px',
+          backgroundColor: AmsDesign.color.gray[50],
+          boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.06)',
+          border: `1px solid ${AmsDesign.color.gray[200]}`,
+          borderRadius: 20,
+          padding: '20px',
         }}
       >
         <div
@@ -124,6 +155,25 @@ export default function Home() {
         />
         <AmsUserManual />
       </div>
-    </div>
+      <div
+        style={{
+          width: '100%',
+          padding: '40px 15px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: AmsDesign.color.gray[500],
+          fontSize: '14px',
+          fontWeight: '400',
+          rowGap: '10px',
+        }}
+      >
+        <span>Try it now</span>
+        <NpmCommandBox>
+          npm install ams-date-picker
+        </NpmCommandBox>
+      </div>
+    </ContentBody>
   );
 }
