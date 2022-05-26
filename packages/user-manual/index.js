@@ -5,6 +5,9 @@ import { IconQuestionMark } from '@tabler/icons';
 
 import { AmsDesign } from '../support/standards.js';
 
+import ReactMarkdown from 'react-markdown';
+import userManualContent from './content.md';
+
 const UMTrigger = styled(Dialog.Trigger, {
   background: 'transparent',
   border: 'none',
@@ -54,7 +57,9 @@ const UMContent = () => {
         padding: '20px',
       }}
     >
-      TODO.
+      <ReactMarkdown>
+        {userManualContent}
+      </ReactMarkdown>
     </div>
   );
 };
