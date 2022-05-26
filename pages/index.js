@@ -8,7 +8,7 @@ import { ContentBody } from '../components/body';
 import { AmsWebsiteStandards } from '../support/website-standards';
 
 const HeroTitleTag = styled('div', {
-  fontSize: '13px',
+  fontSize: '14px',
   fontWeight: '400',
   color: AmsDesign.color.gray[400],
   letterSpacing: '-0.01em',
@@ -55,11 +55,11 @@ export default function Home() {
         padding: '0 15px',
       }}
     >
-      <div
+      <Layout
         style={{
           width: '100%',
-          paddingTop: AmsWebsiteStandards.dimension.navigationBarHeight + 58,
-          paddingBottom: 52,
+          paddingTop: AmsWebsiteStandards.dimension.navigationBarHeight + 60,
+          paddingBottom: 60,
           paddingLeft: '15px',
           paddingRight: '15px',
           flexShrink: 1,
@@ -68,6 +68,10 @@ export default function Home() {
           alignItems: 'flex-start',
           justifyContent: 'center',
           rowGap: '10px',
+          '@md': {
+            alignItems: 'center',
+            textAlign: 'center',
+          },
         }}
       >
         <div
@@ -91,22 +95,33 @@ export default function Home() {
         </div>
         <Layout
           style={{
+            maxWidth: '800px',
             fontSize: '40px',
             fontWeight: '600',
             letterSpacing: '-0.01em',
-            lineHeight: '1.18',
+            lineHeight: '1.22',
             padding: '5px 0px 10px 0px',
             '@sm': {
-              fontSize: '52px',
+              fontSize: '46px',
+              lineHeight: '1.20',
             },
             '@md': {
-              fontSize: '60px',
+              fontSize: '50px',
+              lineHeight: '1.10',
             },
           }}
         >
           A <span
             style={{
               background: '-webkit-linear-gradient(#0688FF, #015CAF)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            modern
+          </span> and <span
+            style={{
+              background: '-webkit-linear-gradient(#f97316, #ea580c)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -118,9 +133,9 @@ export default function Home() {
           A <b>modern</b>, <b>efficient</b>, and <b>intuitive</b> way to select the date and time.
         </HeroSubtitle>
         <HeroSubtitle>
-          Users will thank you <b>so much</b> by having this.
+          Users will thank you <b>so much</b> by using this in your application.
         </HeroSubtitle>
-      </div>
+      </Layout>
       <div
         style={{
           width: '100%',
@@ -130,8 +145,8 @@ export default function Home() {
           flexDirection: 'column',
           alignItems: 'flex-start',
           justifyContent: 'center',
-          backgroundColor: AmsDesign.color.gray[50],
-          boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.06)',
+          backgroundColor: AmsDesign.color.white,
+          // boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.06)',
           border: `1px solid ${AmsDesign.color.gray[200]}`,
           borderRadius: 20,
           padding: '20px',
