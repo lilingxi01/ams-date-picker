@@ -11,7 +11,7 @@
   ],
   "private": false,
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production babel . --out-dir dist --copy-files && NODE_ENV=production babel ../support --out-dir dist/support --copy-files",
+    "build": "rm -rf dist && NODE_ENV=production babel . --out-dir dist/core --copy-files && NODE_ENV=production babel ../support --out-dir dist/support --copy-files",
     "lint": "eslint --ext .js,.jsx ."
   },
   "repository": {

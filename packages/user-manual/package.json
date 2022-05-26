@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "description": "The user manual component for a magic date picker component in React.",
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/core/index.js",
+  "module": "dist/core/index.js",
   "files": [
     "dist"
   ],
   "private": false,
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production babel . --out-dir dist --copy-files && NODE_ENV=production babel ../support --out-dir dist/support --copy-files",
+    "build": "rm -rf dist && NODE_ENV=production babel . --out-dir dist/core --copy-files && NODE_ENV=production babel ../support --out-dir dist/support --copy-files",
     "lint": "eslint --ext .js,.jsx,.mdx ."
   },
   "repository": {
