@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import { AmsDateConflictResolver } from '../packages/date-picker/date-conflict-resolver.js';
-import { AmsUserManual } from '../packages/user-manual/index.js';
+import { AmsUserManual } from '../packages/user-manual';
 import { styled } from '@stitches/react';
 import { AmsDesign } from '../packages/support/standards.js';
 
@@ -11,7 +11,7 @@ const HeroSubtitle = styled('div', {
   color: AmsDesign.color.gray[400],
   letterSpacing: '-0.01em',
   '& b': {
-    color: AmsDesign.color.gray[800],
+    color: AmsDesign.color.gray[700],
   },
 });
 
@@ -86,7 +86,7 @@ export default function Home() {
           <div>Comfortable</div>
         </div>
         <HeroSubtitle>
-          A <b>modern</b>, <b>comfortable</b>, and <b>powerful</b> way to select the date and time.
+          A <b>modern</b>, <b>efficient</b>, and <b>intuitive</b> way to select the date and time.
         </HeroSubtitle>
         <HeroSubtitle>
           A <b>magical</b> React date picker you always wanted.

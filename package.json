@@ -43,7 +43,9 @@
     "@babel/preset-env": "^7.17.12",
     "@babel/preset-react": "^7.16.7",
     "@taci-tech/eslint-config": "^0.0.3",
+    "babel-plugin-inline-import": "^3.0.0",
     "eslint": "^8.15.0",
-    "eslint-config-next": "12.1.5"
+    "eslint-config-next": "12.1.5",
+    "react-markdown": "^8.0.3"
   }
 }

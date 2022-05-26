@@ -6,12 +6,12 @@ import { AmsNavigationBar } from '../components/navbar.js';
 
 const WebsiteBody = styled('div', {
   width: '100%',
-  maxWidth: '960px',
+  maxWidth: '1024px',
   minHeight: '100vh',
   position: 'relative',
   margin: '0 auto',
   background: AmsDesign.color.white,
-  boxShadow: '0px 0px 100px rgba(0, 0, 0, 0.02)',
+  boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.06)',
   borderLeft: `1px solid ${AmsDesign.color.gray[200]}`,
   borderRight: `1px solid ${AmsDesign.color.gray[200]}`,
 });

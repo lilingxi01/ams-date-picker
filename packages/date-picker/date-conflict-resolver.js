@@ -15,7 +15,15 @@ const AmsDateConflictResolverOption = ({
   const { dateState, options } = useContext(DSCRContext);
   const OptionComponent = option;
   const optionName = option.OPTION_NAME ?? 'unknown';
-  const isActive = dateState && options[optionName] === dateState.getTimezoneOffset();
+  const optionOffset = options && options[optionName];
+  const [isActive, setIsActive] = useState(false);
+  useEffect(() => {
+    if (dateState && options[optionName] === dateState.getTimezoneOffset()) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }, [dateState, options]);
   const displayTime = dateState.toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',
@@ -94,7 +102,7 @@ const AmsDateConflictResolverOption = ({
           opacity: isActive ? 0.70 : 0.55,
         }}
       >
-        {options && options[optionName] ? `UTC${options[optionName] / -60}` : ''}
+        {optionOffset ? `UTC${optionOffset / -60}` : ''}
       </div>
     </OptionComponent>
   );
