@@ -25,6 +25,7 @@ const UMOverlay = styled(Dialog.Overlay, {
   flexDirection: 'row',
   justifyContent: 'flex-end',
   alignItems: 'center',
+  zIndex: 9999,
 });
 
 const UMContainer = styled(Dialog.Content, {
