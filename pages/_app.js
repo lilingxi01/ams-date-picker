@@ -1,23 +1,22 @@
 import React from 'react';
 import '../styles/globals.css';
 import { styled } from '@stitches/react';
-import { AmsDesign } from '../packages/support/standards.js';
 import { AmsNavigationBar } from '../components/navbar.js';
+import { AmsWebsiteFooter } from '../components/footer';
 
 const WebsiteBody = styled('div', {
   width: '100%',
-  maxWidth: '1024px',
   minHeight: '100vh',
   position: 'relative',
-  margin: '0 auto',
-  background: AmsDesign.color.white,
-  boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.06)',
-  borderLeft: `1px solid ${AmsDesign.color.gray[200]}`,
-  borderRight: `1px solid ${AmsDesign.color.gray[200]}`,
+  background: '#fbfbfb',
 });
 
 const PageBody = styled('div', {
   width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
 });
 
 const AmsExampleApp = ({ Component, pageProps }) => {
@@ -27,6 +26,7 @@ const AmsExampleApp = ({ Component, pageProps }) => {
       <PageBody>
         <Component {...pageProps} />
       </PageBody>
+      <AmsWebsiteFooter />
     </WebsiteBody>
   );
 };
