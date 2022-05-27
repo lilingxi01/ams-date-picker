@@ -30,6 +30,7 @@ const AmsDimension = {
 
 const AmsTransition = {
   cubic: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+  cubicWith: (part) => `${part} 0.6s cubic-bezier(0.16, 1, 0.3, 1)`,
 };
 
 export const AmsDesign = {

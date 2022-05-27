@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/globals.css';
 import { styled } from '@stitches/react';
 import { AmsNavigationBar } from '../components/navbar.js';
+import { AmsWebsiteFooter } from '../components/footer';
 
 const WebsiteBody = styled('div', {
   width: '100%',
@@ -25,6 +26,7 @@ const AmsExampleApp = ({ Component, pageProps }) => {
       <PageBody>
         <Component {...pageProps} />
       </PageBody>
+      <AmsWebsiteFooter />
     </WebsiteBody>
   );
 };

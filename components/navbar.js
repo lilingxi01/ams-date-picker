@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { AmsWebsiteStandards } from '../support/website-standards.js';
 import { styled } from '@stitches/react';
 import { AmsDesign } from '../packages/support/standards.js';
+import { useRouter } from 'next/router';
+import { IconArrowUpRight } from '@tabler/icons';
 
 const navigationItems = [
   {
@@ -22,15 +24,18 @@ const AmsNavigationItem = styled('a', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  color: AmsDesign.color.gray[400],
+  fontSize: '16px',
+  fontWeight: '500',
   textDecoration: 'none',
-  transition: AmsDesign.transition.cubic,
   '&:hover': {
     color: AmsDesign.color.accentColor,
+    borderBottom: `2px solid ${AmsDesign.color.accentColor}`,
+    marginBottom: '-2px',
   },
 });
 
 export const AmsNavigationBar = () => {
+  const router = useRouter();
   return (
     <div
       style={{
@@ -54,6 +59,7 @@ export const AmsNavigationBar = () => {
       <div
         style={{
           width: '100%',
+          height: '100%',
           maxWidth: AmsWebsiteStandards.dimension.pageWidth,
           display: 'flex',
           flexDirection: 'row',
@@ -64,6 +70,7 @@ export const AmsNavigationBar = () => {
         <div
           style={{
             width: '100%',
+            height: '100%',
             flexShrink: 1,
             display: 'flex',
             flexDirection: 'row',
@@ -83,8 +90,14 @@ export const AmsNavigationBar = () => {
                 <AmsNavigationItem
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
+                  css={{
+                    color: router.pathname.startsWith(item.url) ? AmsDesign.color.accentColor : AmsDesign.color.gray[400],
+                  }}
                 >
-                  {item.name}
+                  <span>{item.name}</span>
+                  {item.url.startsWith('http') && (
+                    <IconArrowUpRight width={22} height={22} style={{ marginLeft: 1, opacity: 0.6 }} strokeWidth={1.8}/>
+                  )}
                 </AmsNavigationItem>
               </Link>
             ))
