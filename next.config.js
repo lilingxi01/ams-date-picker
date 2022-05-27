@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
+const withTM = require('next-transpile-modules')(['remark-gfm']); // pass the modules you would like to see transpiled
 const nextConfig = {
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   reactStrictMode: true,
   images: {
     domains: [
@@ -10,4 +12,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withTM(nextConfig);

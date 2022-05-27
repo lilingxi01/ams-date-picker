@@ -8,7 +8,7 @@
     "dev:start": "next start",
     "build": "cd packages/date-picker && yarn build",
     "build:manual": "cd packages/user-manual && yarn build",
-    "lint": "eslint --ext .js,.jsx packages"
+    "lint": "eslint --ext .js,.jsx,.mdx ."
   },
   "repository": {
     "type": "git",
@@ -33,8 +33,11 @@
     "@tabler/icons": "1.68.0",
     "moment": "^2.29.3",
     "next": "12.1.5",
+    "next-mdx-remote": "^4.0.3",
+    "next-transpile-modules": "^9.0.0",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
@@ -46,6 +49,7 @@
     "babel-plugin-inline-import": "^3.0.0",
     "eslint": "^8.15.0",
     "eslint-config-next": "12.1.5",
+    "eslint-plugin-mdx": "^1.17.0",
     "react-markdown": "^8.0.3"
   }
 }
