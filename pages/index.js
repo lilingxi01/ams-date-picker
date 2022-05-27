@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import { AmsDateConflictResolver } from '../packages/date-picker/date-conflict-resolver.js';
-import { AmsUserManual } from '../packages/user-manual';
+import { AmsUserManual } from '../packages/user-manual/index.js';
 import { Layout, styled } from '../packages/support/stitches.config';
 import { AmsDesign } from '../packages/support/standards.js';
 import { ContentBody } from '../components/body';

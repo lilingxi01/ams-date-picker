@@ -15,7 +15,6 @@ const UMTrigger = styled(Dialog.Trigger, {
 });
 
 const UMOverlay = styled(Dialog.Overlay, {
-  // background: 'rgba(0 0 0 / 0.4)',
   position: 'fixed',
   top: 0,
   left: 0,
@@ -29,7 +28,7 @@ const UMOverlay = styled(Dialog.Overlay, {
 });
 
 const UMContainer = styled(Dialog.Content, {
-  width: '80vw',
+  width: '85vw',
   maxWidth: '520px',
   height: '100%',
   display: 'flex',
