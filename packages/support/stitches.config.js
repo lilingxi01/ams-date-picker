@@ -1,4 +1,3 @@
-import React from 'react';
 import { createStitches } from '@stitches/react';
 
 export const {
@@ -17,19 +16,3 @@ export const {
     lg: '(min-width: 1024px)',
   },
 });
-
-const LayoutContainer = styled('div', {});
-
-export const Layout = ({ css, style, children, ...props }) => {
-  return (
-    <LayoutContainer
-      css={{
-        ...css,
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </LayoutContainer>
-  );
-};

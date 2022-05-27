@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
-import { Layout, styled } from '../packages/support/stitches.config';
+import { styled } from '../packages/support/stitches.config';
 import { AmsDesign } from '../packages/support/standards';
 import { AmsWebsiteStandards } from '../support/website-standards';
 import Image from 'next/image';
+import { Layout } from './layout';
 
 const FooterColumn = styled('div', {
   width: '100%',

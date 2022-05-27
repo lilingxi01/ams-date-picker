@@ -3,12 +3,13 @@ import moment from 'moment';
 import Head from 'next/head';
 import { AmsDateConflictResolver } from '../packages/date-picker/date-conflict-resolver.js';
 import { AmsUserManual } from '../packages/user-manual/index.js';
-import { Layout, styled } from '../packages/support/stitches.config';
+import { styled } from '../packages/support/stitches.config';
 import { AmsDesign } from '../packages/support/standards.js';
 import { ContentBody } from '../components/body';
 import { AmsWebsiteStandards } from '../support/website-standards';
 import { IconCopy, IconLivePhoto } from '@tabler/icons';
 import { getHeadTitle } from '../support/head';
+import { Layout } from '../components/layout';
 
 const HeroTitleTag = styled('div', {
   fontSize: '14px',
