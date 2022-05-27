@@ -140,20 +140,6 @@ export const AmsWebsiteFooter = () => {
         >
           <FooterColumn>
             <FooterTitle>
-              Resources
-            </FooterTitle>
-            <FooterLink href={'/docs'}>
-              Documentation
-            </FooterLink>
-            <FooterLink href={'/use-cases'}>
-              Use Cases
-            </FooterLink>
-            <FooterLink href={'/design'}>
-              Design Kit
-            </FooterLink>
-          </FooterColumn>
-          <FooterColumn>
-            <FooterTitle>
               Links
             </FooterTitle>
             <FooterLink href={'https://github.com/lilingxi01/ams-date-picker'}>

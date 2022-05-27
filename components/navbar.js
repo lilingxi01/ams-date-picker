@@ -13,14 +13,6 @@ const navigationItems = [
     url: '/',
   },
   {
-    name: 'Docs',
-    url: '/docs',
-  },
-  {
-    name: 'Use Cases',
-    url: '/use-cases',
-  },
-  {
     name: 'GitHub',
     url: 'https://github.com/lilingxi01/ams-date-picker',
     external: true,

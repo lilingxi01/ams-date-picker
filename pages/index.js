@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import Head from 'next/head';
-import { AmsDateConflictResolver } from '../packages/date-picker/date-conflict-resolver.js';
-import { AmsUserManual } from '../packages/user-manual/index.js';
+import Link from 'next/link';
 import { styled } from '../packages/support/stitches.config';
 import { AmsDesign } from '../packages/support/standards.js';
 import { ContentBody } from '../components/body';
 import { AmsWebsiteStandards } from '../support/website-standards';
-import { IconCopy, IconLivePhoto } from '@tabler/icons';
+import { IconCopy } from '@tabler/icons';
 import { getHeadTitle } from '../support/head';
 import { Layout } from '../components/layout';
 
@@ -71,13 +70,36 @@ const SectionContainer = styled('div', {
   rowGap: '15px',
 });
 
-const SectionSidebar = styled('div', {
-  flexShrink: 0,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  justifyContent: 'center',
-  rowGap: '18px',
+const AmsPrimaryButton = styled('a', {
+  fontSize: '17px',
+  fontWeight: '400',
+  color: AmsDesign.color.white,
+  backgroundColor: AmsDesign.color.accentColor,
+  border: 'none',
+  borderRadius: '999px',
+  padding: '10px 22px',
+  transition: 'opacity 0.2s ease-in-out',
+  cursor: 'pointer',
+  opacity: 1.0,
+  '&:hover': {
+    opacity: 0.8,
+  },
+});
+
+const AmsSecondaryButton = styled('a', {
+  fontSize: '17px',
+  fontWeight: '400',
+  color: AmsDesign.color.accentColor,
+  backgroundColor: AmsDesign.color.transparent,
+  border: 'none',
+  borderRadius: '999px',
+  padding: '10px 22px',
+  transition: 'background-color 0.2s ease-in-out',
+  cursor: 'pointer',
+  '&:hover': {
+    backgroundColor: AmsDesign.color.gray[50],
+    textDecoration: 'underline',
+  },
 });
 
 const SectionTitle = styled('div', {
@@ -200,116 +222,34 @@ export default function Home() {
           <HeroSubtitle>
             It is time to <b>re-engineer</b> the date picker for your stack.
           </HeroSubtitle>
-        </Layout>
-        <div
-          style={{
-            width: '100%',
-            height: '460px',
-            flexShrink: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            justifyContent: 'center',
-            backgroundColor: '#fefefe',
-            border: `1px solid ${AmsDesign.color.gray[200]}`,
-            borderRadius: 20,
-            padding: '20px',
-          }}
-        >
           <div
             style={{
-              fontSize: '16px',
-              fontWeight: '500',
-              color: AmsDesign.color.accentColor,
-              letterSpacing: '-0.01em',
-              paddingBottom: '10px',
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              columnGap: '6px',
-              userSelect: 'none',
-              pointerEvents: 'none',
-            }}
-          >
-            <IconLivePhoto width={18} height={18}/>
-            <span>Try out our live demo</span>
-          </div>
-          <div
-            style={{
-              width: '100%',
-              height: '100%',
-              flexShrink: 1,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
+              paddingTop: 28,
+              rowGap: 10,
             }}
           >
-            <div
-              style={{
-                width: '100%',
-                maxWidth: '300px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
+            <Link
+              href={'https://github.com/lilingxi01/ams-date-picker/discussions'}
+              passHref={true}
             >
-              <AmsDateConflictResolver
-                date={date.toDate()}
-                onChange={(newDate) => {
-                  setDate(moment(newDate));
-                }}
-              />
-            </div>
-            <AmsUserManual />
+              <AmsPrimaryButton>
+                Discuss with us on GitHub
+              </AmsPrimaryButton>
+            </Link>
+            <Link
+              href={'https://github.com/lilingxi01/ams-date-picker'}
+              passHref={true}
+            >
+              <AmsSecondaryButton>
+                Go to repository
+              </AmsSecondaryButton>
+            </Link>
           </div>
-        </div>
-        <SectionContainer
-          css={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <SectionTitle
-            css={{
-              textAlign: 'center',
-            }}
-          >
-            Use it in your project
-            <p>
-              Power up your project and gracefully satisfy your users today.
-            </p>
-          </SectionTitle>
-          <InstallCommandBox>
-            <span>
-              npm install ams-date-picker
-            </span>
-            <InstallCommandCopyButton
-              width={20}
-              height={20}
-              strokeWidth={1.75}
-              onClick={() => {
-                navigator.clipboard.writeText('npm install ams-date-picker');
-              }}
-            />
-          </InstallCommandBox>
-          <InstallCommandBox>
-            <span>
-              yarn add ams-date-picker
-            </span>
-            <InstallCommandCopyButton
-              width={20}
-              height={20}
-              strokeWidth={1.75}
-              onClick={() => {
-                navigator.clipboard.writeText('yarn add ams-date-picker');
-              }}
-            />
-          </InstallCommandBox>
-        </SectionContainer>
+        </Layout>
       </ContentBody>
     </div>
   );
