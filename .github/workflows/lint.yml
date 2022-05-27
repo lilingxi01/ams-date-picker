@@ -1,4 +1,4 @@
-name: Code Check
+name: Build Check
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  code-check:
+  build-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,3 +33,7 @@ jobs:
       - name: Package Build Check - User Manual
         run: |
           yarn build:manual
+
+      - name: Website Build Check
+        run: |
+          yarn dev:build
