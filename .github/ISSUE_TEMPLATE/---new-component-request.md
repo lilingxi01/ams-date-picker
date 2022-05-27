@@ -1,7 +1,7 @@
 ---
 name: "\U0001F3A8 New component request"
 about: Suggest a new component (code-wise) in detail, not an idea or a draft of feature.
-title: "\U0001F3A8 Your topic of new component request"
+title: "\U0001F3A8 NEW_COMPONENT_ISSUE_TITLE"
 labels: ''
 assignees: ''
 

@@ -1,7 +1,7 @@
 ---
 name: "✨ Feature request"
 about: Suggest an idea, new module, or major changes for this project.
-title: "✨ Your topic of feature request"
+title: "✨ FEATURE_REQUEST_ISSUE_TITLE"
 labels: ''
 assignees: ''
 

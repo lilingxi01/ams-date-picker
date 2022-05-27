@@ -1,7 +1,7 @@
 ---
 name: "\U0001F41E Bug report"
 about: Create a report to help us improve.
-title: "\U0001F41E Briefly describe the bug as your title"
+title: "\U0001F41E BUG_ISSUE_TITLE"
 labels: bug
 assignees: ''
 
