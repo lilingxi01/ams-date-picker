@@ -13,6 +13,10 @@ const navigationItems = [
     url: '/',
   },
   {
+    name: 'Docs',
+    url: '/docs',
+  },
+  {
     name: 'GitHub',
     url: 'https://github.com/lilingxi01/ams-date-picker',
     external: true,
@@ -91,7 +95,9 @@ export const AmsNavigationBar = () => {
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
                   css={{
-                    color: router.pathname.startsWith(item.url) ? AmsDesign.color.accentColor : AmsDesign.color.gray[400],
+                    color: router.pathname === item.url || (item.url !== '/' && router.pathname.startsWith(item.url))
+                      ? AmsDesign.color.accentColor
+                      : AmsDesign.color.gray[400],
                   }}
                 >
                   <span>{item.name}</span>
