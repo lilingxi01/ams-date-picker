@@ -108,7 +108,7 @@ export default function Home() {
       }}
     >
       <Head>
-        <title>{getHeadTitle('Home')}</title>
+        <title>{getHeadTitle()}</title>
       </Head>
       <ContentBody
         style={{

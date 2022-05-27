@@ -74,7 +74,7 @@ export const AmsWebsiteFooter = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '80px 0',
+        padding: '75px 0 80px 0',
       }}
     >
       <Layout
@@ -144,6 +144,9 @@ export const AmsWebsiteFooter = () => {
             </FooterTitle>
             <FooterLink href={'/docs'}>
               Documentation
+            </FooterLink>
+            <FooterLink href={'/use-cases'}>
+              Use Cases
             </FooterLink>
             <FooterLink href={'/design'}>
               Design Kit

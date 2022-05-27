@@ -17,6 +17,10 @@ const navigationItems = [
     url: '/docs',
   },
   {
+    name: 'Use Cases',
+    url: '/use-cases',
+  },
+  {
     name: 'GitHub',
     url: 'https://github.com/lilingxi01/ams-date-picker',
     external: true,
@@ -80,8 +84,8 @@ export const AmsNavigationBar = () => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'flex-start',
-            paddingLeft: '35px',
-            columnGap: '25px',
+            paddingLeft: '34px',
+            columnGap: '26px',
           }}
         >
           {
@@ -112,7 +116,7 @@ export const AmsNavigationBar = () => {
         <div
           style={{
             flexShrink: 0,
-            padding: '0px 34px',
+            padding: '0px 32px',
           }}
         >
           <Image

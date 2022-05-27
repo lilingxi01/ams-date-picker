@@ -11,9 +11,9 @@ const NotFoundPage = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: '30px',
-        fontWeight: '500',
-        color: AmsDesign.color.gray[600],
+        fontSize: '36px',
+        fontWeight: '300',
+        color: AmsDesign.color.gray[300],
         letterSpacing: '-0.01em',
       }}
     >
