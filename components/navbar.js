@@ -61,6 +61,7 @@ export const AmsNavigationBar = () => {
         backgroundColor: '#fdfdfdcf',
         borderBottom: `1px solid ${AmsDesign.color.gray[200]}`,
         backdropFilter: 'saturate(150%) blur(25px)',
+        WebkitBackdropFilter: 'saturate(150%) blur(25px)',
         zIndex: 1999,
       }}
     >
