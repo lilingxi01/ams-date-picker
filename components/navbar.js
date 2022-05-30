@@ -46,6 +46,7 @@ export const AmsNavigationBar = () => {
         position: 'sticky',
         top: 0,
         left: 0,
+        right: 0,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -53,6 +54,7 @@ export const AmsNavigationBar = () => {
         backgroundColor: '#fdfdfdcf',
         borderBottom: `1px solid ${AmsDesign.color.gray[200]}`,
         backdropFilter: 'saturate(150%) blur(25px)',
+        WebkitBackdropFilter: 'saturate(150%) blur(25px)',
         zIndex: 1999,
       }}
     >
