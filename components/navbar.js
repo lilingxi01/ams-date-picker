@@ -165,6 +165,8 @@ export const AmsNavigationBar = () => {
                     : AmsDesign.color.gray[700],
                 }}
                 onClick={() => setIsMobileMenuOpen(false)}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener noreferrer' : undefined}
               >
                 <span>{item.name}</span>
                 {item.external && (
