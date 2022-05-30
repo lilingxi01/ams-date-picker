@@ -97,7 +97,7 @@ export const AmsNavigationBar = () => {
     <Layout
       style={{
         width: '100%',
-        position: 'fixed',
+        position: 'absolute',
         display: isMobileMenuOpen ? 'flex' : 'none',
         '@md': {
           display: 'none !important',
