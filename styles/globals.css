@@ -26,6 +26,11 @@ a:hover {
     text-decoration: none;
 }
 
+button {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Helvetica Neue, sans-serif;
+}
+
 * {
     box-sizing: border-box;
 }
