@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@radix-ui/colors": "^0.1.8",
     "@radix-ui/react-popover": "^0.1.6",
     "@stitches/react": "^1.2.8",
     "moment": "^2.29.3"
