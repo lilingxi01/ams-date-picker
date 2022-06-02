@@ -243,6 +243,7 @@ export default function Home() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
+              rowGap: 30,
             }}
           >
             <div

@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { styled } from '@stitches/react';
 import { isInDaylightSavingConflictTime } from './processor.js';
-import { IconAlertTriangle, IconCheck } from '@tabler/icons';
+import { IconAlertCircle, IconCheck } from '@tabler/icons';
 import { AmsDesign } from '../support/standards.js';
+import { Layout } from './layout-support.js';
 
 /* -----------------------------------------------------------------------------
  * Ams Daylight Saving Conflict Resolver
@@ -30,80 +31,106 @@ const AmsDateConflictResolverOption = ({
   });
   return (
     <OptionComponent
-      style={{
+      css={{
         width: '50%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        rowGap: '2px',
-        padding: '6px',
+        rowGap: 2,
+        padding: 6,
+        borderRadius: 7,
         userSelect: 'none',
         cursor: 'pointer',
         transition: AmsDesign.transition.cubic,
+        color: isActive
+          ? '$gray12'
+          : '$gray11',
         backgroundColor: isActive
-          ? design?.accentColor ?? AmsDesign.color.accentColor
-          : AmsDesign.color.transparent,
+          ? '$white'
+          : '$gray3',
+        border: isActive
+          ? `0.5px solid ${design?.accentColor ?? '$gray5'}`
+          : '0.5px solid $gray4',
+        boxShadow: isActive
+          ? '$md'
+          : 'none',
         '&:hover': {
           backgroundColor: isActive
-            ? design?.accentColor ?? AmsDesign.color.accentColor
-            : AmsDesign.color.gray[100],
+            ? '$white'
+            : '$gray1',
+          border: `0.5px solid ${design?.accentColor ?? '$gray5'}`,
         },
         '&:active': {
           backgroundColor: isActive
-            ? design?.accentColor ?? AmsDesign.color.accentColor
-            : AmsDesign.color.gray[200],
+            ? '$white'
+            : '$gray2',
         },
       }}
     >
-      <div
-        style={{
+      <Layout
+        css={{
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
-          columnGap: '2px',
-          fontSize: 12,
-          color: isActive
-            ? AmsDesign.color.white
-            : (design?.accentColor ?? AmsDesign.color.accentColor),
+          padding: '6px 0 10px 0',
+          fontSize: '$base',
           fontWeight: '500',
         }}
       >
         <IconCheck
-          width={13}
-          height={13}
-          strokeWidth={2.8}
+          width={16}
+          height={16}
+          strokeWidth={2.5}
           style={{
-            marginTop: '1px',
-            display: isActive
-              ? 'block'
-              : 'none',
+            marginTop: 1,
+            marginLeft: isActive ? -1 : 0,
+            marginRight: isActive ? 3 : 0,
+            transition: AmsDesign.transition.cubic,
+            opacity: isActive ? 1 : 0,
+            width: isActive ? 16 : 0,
           }}
         />
         <span>
           {optionName === 'earlier' ? 'Earlier' : 'Latter'}
         </span>
-      </div>
-      <div
-        style={{
-          fontSize: 15,
-          color: isActive ? AmsDesign.color.white : AmsDesign.color.black,
-          fontWeight: '500',
+      </Layout>
+      <Layout
+        css={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          '@md': {
+            flexDirection: 'row',
+            alignItems: 'flex-end',
+            justifyContent: 'space-between',
+          },
+          padding: '0 3px',
         }}
       >
-        {displayTime}
-      </div>
-      <div
-        style={{
-          fontSize: 12,
-          color: isActive ? AmsDesign.color.white : AmsDesign.color.black,
-          fontWeight: '500',
-          opacity: isActive ? 0.70 : 0.55,
-        }}
-      >
-        {optionOffset ? `UTC${optionOffset / -60}` : ''}
-      </div>
+        <Layout
+          css={{
+            fontSize: '$base',
+            fontWeight: '400',
+            letterSpacing: '-0.01em',
+          }}
+        >
+          {displayTime}
+        </Layout>
+        <Layout
+          css={{
+            color: '$gray9',
+            fontSize: '$xxs',
+            fontWeight: '500',
+            paddingBottom: 1,
+          }}
+        >
+          {optionOffset ? `UTC${optionOffset / -60}` : ''}
+        </Layout>
+      </Layout>
     </OptionComponent>
   );
 };
@@ -116,44 +143,42 @@ export const AmsDateConflictResolver = ({ date, onChange, design }) => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: design?.cornerRadius ?? '8px',
-        backgroundColor: AmsDesign.color.gray[50],
-        border: `1px solid ${AmsDesign.color.gray[150]}`,
+        borderRadius: design?.cornerRadius ?? '12px',
+        backgroundColor: '$gray2',
+        border: `0.5px solid $gray5`,
         overflow: 'hidden',
       }}
       date={date}
       onChange={onChange}
     >
-      <div
-        style={{
+      <Layout
+        css={{
           width: '100%',
-          fontSize: 12,
+          fontSize: '$xs',
           fontWeight: '500',
-          padding: '6px 8px',
-          color: AmsDesign.color.gray[500],
-          borderBottom: `1px solid ${AmsDesign.color.gray[150]}`,
+          padding: '10px 11px',
+          color: '$gray9',
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'flex-start',
-          columnGap: '4px',
+          columnGap: 6,
         }}
       >
-        <IconAlertTriangle
-          width={13}
-          height={13}
-          strokeWidth={2.5}
-          style={{
-            marginTop: '1px',
-          }}
+        <IconAlertCircle
+          width={14}
+          height={14}
+          strokeWidth={2}
         />
         <span>Potential DLS Conflict</span>
-      </div>
+      </Layout>
       <div
         style={{
           width: '100%',
           display: 'flex',
           flexDirection: 'row',
+          padding: '0 7px 7px 7px',
+          columnGap: 7,
         }}
       >
         <AmsDateConflictResolverOption
