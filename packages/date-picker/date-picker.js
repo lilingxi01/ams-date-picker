@@ -1,83 +1,101 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { AmsDatePickerInput } from './date-picker-input';
+import { Layout } from './layout-support.js';
+import { AmsDesign } from '../support/standards.js';
 
 /**
  * [Ams] (WIP) Magic Date Picker Component.
  *
+ * @param {string|undefined} className
  * @param {string|undefined} id
- * @param {string} label
  * @param {Date|undefined} value
  * @param {function} onChange
- * @param {string|null} hint
- * @param {string|null} error
  * @param {Date|undefined} baseDate
+ * @param {object} layoutStyle
+ * @param {object} style
+ * @param {any} props
  * @return {JSX.Element}
  */
 export const AmsDatePicker = ({
+  className,
   id = 'ams-date-picker',
-  label,
   value,
   onChange,
-  hint,
-  error,
   baseDate,
+  layoutStyle,
+  style,
+  ...props
 }) => {
   // Date picker value state.
-  const [valueState, setValueState] = useState(null);
+  const [valueState, setValueState] = useState(value);
 
   // Date picker open state.
   const [isOpen, setIsOpen] = useState(false);
-
-  // Date picker hint state.
-  const [hintState, setHintState] = useState(null);
-
-  // Date picker input field error state.
-  const [errorState, setErrorState] = useState(null);
-
-  // Date picker anchor element.
-  const boxRef = useRef(null);
 
   const handlePopoverClose = () => {
     setIsOpen(false);
   };
 
-  // Update hint state when hint prop changes.
-  useEffect(() => {
-    if (hint) {
-      setHintState(hint);
-    }
-  }, [hint]);
-
-  // Update error state when error prop changes.
-  useEffect(() => {
-    if (error) {
-      setErrorState(error);
-    }
-  }, [error]);
-
   // Process the datepicker value into input value.
   useEffect(() => {
     if (valueState) {
-      setHintState(null);
-      setErrorState(null);
       if (onChange) {
         // Call the onChange callback with Date object.
         // It will always be called nevertheless it is inputted by typing or selecting.
         onChange(valueState);
+      } else {
+        console.warn('ams:', 'onChange callback is not defined.');
+        console.log('ams:', 'valueState:', valueState);
       }
     }
   }, [valueState]);
 
   return (
-    <div
-      style={{
+    <Layout
+      id={id}
+      css={{
         width: '100%',
+        height: '42px',
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+        position: 'relative',
+        borderRadius: '$md',
+        border: '0.5px solid $gray5',
+        backgroundColor: '$gray1',
+        transition: AmsDesign.transition.cubic,
+        '&:hover': {
+          backgroundColor: '$white',
+          border: '0.5px solid $gray7',
+        },
+        '&:focus-within': {
+          backgroundColor: '$white',
+          boxShadow: '$md',
+        },
+        overflow: 'hidden',
+        ...layoutStyle,
       }}
     >
-      {/* TODO */}
-    </div>
+      {/* TODO: Replenish necessary APIs */}
+      <AmsDatePickerInput
+        className={className}
+        id={`${id}-input`}
+        value={valueState}
+        baseDate={baseDate}
+        onChange={(value) => {
+          setValueState(value);
+        }}
+        style={{
+          width: '100%',
+          height: '100%',
+          padding: '10px 14px',
+          fontSize: '$lg',
+          fontWeight: '400',
+          ...style,
+        }}
+        {...props}
+      />
+    </Layout>
   );
 };
