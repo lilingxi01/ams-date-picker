@@ -3,7 +3,11 @@ import { styled } from '@stitches/react';
 import { parseDate } from './processor.js';
 import { dateOptions } from '../support/date.js';
 
-const AmsDatePickerInputContainer = styled('input', {});
+const AmsDatePickerInputContainer = styled('input', {
+  outline: 'none',
+  border: 'none',
+  backgroundColor: 'transparent',
+});
 
 export const AmsDatePickerInput = ({
   className,
@@ -16,13 +20,18 @@ export const AmsDatePickerInput = ({
   onKeyPress,
   onFocus,
   onBlur,
+  dateOption = dateOptions,
   onShouldOpenSelector,
   onShouldCloseSelector,
 }) => {
-  const [inputValue, setInputValue] = useState(value);
+  const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
-    setInputValue(value.toLocaleString('en-US', dateOptions));
+    if (value) {
+      setInputValue(value.toLocaleString('en-US', dateOption));
+    } else {
+      setInputValue('');
+    }
   }, [value]);
 
   // This function is a callback when the input is finished by user (on finalizing or on blurring).
@@ -34,7 +43,11 @@ export const AmsDatePickerInput = ({
         onChange(parsedDate);
       }
     } catch (e) {
-      onError(e); // Return error.
+      if (onError) {
+        onError(e); // Return error.
+      } else {
+        console.error('ams:', e); // Log error.
+      }
     }
   };
 
@@ -57,6 +70,7 @@ export const AmsDatePickerInput = ({
       className={`ams-date-picker-input ${className ?? ''}`}
       id={id ?? 'ams-date-picker-input'}
       css={style}
+      value={inputValue}
       onChange={(e) => {
         setInputValue(e.target.value);
       }}
