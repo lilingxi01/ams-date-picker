@@ -30,9 +30,9 @@ export const {
       black: '#000',
     },
     shadows: {
-      'sm': '0 5px 6px 0 rgba(0, 0, 0, 0.03)',
-      'md': '0 6px 8px 0 rgba(0, 0, 0, 0.03)',
-      'lg': '0px 10px 16px rgba(0, 0, 0, 0.03)',
+      'sm': '0 4px 10px 0 rgba(0, 0, 0, 0.03)',
+      'md': '0 6px 14px 0 rgba(0, 0, 0, 0.03)',
+      'lg': '0px 10px 20px rgba(0, 0, 0, 0.03)',
     },
     fontSizes: {
       'xxs': '11px',
