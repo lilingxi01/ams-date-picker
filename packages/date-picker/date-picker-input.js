@@ -23,6 +23,7 @@ export const AmsDatePickerInput = ({
   dateOption = dateOptions,
   onShouldOpenSelector,
   onShouldCloseSelector,
+  ...props
 }) => {
   const [inputValue, setInputValue] = useState('');
 
@@ -97,6 +98,10 @@ export const AmsDatePickerInput = ({
           onBlur(e);
         }
       }}
+      {
+        ...props
+        // TODO: Handle potential conflicts with props.
+      }
     />
   );
 };
