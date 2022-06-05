@@ -256,7 +256,7 @@ export default function Home() {
                 flexDirection: 'row',
                 alignItems: 'flex-start',
                 justifyContent: 'center',
-                columnGap: 20,
+                columnGap: 15,
               }}
             >
               <Layout
