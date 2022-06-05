@@ -29,7 +29,7 @@ a:hover {
     text-decoration: none;
 }
 
-* {
+*:not(code) {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Helvetica Neue, sans-serif;
 }

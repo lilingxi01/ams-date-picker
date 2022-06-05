@@ -36,7 +36,7 @@ const HeroSubtitle = styled('div', {
 });
 
 const InstallCommandBox = styled('div', {
-  fontFamily: 'Fira Code, monospace',
+  fontFamily: '"Fira Code", monospace',
   fontSize: '14px',
   fontWeight: '500',
   color: AmsDesign.color.black,
