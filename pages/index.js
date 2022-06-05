@@ -36,7 +36,9 @@ const HeroSubtitle = styled('div', {
 });
 
 const InstallCommandBox = styled('div', {
-  fontFamily: '"Fira Code", monospace',
+  '& code': {
+    fontFamily: '"Fira Code", monospace',
+  },
   fontSize: '14px',
   fontWeight: '500',
   color: AmsDesign.color.black,
@@ -323,9 +325,9 @@ export default function Home() {
             </p>
           </SectionTitle>
           <InstallCommandBox>
-            <span>
+            <code>
               npm install ams-date-picker
-            </span>
+            </code>
             <InstallCommandCopyButton
               width={20}
               height={20}
@@ -336,9 +338,9 @@ export default function Home() {
             />
           </InstallCommandBox>
           <InstallCommandBox>
-            <span>
+            <code>
               yarn add ams-date-picker
-            </span>
+            </code>
             <InstallCommandCopyButton
               width={20}
               height={20}
