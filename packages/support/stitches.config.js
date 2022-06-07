@@ -68,7 +68,7 @@ export const {
   },
 });
 
-export const amsDarkTheme = createTheme('ams-dark-theme', {
+export const amsDarkTheme = createTheme('dark', {
   colors: {
     ...grayDark,
     ...blueDark,
