@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@stitches/react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { IconQuestionMark } from '@tabler/icons';
+import { IconHelp, IconQuestionMark } from '@tabler/icons';
 
 import { AmsDesign } from '../support/standards.js';
 
@@ -71,7 +71,9 @@ export const AmsUserManual = ({ style, children }) => {
         css={style}
       >
         {children ?? (
-          <IconQuestionMark size={24} />
+          <IconHelp size={17} strokeWidth={2.1} style={{
+            marginBottom: -2,
+          }}/>
         )}
       </UMTrigger>
       <Dialog.Portal>

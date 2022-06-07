@@ -10,6 +10,8 @@ import { AmsWebsiteStandards } from '../support/website-standards';
 import { IconCopy, IconLivePhoto } from '@tabler/icons';
 import { getHeadTitle } from '../support/head';
 import { Layout } from '../components/layout';
+import { AmsDatePicker } from '../packages/date-picker/date-picker';
+import { isInDaylightSavingConflictTime } from '../packages/date-picker/processor';
 
 const HeroTitleTag = styled('div', {
   fontSize: '14px',
@@ -34,7 +36,9 @@ const HeroSubtitle = styled('div', {
 });
 
 const InstallCommandBox = styled('div', {
-  fontFamily: 'Fira Code, monospace',
+  '& code': {
+    fontFamily: '"Fira Code", monospace',
+  },
   fontSize: '14px',
   fontWeight: '500',
   color: AmsDesign.color.black,
@@ -95,7 +99,7 @@ const SectionTitle = styled('div', {
 });
 
 export default function Home() {
-  const [date, setDate] = useState(moment('11/07/2021 1:00 AM'));
+  const [date, setDate] = useState(moment());
 
   return (
     <div
@@ -242,28 +246,64 @@ export default function Home() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              justifyContent: 'center',
+              justifyContent: 'flex-start',
               rowGap: 30,
+              paddingTop: 70,
             }}
           >
             <div
               style={{
                 width: '100%',
-                maxWidth: '300px',
                 display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
+                flexDirection: 'row',
+                alignItems: 'flex-start',
                 justifyContent: 'center',
+                columnGap: 15,
               }}
             >
-              <AmsDateConflictResolver
-                date={date.toDate()}
-                onChange={(newDate) => {
-                  setDate(moment(newDate));
+              <Layout
+                css={{
+                  height: 40,
+                  flexShrink: 0,
+                  fontSize: '$md',
+                  fontWeight: '500',
+                  lineHeight: '40px',
+                  textAlign: 'right',
+                  letterSpacing: '-0.01em',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  columnGap: 1,
                 }}
-              />
+              >
+                <span>Departure Date</span>
+                <AmsUserManual />
+              </Layout>
+              <div
+                style={{
+                  width: 300,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  rowGap: 10,
+                }}
+              >
+                <AmsDatePicker
+                  value={date.toDate()}
+                  onChange={(newDate) => setDate(moment(newDate))}
+                />
+                {isInDaylightSavingConflictTime(date.toDate()) && (
+                  <AmsDateConflictResolver
+                    date={date.toDate()}
+                    onChange={(newDate) => {
+                      setDate(moment(newDate));
+                    }}
+                  />
+                )}
+              </div>
             </div>
-            <AmsUserManual />
           </div>
         </div>
         <SectionContainer
@@ -285,9 +325,9 @@ export default function Home() {
             </p>
           </SectionTitle>
           <InstallCommandBox>
-            <span>
+            <code>
               npm install ams-date-picker
-            </span>
+            </code>
             <InstallCommandCopyButton
               width={20}
               height={20}
@@ -298,9 +338,9 @@ export default function Home() {
             />
           </InstallCommandBox>
           <InstallCommandBox>
-            <span>
+            <code>
               yarn add ams-date-picker
-            </span>
+            </code>
             <InstallCommandCopyButton
               width={20}
               height={20}

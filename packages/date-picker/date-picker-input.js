@@ -3,8 +3,30 @@ import { styled } from '@stitches/react';
 import { parseDate } from './processor.js';
 import { dateOptions } from '../support/date.js';
 
-const AmsDatePickerInputContainer = styled('input', {});
+const AmsDatePickerInputContainer = styled('input', {
+  outline: 'none',
+  border: 'none',
+  backgroundColor: 'transparent',
+});
 
+/**
+ * [Ams] The headless date picker component.
+ * @param {string} className
+ * @param {string} id
+ * @param {object} style
+ * @param {any} value
+ * @param {any} baseDate
+ * @param {function} onChange - Callback function to be called when the date is changed (only when finalized).
+ * @param {function} onError - Callback function when the error is occurring in user's input (neither functionality error nor development error).
+ * @param {function} onKeyPress
+ * @param {function} onFocus
+ * @param {function} onBlur
+ * @param {object} dateOption - (TBD) The date option for formatting the date.
+ * @param {function} onShouldOpenSelector
+ * @param {function} onShouldCloseSelector
+ * @param {any} props
+ * @return {JSX.Element}
+ */
 export const AmsDatePickerInput = ({
   className,
   id,
@@ -16,13 +38,19 @@ export const AmsDatePickerInput = ({
   onKeyPress,
   onFocus,
   onBlur,
+  dateOption = dateOptions,
   onShouldOpenSelector,
   onShouldCloseSelector,
+  ...props
 }) => {
-  const [inputValue, setInputValue] = useState(value);
+  const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
-    setInputValue(value.toLocaleString('en-US', dateOptions));
+    if (value) {
+      setInputValue(value.toLocaleString('en-US', dateOption));
+    } else {
+      setInputValue('');
+    }
   }, [value]);
 
   // This function is a callback when the input is finished by user (on finalizing or on blurring).
@@ -34,35 +62,44 @@ export const AmsDatePickerInput = ({
         onChange(parsedDate);
       }
     } catch (e) {
-      onError(e); // Return error.
+      if (onError) {
+        onError(e); // Return error.
+      } else {
+        console.error('AmsDatePicker:', e); // Log error.
+      }
     }
   };
 
-  // This function is used to handle the close action of the date selector.
-  const handleCloseDateSelector = () => {
-    // TODO.
+  // This function is used to handle the close action of the date selector or the blur action of input.
+  const handleEscape = () => {
+    // TODO: Blur the input when needed.
+    // TODO: Call back the onShouldCloseSelector callback with some conditions.
   };
 
   // This function should be called to determine if we should finish the input on blur.
   const isValidOnBlur = () => {
     return (
       inputValue.length > 0
-      && !inputValue.match(/^\d{1,2}\/\d{1,2}\/\d{4}, \d{1,2}:\d{2}(?::\d{2})? (?:AM|PM)?$/)
+      && inputValue.match(/^\d{1,2}\/\d{1,2}\/\d{4},? \d{1,2}:\d{2}(?::\d{2})? ?(?:AM|PM)?$/)
     );
   };
 
-  // TODO: Make the input element style-less.
+  // This input element is style-less.
   return (
     <AmsDatePickerInputContainer
       className={`ams-date-picker-input ${className ?? ''}`}
       id={id ?? 'ams-date-picker-input'}
       css={style}
+      value={inputValue}
       onChange={(e) => {
         setInputValue(e.target.value);
       }}
       onKeyPress={(e) => {
         if (e.key === 'Enter') {
           onInputFinish(inputValue);
+        }
+        if (e.key === 'Escape') {
+          handleEscape();
         }
         if (onKeyPress) {
           onKeyPress(e);
@@ -75,7 +112,7 @@ export const AmsDatePickerInput = ({
         }
       }}
       onBlur={(e) => {
-        // TODO: Determine if we should close the data selector.
+        // Determine if we should close the data selector.
         if (isValidOnBlur()) {
           onInputFinish(inputValue);
         }
@@ -83,6 +120,10 @@ export const AmsDatePickerInput = ({
           onBlur(e);
         }
       }}
+      {
+        ...props
+        // TODO: Handle potential conflicts with props.
+      }
     />
   );
 };
