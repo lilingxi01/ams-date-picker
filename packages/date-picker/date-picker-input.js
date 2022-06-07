@@ -9,6 +9,24 @@ const AmsDatePickerInputContainer = styled('input', {
   backgroundColor: 'transparent',
 });
 
+/**
+ * [Ams] The headless date picker component.
+ * @param {string} className
+ * @param {string} id
+ * @param {object} style
+ * @param {any} value
+ * @param {any} baseDate
+ * @param {function} onChange - Callback function to be called when the date is changed (only when finalized).
+ * @param {function} onError - Callback function when the error is occurring in user's input (neither functionality error nor development error).
+ * @param {function} onKeyPress
+ * @param {function} onFocus
+ * @param {function} onBlur
+ * @param {object} dateOption - (TBD) The date option for formatting the date.
+ * @param {function} onShouldOpenSelector
+ * @param {function} onShouldCloseSelector
+ * @param {any} props
+ * @return {JSX.Element}
+ */
 export const AmsDatePickerInput = ({
   className,
   id,
@@ -47,14 +65,15 @@ export const AmsDatePickerInput = ({
       if (onError) {
         onError(e); // Return error.
       } else {
-        console.error('ams:', e); // Log error.
+        console.error('AmsDatePicker:', e); // Log error.
       }
     }
   };
 
-  // This function is used to handle the close action of the date selector.
-  const handleCloseDateSelector = () => {
-    // TODO.
+  // This function is used to handle the close action of the date selector or the blur action of input.
+  const handleEscape = () => {
+    // TODO: Blur the input when needed.
+    // TODO: Call back the onShouldCloseSelector callback with some conditions.
   };
 
   // This function should be called to determine if we should finish the input on blur.
@@ -65,7 +84,7 @@ export const AmsDatePickerInput = ({
     );
   };
 
-  // TODO: Make the input element style-less.
+  // This input element is style-less.
   return (
     <AmsDatePickerInputContainer
       className={`ams-date-picker-input ${className ?? ''}`}
@@ -79,6 +98,9 @@ export const AmsDatePickerInput = ({
         if (e.key === 'Enter') {
           onInputFinish(inputValue);
         }
+        if (e.key === 'Escape') {
+          handleEscape();
+        }
         if (onKeyPress) {
           onKeyPress(e);
         }
@@ -90,7 +112,7 @@ export const AmsDatePickerInput = ({
         }
       }}
       onBlur={(e) => {
-        // TODO: Determine if we should close the data selector.
+        // Determine if we should close the data selector.
         if (isValidOnBlur()) {
           onInputFinish(inputValue);
         }
