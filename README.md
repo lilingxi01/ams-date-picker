@@ -20,7 +20,7 @@ This project is still **in development**. It is not yet ready for use. We will r
 
 ![Date Picker User Manual](https://user-images.githubusercontent.com/36816148/170132516-99c20992-d004-4a4e-b420-b1cfa76e6ca7.png)
 
-![Dark Mode Support](https://user-images.githubusercontent.com/36816148/172277455-ac56ed53-1bf3-41b7-8555-49ebc4f0dc35.png)
+![Dark Mode Support](https://user-images.githubusercontent.com/36816148/172277845-26b2d8be-733f-4c50-8655-f4496bcd2f7b.png)
 
 # FAQ
 
