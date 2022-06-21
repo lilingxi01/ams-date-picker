@@ -1,5 +1,6 @@
 {
-  "parser": "@babel/eslint-parser",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
   "extends": ["plugin:mdx/recommended", "next/core-web-vitals", "@taci-tech"],
   "overrides": [
     {
@@ -23,8 +24,11 @@
   "rules": {
     "react-hooks/exhaustive-deps": "off",
     "operator-linebreak": ["error", "before"],
-    "no-unused-vars": "warn",
     "max-len": "off",
-    "quote-props": "off"
+    "quote-props": "off",
+    // For TypeScript:
+    "no-unused-vars": "off",
+    "react/display-name": "off",
+    "@typescript-eslint/no-unused-vars": "warn"
   }
 }

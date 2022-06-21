@@ -10,8 +10,8 @@
   ],
   "private": false,
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production babel . --out-dir dist/core --copy-files && NODE_ENV=production babel ../support --out-dir dist/support --copy-files",
-    "lint": "eslint --ext .js,.jsx,.mdx ."
+    "build": "rm -rf dist && NODE_ENV=production tsc",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.mdx ."
   },
   "repository": {
     "type": "git",
