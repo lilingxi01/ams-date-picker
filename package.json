@@ -4,10 +4,9 @@
   "description": "The root project of Ams Date Picker.",
   "scripts": {
     "dev": "next dev",
-    "dev:build": "next build",
-    "dev:start": "next start",
-    "build": "cd packages/date-picker && yarn build",
-    "build:manual": "cd packages/user-manual && yarn build",
+    "build": "next build",
+    "start": "next start",
+    "package": "cd packages/headless && yarn build && cd ../date-picker && yarn build && cd ../../",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.mdx ."
   },
   "repository": {
@@ -24,6 +23,7 @@
   },
   "homepage": "https://github.com/lilingxi01/ams-date-picker",
   "dependencies": {
+    "@ams-js/headless": "./packages/headless",
     "@babel/polyfill": "^7.12.1",
     "@fontsource/inter": "^4.5.12",
     "@fontsource/source-serif-4": "^4.5.13",
@@ -58,6 +58,7 @@
     "eslint-config-next": "12.1.5",
     "eslint-plugin-mdx": "^1.17.0",
     "react-markdown": "^8.0.3",
+    "tsup": "^6.2.2",
     "typescript": "^4.7.4"
   }
 }

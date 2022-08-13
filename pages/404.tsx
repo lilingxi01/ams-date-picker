@@ -1,10 +1,10 @@
 import React from 'react';
-import { AmsDesign } from '../packages/support/standards';
+import { Layout } from '../support/stitches.config';
 
 export default function PageInstance() {
   return (
-    <div
-      style={{
+    <Layout
+      css={{
         width: '100%',
         minHeight: '100vh',
         display: 'flex',
@@ -13,11 +13,11 @@ export default function PageInstance() {
         justifyContent: 'center',
         fontSize: '36px',
         fontWeight: '300',
-        color: AmsDesign.color.gray[300],
+        color: '$mauveA8',
         letterSpacing: '-0.01em',
       }}
     >
       This page is under construction.
-    </div>
+    </Layout>
   );
 }

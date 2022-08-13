@@ -8,8 +8,16 @@ import {
   IconWand,
   IconX,
 } from '@tabler/icons';
-import { styled } from '@stitches/react';
-import { AmsDesign } from '../date-picker/utils/standards.js';
+import { styled } from '../support/stitches.config.js';
+
+// Changes made to this file:
+// - Remove all colors, which is deprecated.
+// - Remove all font sizes, which is deprecated.
+
+// Purpose of keeping this file:
+// - This file is the base of user manual. We will not remove it until we finish text transmission.
+
+// ====================================================================================================
 
 // const HelperModalOpenButton = styled.div`
 //   display: flex;
@@ -129,7 +137,6 @@ const HelperModalDiv = styled('div', {});
 const HelperModalContentContainer = ({
   title,
   icon,
-  color = AmsDesign.color.accentColor,
   children,
 }) => {
   const TitleIconComponent = icon;
@@ -146,10 +153,9 @@ const HelperModalContentContainer = ({
           marginLeft: 45,
           marginRight: 5,
           borderRadius: '6px',
-          backgroundColor: color + '16', // Fade out the color for background.
         }}
       >
-        <TitleIconComponent width={28} height={28} strokeWidth={1.9} color={color}/>
+        <TitleIconComponent width={28} height={28} strokeWidth={1.9}/>
       </div>
       <div
         className='helper-modal-content-children'
@@ -172,7 +178,6 @@ const HelperModalContentContainer = ({
             flexDirection: 'row',
             alignItems: 'flex-end',
             justifyContent: 'flex-start',
-            color: color,
           }}
         >
           {title}
@@ -219,14 +224,8 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
         />
       </HelperModalOpenButton>
       <Modal
-        open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        BackdropProps={{
-          style: {
-            backgroundColor: AmsDesign.color.white,
-            opacity: 0.65,
-          },
-        }}
+        // open={isModalOpen}
+        // onClose={() => setIsModalOpen(false)}
       >
         <HelperModalDiv>
           <div
@@ -237,13 +236,10 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-between',
-              backgroundColor: AmsDesign.color.gray[50],
-              borderBottom: '1px solid ' + AmsDesign.color.gray[100],
             }}
           >
             <div style={{
               padding: '21px 25px',
-              color: AmsDesign.color.black,
               fontSize: 20,
               fontWeight: '500',
             }}>
@@ -278,7 +274,6 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
             <HelperModalContentContainer
               title={'Get Started'}
               icon={IconRocket}
-              color={'#ea580c'}
             >
               <p>
                 This date picker is a powerful tool. If this is your first time using it, we recommend you to take some time to read through this.
@@ -299,7 +294,6 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
             <HelperModalContentContainer
               title={'Magic Modifier'}
               icon={IconWand}
-              color={'#db2777'}
             >
               <p>
                 You can use the magic modifier to quickly select the date and time by thinking it in the most intuitive way.
@@ -326,7 +320,6 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
             <HelperModalContentContainer
               title={'Input Supercharge'}
               icon={IconBolt}
-              color={'#1d4ed8'}
             >
               <p>
                 The feature of <b>Input Supercharge</b> is simple: to eliminate the unnecessary input of the date and time.
@@ -353,7 +346,6 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
             <HelperModalContentContainer
               title={'Quick Interval'}
               icon={IconRotateClockwise2}
-              color={'#059669'}
             >
               <p>
                 By default, the magic modifier of the start date will be based on the current time, and the magic modifier of the end date will be based on the start date (or current time if you do not have a start date).
@@ -368,7 +360,6 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
             <HelperModalContentContainer
               title={'GMT and ISO 8601'}
               icon={IconInfinity}
-              color={'#0284c7'}
             >
               <p>
                 We understand that the date format you get might not be readable. Or it is not in the local timezone. No problem! We give you last two additional options to make it easier.

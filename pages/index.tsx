@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import moment from 'moment';
-import { AmsDesign } from '../packages/support/standards.js';
 import { IconLivePhoto } from '@tabler/icons';
 import { Layout, styled } from '../support/stitches.config';
 import { DefinedContainer } from '../components/container';
@@ -61,7 +60,13 @@ export default function Home() {
           zIndex: -1,
           // This is coming from https://cmdk.paco.me/.
           backgroundImage: `
-          radial-gradient(at 27% 37%,#3a8bfd 0,transparent 50%),radial-gradient(at 97% 21%,#9772fe 0,transparent 50%),radial-gradient(at 52% 99%,#fd3a4e 0,transparent 50%),radial-gradient(at 10% 29%,#5afc7d 0,transparent 50%),radial-gradient(at 97% 96%,#e4c795 0,transparent 50%),radial-gradient(at 33% 50%,#8ca8e8 0,transparent 50%),radial-gradient(at 79% 53%,#eea5ba 0,transparent 50%)
+            radial-gradient(at 27% 37%, #3a8bfd 0, transparent 50%),
+            radial-gradient(at 97% 21%, #9772fe 0, transparent 50%),
+            radial-gradient(at 52% 99%, #fd3a4e 0, transparent 50%),
+            radial-gradient(at 10% 29%, #5afc7d 0, transparent 50%),
+            radial-gradient(at 97% 96%, #e4c795 0, transparent 50%),
+            radial-gradient(at 33% 50%, #8ca8e8 0, transparent 50%),
+            radial-gradient(at 79% 53%, #eea5ba 0, transparent 50%)
           `,
           filter: 'blur(100px) saturate(160%)',
           opacity: 0.12,
@@ -138,16 +143,15 @@ export default function Home() {
           alignItems: 'flex-start',
           justifyContent: 'center',
           backgroundColor: '#fefefe',
-          border: `1px solid ${AmsDesign.color.gray[200]}`,
           borderRadius: 20,
           padding: '20px',
         }}
       >
-        <div
-          style={{
+        <Layout
+          css={{
             fontSize: '16px',
             fontWeight: '500',
-            color: AmsDesign.color.accentColor,
+            color: '$primary',
             letterSpacing: '-0.01em',
             paddingBottom: '10px',
             display: 'flex',
@@ -160,7 +164,7 @@ export default function Home() {
         >
           <IconLivePhoto width={18} height={18}/>
           <span>Try out our live demo</span>
-        </div>
+        </Layout>
         <div
           style={{
             width: '100%',

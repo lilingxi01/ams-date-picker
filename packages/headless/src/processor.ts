@@ -10,18 +10,18 @@ const changeDateByAmount = (base, amount, flag) => {
       baseDate.setTime(baseDate.getTime() + (amount * 60 * 60 * 1000));
       break;
     case 'd':
-      const newDate = parseInt(baseDate.getDate()) + parseInt(amount);
+      const newDate = baseDate.getDate() + parseInt(amount);
       baseDate.setDate(newDate);
       break;
     case 'm':
       baseDate.setTime(baseDate.getTime() + (amount * 60 * 1000));
       break;
     case 'mo':
-      const newMonth = parseInt(baseDate.getMonth()) + parseInt(amount);
+      const newMonth = baseDate.getMonth() + parseInt(amount);
       baseDate.setMonth(newMonth);
       break;
     case 'y':
-      const newYear = parseInt(baseDate.getFullYear()) + parseInt(amount);
+      const newYear = baseDate.getFullYear() + parseInt(amount);
       baseDate.setFullYear(newYear);
       break;
   }
@@ -285,3 +285,21 @@ export function parseDate(userInput, baseDate) {
   }
   return updatedDate;
 }
+
+export const isValidDateFormat = (date) => {
+  // Use regular expression to check if date is valid as en-US format.
+  const regex = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+  return regex.test(date);
+};
+
+export const isValidTimeFormat = (date) => {
+  // Use regular expression to check if date is valid as en-US format.
+  const regex = /^\d{1,2}:\d{2}:\d{2}$/;
+  return regex.test(date);
+};
+
+export const isValidDateTimeFormat = (date) => {
+  // Use regular expression to check if date is valid as en-US format.
+  const regex = /^\d{1,2}\/\d{1,2}\/\d{4}[T, ]+(?:|\d{1,2}:\d{1,2}:\d{1,2})$/;
+  return regex.test(date);
+};

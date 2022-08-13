@@ -26,14 +26,10 @@ jobs:
         run: |
           yarn lint
 
-      - name: Package Build Check - Date Picker
+      - name: Package Build Check
         run: |
-          yarn build
-
-      - name: Package Build Check - User Manual
-        run: |
-          yarn build:manual
+          yarn package
 
       - name: Website Build Check
         run: |
-          yarn dev:build
+          yarn build
