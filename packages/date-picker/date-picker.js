@@ -62,12 +62,12 @@ export const AmsDatePicker = ({
         justifyContent: 'center',
         position: 'relative',
         borderRadius: '$md',
-        border: '0.5px solid $gray5',
-        backgroundColor: '$gray2',
+        border: '0.5px solid $mauve5',
+        backgroundColor: '$mauve2',
         transition: AmsDesign.transition.cubic,
         '&:hover': {
           backgroundColor: '$white',
-          border: '0.5px solid $gray7',
+          border: '0.5px solid $mauve7',
         },
         '&:focus-within': {
           backgroundColor: '$white',

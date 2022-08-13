@@ -44,27 +44,27 @@ const AmsDateConflictResolverOption = ({
         cursor: 'pointer',
         transition: AmsDesign.transition.cubic,
         color: isActive
-          ? '$gray12'
-          : '$gray11',
+          ? '$mauve12'
+          : '$mauve11',
         backgroundColor: isActive
           ? '$white'
-          : '$gray3',
+          : '$mauve3',
         border: isActive
-          ? `0.5px solid ${design?.accentColor ?? '$gray5'}`
-          : '0.5px solid $gray4',
+          ? `0.5px solid ${design?.accentColor ?? '$mauve5'}`
+          : '0.5px solid $mauve4',
         boxShadow: isActive
           ? '$md'
           : 'none',
         '&:hover': {
           backgroundColor: isActive
             ? '$white'
-            : '$gray1',
-          border: `0.5px solid ${design?.accentColor ?? '$gray5'}`,
+            : '$mauve1',
+          border: `0.5px solid ${design?.accentColor ?? '$mauve5'}`,
         },
         '&:active': {
           backgroundColor: isActive
             ? '$white'
-            : '$gray2',
+            : '$mauve2',
         },
       }}
     >
@@ -122,7 +122,7 @@ const AmsDateConflictResolverOption = ({
         </Layout>
         <Layout
           css={{
-            color: '$gray9',
+            color: '$mauve9',
             fontSize: '$xxs',
             fontWeight: '500',
             paddingBottom: 1,
@@ -144,8 +144,8 @@ export const AmsDateConflictResolver = ({ date, onChange, design }) => {
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: design?.cornerRadius ?? '12px',
-        backgroundColor: '$gray2',
-        border: `0.5px solid $gray5`,
+        backgroundColor: '$mauve2',
+        border: `0.5px solid $mauve5`,
         overflow: 'hidden',
       }}
       date={date}
@@ -157,7 +157,7 @@ export const AmsDateConflictResolver = ({ date, onChange, design }) => {
           fontSize: '$xs',
           fontWeight: '500',
           padding: '10px 11px',
-          color: '$gray9',
+          color: '$mauve9',
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
