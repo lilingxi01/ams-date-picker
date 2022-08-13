@@ -2,11 +2,30 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import Head from 'next/head';
 import { AmsDesign } from '../packages/support/standards.js';
-import { ContentBody } from '../components/body';
-import { IconCopy, IconLivePhoto } from '@tabler/icons';
+import { IconLivePhoto } from '@tabler/icons';
 import { getHeadTitle } from '../support/head';
 import { Layout, styled } from '../support/stitches.config';
 import { DefinedContainer } from '../components/container';
+
+const HeroTitle = styled('h1', {
+  margin: 0,
+  padding: 0,
+  fontFamily: '$typography',
+  fontSize: 35,
+  fontWeight: 500,
+  letterSpacing: '$title',
+  lineHeight: 1.20,
+  paddingTop: 6,
+  paddingBottom: 10,
+  '@sm': {
+    fontSize: 45,
+    lineHeight: 1.12,
+  },
+  '@md': {
+    fontSize: 50,
+    lineHeight: 1.06,
+  },
+});
 
 const HeroSubtitle = styled('div', {
   fontSize: '$md',
@@ -17,69 +36,6 @@ const HeroSubtitle = styled('div', {
   '& b': {
     fontWeight: 400,
     color: '$mauveA11',
-  },
-});
-
-const InstallCommandBox = styled('div', {
-  '& code': {
-    fontFamily: '"Fira Code", monospace',
-  },
-  fontSize: '14px',
-  fontWeight: '500',
-  color: AmsDesign.color.black,
-  letterSpacing: '-0.01em',
-  backgroundColor: AmsDesign.color.gray[100],
-  padding: '10px 20px',
-  borderRadius: 999,
-  transition: 'color 0.2s ease-in-out, transform 0.1s ease-in-out',
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'flex-start',
-  alignItems: 'center',
-  columnGap: '12px',
-});
-
-const InstallCommandCopyButton = styled(IconCopy, {
-  cursor: 'pointer',
-  color: AmsDesign.color.gray[400],
-  transition: 'color 0.12s ease-in-out',
-  '&:hover': {
-    color: AmsDesign.color.accentColor,
-  },
-});
-
-const SectionContainer = styled('div', {
-  width: '100%',
-  padding: '55px 15px',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: '14px',
-  fontWeight: '400',
-  rowGap: '15px',
-});
-
-const SectionSidebar = styled('div', {
-  flexShrink: 0,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  justifyContent: 'center',
-  rowGap: '18px',
-});
-
-const SectionTitle = styled('div', {
-  color: AmsDesign.color.black,
-  fontSize: '30px',
-  fontWeight: '600',
-  letterSpacing: '-0.01em',
-  '& p': {
-    color: AmsDesign.color.gray[400],
-    fontSize: '15px',
-    fontWeight: '400',
-    padding: '8px 0',
-    margin: '0',
   },
 });
 
@@ -122,8 +78,8 @@ export default function Home() {
       <Layout
         css={{
           width: '100%',
-          paddingTop: 100,
-          paddingBottom: 100,
+          paddingTop: 120,
+          paddingBottom: 120,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
@@ -163,27 +119,9 @@ export default function Home() {
             This project is still a <b>work in progress</b>.
           </Layout>
         </Layout>
-        <Layout
-          css={{
-            fontFamily: '$typography',
-            fontSize: 35,
-            fontWeight: 500,
-            letterSpacing: '$title',
-            lineHeight: 1.20,
-            paddingTop: 6,
-            paddingBottom: 10,
-            '@sm': {
-              fontSize: 45,
-              lineHeight: 1.12,
-            },
-            '@md': {
-              fontSize: 50,
-              lineHeight: 1.06,
-            },
-          }}
-        >
+        <HeroTitle>
           Date picker has never been <em>modern</em> and <em>magical</em> like this.
-        </Layout>
+        </HeroTitle>
         <HeroSubtitle>
           The most <b>modern</b>, <b>efficient</b>, and <b>intuitive</b> way to select the date and time.
         </HeroSubtitle>
@@ -292,51 +230,6 @@ export default function Home() {
           {/* </div>*/}
         </div>
       </div>
-      <SectionContainer
-        css={{
-          display: 'none',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <SectionTitle
-          css={{
-            textAlign: 'center',
-          }}
-        >
-          Use it in your project
-          <p>
-            Power up your project and gracefully satisfy your users today.
-          </p>
-        </SectionTitle>
-        <InstallCommandBox>
-          <code>
-            npm install ams-date-picker
-          </code>
-          <InstallCommandCopyButton
-            width={20}
-            height={20}
-            strokeWidth={1.75}
-            onClick={() => {
-              navigator.clipboard.writeText('npm install ams-date-picker');
-            }}
-          />
-        </InstallCommandBox>
-        <InstallCommandBox>
-          <code>
-            yarn add ams-date-picker
-          </code>
-          <InstallCommandCopyButton
-            width={20}
-            height={20}
-            strokeWidth={1.75}
-            onClick={() => {
-              navigator.clipboard.writeText('yarn add ams-date-picker');
-            }}
-          />
-        </InstallCommandBox>
-      </SectionContainer>
     </DefinedContainer>
   );
 }

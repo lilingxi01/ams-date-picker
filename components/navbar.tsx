@@ -9,8 +9,12 @@ import { DefinedTransition } from '../support/transition';
 import { MiniColorModeSwitcher } from './color-mode-switcher';
 
 const AmsLogo = styled(Logo, {
-  width: 250,
-  height: 36,
+  width: 180,
+  height: 26,
+  '@sm': {
+    width: 250,
+    height: 36,
+  },
   userSelect: 'none',
   pointerEvents: 'none',
   '& path': {
@@ -66,6 +70,7 @@ export const AmsNavigationBar = () => {
         flexDirection: 'row',
         alignItems: 'flex-start',
         justifyContent: 'space-between',
+        columnGap: 10,
       }}
     >
       <Layout
@@ -84,7 +89,7 @@ export const AmsNavigationBar = () => {
             fontSize: '$sm',
             fontWeight: 400,
             color: '$mauve10',
-            lineHeight: 1.2,
+            lineHeight: 1.5,
           }}
         >
           A modern, magical, and headless date picker component.
