@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { AmsDesign } from '../packages/support/standards';
 import { useRouter } from 'next/router';
 import { Layout, styled } from '../support/stitches.config';
 import { DefinedContainer } from './container';

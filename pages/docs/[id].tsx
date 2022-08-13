@@ -1,12 +1,10 @@
 import React from 'react';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
-import { styled } from '../../packages/support/stitches.config';
-import { Layout } from '../../components/layout';
 import { AmsWebsiteStandards } from '../../support/website-standards';
-
 import { promises as fs } from 'fs';
 import path from 'path';
+import { Layout, styled } from '../../support/stitches.config';
 
 const components = {};
 
@@ -14,13 +12,13 @@ const DocumentationContent = styled('div', {
   padding: '0 20px',
 });
 
-export default function AmsDocumentationPage({ source }) {
+export default function PageInstance({ source }) {
   return (
     <Layout
       style={{
         width: '100%',
-        marginTop: AmsWebsiteStandards.dimension.navigationBarHeight,
-        maxWidth: AmsWebsiteStandards.dimension.pageWidth,
+        marginTop: AmsWebsiteStandards.navigationBarHeight,
+        maxWidth: AmsWebsiteStandards.pageWidth,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',

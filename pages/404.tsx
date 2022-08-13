@@ -1,7 +1,7 @@
 import React from 'react';
 import { AmsDesign } from '../packages/support/standards';
 
-const NotFoundPage = () => {
+export default function PageInstance() {
   return (
     <div
       style={{
@@ -20,6 +20,4 @@ const NotFoundPage = () => {
       This page is under construction.
     </div>
   );
-};
-
-export default NotFoundPage;
+}
