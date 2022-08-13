@@ -49,7 +49,7 @@ export default function AmsApp({ Component, pageProps }: AppProps) {
     <ThemeProvider
       attribute={'class'}
       themes={['system', 'light', 'dark']}
-      defaultTheme={'dark'}
+      defaultTheme={'system'}
       value={{
         dark: darkTheme,
       }}

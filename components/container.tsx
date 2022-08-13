@@ -10,11 +10,11 @@ export const DefinedFullSizeFrame = styled('div', {
 });
 
 export const DefinedFullSizeContainer = styled(DefinedFullSizeFrame, {
-  paddingLeft: 24,
-  paddingRight: 24,
-  '@lg': {
-    paddingLeft: 28,
-    paddingRight: 28,
+  paddingLeft: 28,
+  paddingRight: 28,
+  '@sm': {
+    paddingLeft: 30,
+    paddingRight: 30,
   },
 });
 

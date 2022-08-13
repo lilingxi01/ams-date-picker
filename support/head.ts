@@ -1,4 +1,4 @@
-export const getHeadTitle = (title) => {
+export const getHeadTitle = (title: string | null = null) => {
   if (!title) {
     return 'Ams Date Picker';
   }

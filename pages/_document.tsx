@@ -1,6 +1,6 @@
 import React from 'react';
 import { Html, Head, Main, NextScript } from 'next/document';
-import { getCssText } from '../packages/support/stitches.config';
+import { getCssText } from '../support/stitches.config';
 
 const AmsExampleDocument = () => {
   return (
