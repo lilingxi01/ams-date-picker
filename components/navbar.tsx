@@ -1,27 +1,44 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Layout, styled } from '../support/stitches.config';
+import { Layout, LinkLayout, styled } from '../support/stitches.config';
 import { DefinedContainer } from './container';
 import Logo from './svg/logo.svg';
+import Icon from './svg/icon.svg';
 import { DefinedTransition } from '../support/transition';
 import { MiniColorModeSwitcher } from './color-mode-switcher';
+import { IconChevronRight } from '@tabler/icons';
 
 const AmsLogo = styled(Logo, {
   width: 180,
   height: 26,
   '@sm': {
-    width: 250,
-    height: 36,
+    width: 220,
+    height: 32,
   },
   userSelect: 'none',
   pointerEvents: 'none',
   '& path': {
-    fill: '$mauve12 !important',
+    fill: '$primary !important',
   },
   '& g': {
-    stroke: '$mauve12 !important',
+    stroke: '$primary !important',
   },
+  '.dark &': {
+    '& path': {
+      fill: '$mauve12 !important',
+    },
+    '& g': {
+      stroke: '$mauve12 !important',
+    },
+  },
+});
+
+const AmsIcon = styled(Icon, {
+  width: 38,
+  height: 32,
+  userSelect: 'none',
+  pointerEvents: 'none',
 });
 
 type NavigationItemObject = {
@@ -44,12 +61,28 @@ const navigationItems: NavigationItemObject[] = [
   // },
 ];
 
-const AmsNavigationItem = styled('a', {
+const NavigationContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '30px 0',
+  columnGap: 22,
+  '&::before, &::after': {
+    content: '""',
+    width: 24,
+    height: 1,
+    borderRadius: 999,
+    backgroundColor: '$mauveA6',
+  },
+});
+
+const NavigationItem = styled('a', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   fontSize: '$md',
-  fontWeight: 500,
+  fontWeight: 400,
   padding: '5px 0',
   transition: DefinedTransition.cubic(),
   '@sm': {
@@ -66,42 +99,113 @@ export const AmsNavigationBar = () => {
     <DefinedContainer
       css={{
         display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        columnGap: 10,
+        flexDirection: 'column',
+        alignItems: 'center',
+        rowGap: 10,
       }}
     >
       <Layout
         css={{
-          flexShrink: 1,
+          width: '100%',
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
           alignItems: 'flex-start',
-          justifyContent: 'flex-end',
-          rowGap: 5,
+          justifyContent: 'space-between',
+          columnGap: 10,
         }}
       >
-        <AmsLogo viewBox={'0 0 418 50'} />
-        <Layout
-          css={{
-            fontSize: '$sm',
-            fontWeight: 400,
-            color: '$mauve10',
-            lineHeight: 1.5,
-          }}
-        >
-          A modern, magical, and headless date picker component.
-        </Layout>
+        {router.pathname === '/' ? (
+          <Layout
+            css={{
+              flexShrink: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              justifyContent: 'flex-end',
+              rowGap: 3,
+            }}
+          >
+            <AmsLogo viewBox={'0 0 418 50'} />
+            <Layout
+              css={{
+                fontSize: '$sm',
+                fontWeight: 400,
+                color: '$mauve9',
+                lineHeight: 1.5,
+              }}
+            >
+              A modern, magical, and headless date picker component.
+            </Layout>
+          </Layout>
+        ) : (
+          <Layout
+            css={{
+              flexShrink: 1,
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              columnGap: 10,
+            }}
+          >
+            <Link href={'/'} passHref={true}>
+              <LinkLayout
+                css={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  '& rect, & path': {
+                    transition: DefinedTransition.cubic(),
+                    stroke: '$mauveA8 !important',
+                  },
+                  '&:hover': {
+                    '& rect, & path': {
+                      stroke: '$primary !important',
+                    },
+                    '.dark &': {
+                      '& rect, & path': {
+                        stroke: '$mauve12 !important',
+                      },
+                    },
+                  },
+                }}
+              >
+                <AmsIcon viewBox={'0 0 398 214'} />
+              </LinkLayout>
+            </Link>
+            <Layout
+              css={{
+                color: '$mauveA8',
+                lineHeight: 0,
+              }}
+            >
+              <IconChevronRight
+                width={20}
+                height={20}
+                strokeWidth={2.2}
+              />
+            </Layout>
+            <Layout
+              css={{
+                fontSize: '$2xl',
+                fontWeight: 600,
+                color: '$mauve12',
+                lineHeight: 1.2,
+                letterSpacing: '$title',
+                '.dark &': {
+                  color: '$mauve12',
+                },
+              }}
+            >
+              Docs
+            </Layout>
+          </Layout>
+        )}
+        <MiniColorModeSwitcher />
       </Layout>
-      <MiniColorModeSwitcher />
-      <Layout
+      <NavigationContainer
         css={{
-          flexShrink: 0,
           display: 'none',
-          flexDirection: 'column',
-          alignItems: 'flex-end',
-          justifyContent: 'center',
         }}
       >
         {navigationItems.map((item) => (
@@ -110,18 +214,18 @@ export const AmsNavigationBar = () => {
             href={item.href}
             passHref={true}
           >
-            <AmsNavigationItem
+            <NavigationItem
               css={{
                 color: router.pathname === item.href || (item.href !== '/' && router.pathname.startsWith(item.href))
                   ? '$mauveA12'
-                  : '$mauveA8',
+                  : '$mauveA9',
               }}
             >
               {item.label}
-            </AmsNavigationItem>
+            </NavigationItem>
           </Link>
         ))}
-      </Layout>
+      </NavigationContainer>
     </DefinedContainer>
   );
 };
