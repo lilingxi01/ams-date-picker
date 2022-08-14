@@ -128,10 +128,13 @@ export const AmsNavigationBar = () => {
             <AmsLogo viewBox={'0 0 418 50'} />
             <Layout
               css={{
-                fontSize: '$sm',
+                fontSize: '$xs',
                 fontWeight: 400,
                 color: '$mauve9',
                 lineHeight: 1.5,
+                '@sm': {
+                  fontSize: '$sm',
+                },
               }}
             >
               A modern, magical, and headless date picker for React.

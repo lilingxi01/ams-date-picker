@@ -4,22 +4,24 @@ import '@fontsource/source-serif-4/variable-full-italic.css';
 
 import React, { useEffect } from 'react';
 import type { AppProps } from 'next/app';
-import { styled } from '@stitches/react';
 import { AmsNavigationBar } from '../components/navbar';
 import { AmsWebsiteFooter } from '../components/footer';
 import { ThemeProvider } from 'next-themes';
-import { darkTheme, globalCss } from '../support/stitches.config';
+import { darkTheme, globalCss, styled } from '../support/stitches.config';
 
 import '../styles/globals.css';
 
 const WebsiteBody = styled('div', {
   width: '100%',
-  padding: '100px 0 20px 0',
+  padding: '40px 0 40px 0',
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+  '@sm': {
+    padding: '95px 0 50px 0',
+  },
 });
 
 const PageBody = styled('div', {
