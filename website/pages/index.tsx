@@ -50,7 +50,7 @@ export default function Home() {
         justifyContent: 'center',
         position: 'relative',
         zIndex: 0,
-        '&::before': {
+        '&::after': {
           content: '""',
           position: 'absolute',
           top: 0,
@@ -68,7 +68,8 @@ export default function Home() {
             radial-gradient(at 78% 52%, #ef4444 0, transparent 50%)
           `,
           filter: 'blur(100px) saturate(160%)',
-          opacity: 0.12,
+          opacity: 0.11,
+          transform: 'translateZ(0)',
         },
       }}
     >
