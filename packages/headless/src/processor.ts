@@ -1,5 +1,11 @@
+type DateChangeFlag = 's' | 'h' | 'd' | 'm' | 'mo' | 'y' | undefined;
+
 // This function is a mix of the `addAction` and `minusAction` functions because we can pass a negative value in.
-const changeDateByAmount = (base, amount, flag) => {
+function changeDateByAmount(
+  base: Date,
+  amount: number,
+  flag: DateChangeFlag,
+): Date {
   const baseDate = new Date(base);
 
   switch (flag) {
@@ -10,45 +16,45 @@ const changeDateByAmount = (base, amount, flag) => {
       baseDate.setTime(baseDate.getTime() + (amount * 60 * 60 * 1000));
       break;
     case 'd':
-      const newDate = baseDate.getDate() + parseInt(amount);
+      const newDate = baseDate.getDate() + amount;
       baseDate.setDate(newDate);
       break;
     case 'm':
       baseDate.setTime(baseDate.getTime() + (amount * 60 * 1000));
       break;
     case 'mo':
-      const newMonth = baseDate.getMonth() + parseInt(amount);
+      const newMonth = baseDate.getMonth() + amount;
       baseDate.setMonth(newMonth);
       break;
     case 'y':
-      const newYear = baseDate.getFullYear() + parseInt(amount);
+      const newYear = baseDate.getFullYear() + amount;
       baseDate.setFullYear(newYear);
       break;
   }
 
   return baseDate;
-};
+}
 
 // A function parse the month number to a string of the month name.
-const parseMonthName = (monthNumber) => {
+function parseMonthName(monthNumber: number): string {
   return new Date(0, monthNumber - 1)
     .toLocaleString('en-US', { month: 'long' });
-};
+}
 
 // A function checking if the current area is in Daylight Saving Time area.
-const isDaylightSavingArea = () => {
+function isDaylightSavingArea(): boolean {
   const date = new Date();
   const january = new Date(date.getFullYear(), 0, 1); // January 1st.
   const july = new Date(date.getFullYear(), 6, 1); // July 1st.
   return january.getTimezoneOffset() !== july.getTimezoneOffset(); // If the timezone offset is not the same, it is in DST area.
-};
+}
 
 /**
  * Check if the given time in under a potential conflict of the daylight saving time.
  * @param {Date} date - The date to check.
  * @return {boolean} - True if it is under the conflict of daylight saving time.
  */
-export function isInDaylightSavingConflictTime(date) {
+export function isInDaylightSavingConflictTime(date): boolean {
   if (!isDaylightSavingArea()) { // If it is not in DST area, it will never be in a conflict time.
     return false;
   }
@@ -75,10 +81,10 @@ export function isInDaylightSavingConflictTime(date) {
  * Set the timezone of a date to the given timezone.
  *
  * @param {Date} date - The date to set the timezone.
- * @param {number | null} offset - The offset of the timezone.
+ * @param {number} offset - The offset of the timezone.
  * @return {Date} - The date with the timezone set.
  */
-export function setTimezoneByOffset(date, offset) {
+export function setTimezoneByOffset(date: Date, offset: number): Date {
   const newDate = new Date(date);
   newDate.setTime(date.getTime() - (date.getTimezoneOffset() - offset) * 60 * 1000);
   return newDate;
@@ -108,7 +114,7 @@ export function setTimezoneByOffset(date, offset) {
  * @throws {Error} - Throws an error if the input is not valid.
  * @return {Date} - DateTime object.
  */
-export function parseDate(userInput, baseDate) {
+export function parseDate(userInput: string, baseDate: Date): Date {
   // The date object to be returned.
   let updatedDate = new Date(baseDate);
   // Separate the user input string into an array of strings (in order to determine each modifier).
@@ -124,20 +130,26 @@ export function parseDate(userInput, baseDate) {
     // Get the first element from the array.
     const currentModifier = modifiers.shift();
 
-    if (currentModifier.length === 0) {
+    if (!currentModifier || !currentModifier.length) {
       continue;
     }
 
+    let iso8601Matches: RegExpMatchArray | null = null;
+    let timeMatches: RegExpMatchArray | null = null;
+    let dateMatches: RegExpMatchArray | null = null;
+
     if (
       // Match the ISO 8601 format. Experimental!
-      currentModifier.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d+)?)(Z|([+-])(\d{2}):(\d{2}))$/)
+      (iso8601Matches = currentModifier
+        .match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d+)?)(Z|([+-])(\d{2}):(\d{2}))$/))
+      && iso8601Matches.length > 0
     ) {
-      const matches = currentModifier.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d+)?)(Z|([+-])(\d{2}):(\d{2}))$/);
-      const year = parseInt(matches[1], 0);
-      const month = parseInt(matches[2], 0) - 1;
-      const day = parseInt(matches[3], 0);
-      const hour = parseInt(matches[4], 0);
-      const minute = parseInt(matches[5], 0);
+      const matches = iso8601Matches;
+      const year = parseInt(matches[1]);
+      const month = parseInt(matches[2]) - 1;
+      const day = parseInt(matches[3]);
+      const hour = parseInt(matches[4]);
+      const minute = parseInt(matches[5]);
       const secondAndMillisecond = matches[6].split('.');
       const [second, millisecond] = (
         secondAndMillisecond.length > 1
@@ -149,8 +161,8 @@ export function parseDate(userInput, baseDate) {
       if (timezone !== 'Z') {
         // In non-UTC timezone.
         const timezonePrefix = matches[8];
-        const timezoneHour = parseInt(matches[9], 0);
-        const timezoneMinute = parseInt(matches[10], 0);
+        const timezoneHour = parseInt(matches[9]);
+        const timezoneMinute = parseInt(matches[10]);
         const timezoneOffset = (timezonePrefix === '-' ? 1 : -1) * timezoneHour * 60 + timezoneMinute;
         updatedDate = new Date(
           year,
@@ -173,9 +185,9 @@ export function parseDate(userInput, baseDate) {
       const amount = currentModifier.replace(/\D/g, '');
       const flag = currentModifier.replace(/\W/g, '').replace(/\d/g, '').toLowerCase();
       if (prefix === '+') {
-        updatedDate = changeDateByAmount(updatedDate, amount, flag);
+        updatedDate = changeDateByAmount(updatedDate, parseInt(amount) ?? 0, flag as DateChangeFlag ?? undefined);
       } else {
-        updatedDate = changeDateByAmount(updatedDate, -amount, flag);
+        updatedDate = changeDateByAmount(updatedDate, -amount, flag as DateChangeFlag ?? undefined);
       }
     } else if (
       /* If this is a now modifier. */
@@ -185,22 +197,17 @@ export function parseDate(userInput, baseDate) {
       updatedDate = new Date();
     } else if (
       /* If this is a time. */
-      currentModifier.toLowerCase().match(/^\d{1,2}(?::\d{2}){0,2}(am|pm)?$/g)
+      (timeMatches = currentModifier.toLowerCase()
+        .match(/^\d{1,2}(?::\d{2}){0,2}(am|pm)?$/))
+      && timeMatches?.length > 0
     ) {
       // Parse the time.
-      const matches = currentModifier
-        .toLowerCase()
-        .match(/^\d{1,2}(?::\d{2}){0,2}(am|pm)?$/);
-
-      if (matches.length < 1) {
-        continue;
-      }
-
+      const matches = timeMatches;
       const time = matches[0].replace(/(am|pm)/g, '');
       const timeArray = time.split(':');
-      const hour = timeArray[0];
-      const minute = timeArray[1] || 0;
-      const second = timeArray[2] || 0;
+      const hour = parseInt(timeArray[0]);
+      const minute = parseInt(timeArray[1]) ?? 0;
+      const second = parseInt(timeArray[2]) ?? 0;
 
       if (hour >= 24) {
         throw new Error('Invalid hour. The hour must be between 0 and 23.');
@@ -210,31 +217,26 @@ export function parseDate(userInput, baseDate) {
         throw new Error('Invalid second. The second must be between 0 and 59.');
       }
       // If the user types `12am`, we need to set the hour to 0.
-      const hourInt = ((matches[1] === 'am') && (hour === '12')) ? 0 : parseInt(hour);
-      const minuteInt = parseInt(minute);
-      const secondInt = parseInt(second);
-      const ampmInt = (matches[1] || 'am') === 'am' ? 0 : (hourInt > 11 ? 0 : 12);
+      const hourInt = ((matches[1] === 'am') && (hour === 12)) ? 0 : hour;
+      const minuteInt = minute;
+      const secondInt = second;
+      const ampmInt = (matches[1] ?? 'am') === 'am' ? 0 : (hourInt > 11 ? 0 : 12);
 
       updatedDate.setHours(hourInt + ampmInt);
       updatedDate.setMinutes(minuteInt);
       updatedDate.setSeconds(secondInt);
     } else if (
       /* If this is a date. */
-      currentModifier.toLowerCase().match(/^\d{1,2}\/\d{1,2}(?:|\/\d{2}|\/\d{4})$/g)
+      (dateMatches = currentModifier.toLowerCase()
+        .match(/^(\d{1,2}\/\d{1,2}(?:|\/\d{2}|\/\d{4}))$/))
+      && dateMatches?.length > 0
     ) {
       // Parse the date.
-      const matches = currentModifier.toLowerCase().match(
-        /^(\d{1,2}\/\d{1,2}(?:|\/\d{2}|\/\d{4}))$/
-      );
-
-      if (matches.length < 1) {
-        continue;
-      }
-
+      const matches = dateMatches;
       const dateArray = matches[1].split('/');
-      const month = parseInt(dateArray[0]) || 1;
-      const day = parseInt(dateArray[1]) || 1;
-      const year = parseInt(dateArray[2]) || updatedDate.getFullYear();
+      const month = parseInt(dateArray[0]) ?? 1;
+      const day = parseInt(dateArray[1]) ?? 1;
+      const year = parseInt(dateArray[2]) ?? updatedDate.getFullYear();
 
       // Throw errors if the date is invalid.
       if (month > 12) {
@@ -286,20 +288,20 @@ export function parseDate(userInput, baseDate) {
   return updatedDate;
 }
 
-export const isValidDateFormat = (date) => {
+export function isValidDateFormat(date: string): boolean {
   // Use regular expression to check if date is valid as en-US format.
   const regex = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
   return regex.test(date);
-};
+}
 
-export const isValidTimeFormat = (date) => {
+export function isValidTimeFormat(date: string): boolean {
   // Use regular expression to check if date is valid as en-US format.
   const regex = /^\d{1,2}:\d{2}:\d{2}$/;
   return regex.test(date);
-};
+}
 
-export const isValidDateTimeFormat = (date) => {
+export function isValidDateTimeFormat(date: string): boolean {
   // Use regular expression to check if date is valid as en-US format.
   const regex = /^\d{1,2}\/\d{1,2}\/\d{4}[T, ]+(?:|\d{1,2}:\d{1,2}:\d{1,2})$/;
   return regex.test(date);
-};
+}
