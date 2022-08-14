@@ -1,10 +1,11 @@
 import React from 'react';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
-import { AmsWebsiteStandards } from '../../support/website-standards';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { Layout, styled } from '../../support/stitches.config';
+import { DefinedContainer } from '../../components/container';
+import { DefinedSEO } from '../../components/seo';
 
 const components = {};
 
@@ -14,25 +15,26 @@ const DocumentationContent = styled('div', {
 
 export default function PageInstance({ source }) {
   return (
-    <Layout
-      style={{
-        width: '100%',
-        marginTop: AmsWebsiteStandards.navigationBarHeight,
-        maxWidth: AmsWebsiteStandards.pageWidth,
+    <DefinedContainer
+      css={{
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'flex-start',
       }}
     >
+      <DefinedSEO
+        pageTitle={'Docs Detail'}
+        avoidIndexing={true}
+      />
       <Layout
-        style={{
+        css={{
           width: '240px',
           height: '100vh',
           position: 'sticky',
           top: 0,
           left: 0,
-          borderRight: '1px solid #e0e0e0',
+          borderRight: '1px solid $layoutBorder',
           flexShrink: 0,
           padding: '30px',
         }}
@@ -47,7 +49,7 @@ export default function PageInstance({ source }) {
       >
         <MDXRemote {...source} components={components} />
       </DocumentationContent>
-    </Layout>
+    </DefinedContainer>
   );
 }
 

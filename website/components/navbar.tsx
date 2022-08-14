@@ -11,10 +11,10 @@ import { IconChevronRight } from '@tabler/icons';
 
 const AmsLogo = styled(Logo, {
   width: 180,
-  height: 26,
+  height: 25,
   '@sm': {
     width: 220,
-    height: 32,
+    height: 31,
   },
   userSelect: 'none',
   pointerEvents: 'none',
@@ -154,6 +154,7 @@ export const AmsNavigationBar = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  transition: DefinedTransition.cubic(),
                   '& rect, & path': {
                     transition: DefinedTransition.cubic(),
                     stroke: '$mauveA8 !important',
@@ -167,6 +168,9 @@ export const AmsNavigationBar = () => {
                         stroke: '$mauve12 !important',
                       },
                     },
+                  },
+                  '&:active': {
+                    transform: 'scale(0.95)',
                   },
                 }}
               >

@@ -1,20 +1,15 @@
 import React from 'react';
-import Head from 'next/head';
-import { AmsWebsiteStandards } from '../../support/website-standards';
-import { getHeadTitle } from '../../support/head';
-import { Layout } from '../../support/stitches.config';
+import { DefinedSEO } from '../../components/seo';
+import { DefinedContainer } from '../../components/container';
 
 export default function PageInstance() {
   return (
-    <Layout
-      style={{
-        paddingTop: AmsWebsiteStandards.navigationBarHeight,
-      }}
-    >
-      <Head>
-        <title>{getHeadTitle('Use Cases')}</title>
-      </Head>
+    <DefinedContainer>
+      <DefinedSEO
+        pageTitle={'Use Cases'}
+        avoidIndexing={true}
+      />
       <div>Use Cases Home</div>
-    </Layout>
+    </DefinedContainer>
   );
 }
