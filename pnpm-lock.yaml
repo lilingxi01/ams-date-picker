@@ -6,6 +6,7 @@ importers:
     specifiers:
       '@playwright/test': ^1.25.0
       '@taci-tech/eslint-config': ^0.0.3
+      '@types/react': 18.0.12
       '@typescript-eslint/eslint-plugin': ^5.27.1
       '@typescript-eslint/parser': ^5.27.1
       eslint: ^8.15.0
@@ -15,6 +16,7 @@ importers:
     devDependencies:
       '@playwright/test': 1.25.0
       '@taci-tech/eslint-config': 0.0.3_eslint@8.22.0
+      '@types/react': 18.0.12
       '@typescript-eslint/eslint-plugin': 5.33.0_yy5c4q6zhpajzhorvwhnwvctfe
       '@typescript-eslint/parser': 5.33.0_4rv7y5c6xz3vfxwhbrcxxi73bq
       eslint: 8.22.0
