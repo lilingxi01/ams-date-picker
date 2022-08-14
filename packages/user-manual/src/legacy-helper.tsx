@@ -1,14 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {
-  IconBolt,
-  IconHelp,
-  IconInfinity,
-  IconRocket,
-  IconRotateClockwise2,
-  IconWand,
-  IconX,
-} from '@tabler/icons';
-import { styled } from '../support/stitches.config.js';
 
 // Changes made to this file:
 // - Remove all colors, which is deprecated.
@@ -30,8 +20,6 @@ import { styled } from '../support/stitches.config.js';
 //     color: ${BPColors.gray[900]};
 //   }
 // `;
-// TODO: Rebuild style above.
-const HelperModalOpenButton = styled('div', {});
 
 // The styled div for the helper modal root.
 // const HelperModalDiv = styled.div`
@@ -131,65 +119,6 @@ const HelperModalOpenButton = styled('div', {});
 //   }
 // `;
 // TODO: Rebuild style above.
-const HelperModalDiv = styled('div', {});
-
-// The subcomponent for the helper modal content.
-const HelperModalContentContainer = ({
-  title,
-  icon,
-  children,
-}) => {
-  const TitleIconComponent = icon;
-  return (
-    <div className="helper-modal-content-container">
-      <div
-        style={{
-          flexShrink: 0,
-          width: 42,
-          height: 42,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginLeft: 45,
-          marginRight: 5,
-          borderRadius: '6px',
-        }}
-      >
-        <TitleIconComponent width={28} height={28} strokeWidth={1.9}/>
-      </div>
-      <div
-        className='helper-modal-content-children'
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          flexGrow: 1,
-          padding: '0px 20px',
-          rowGap: '12px',
-        }}
-      >
-        <h1
-          style={{
-            height: 50,
-            paddingBottom: 8,
-            fontSize: 42,
-            fontWeight: '500',
-            lineHeight: 1.0,
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'flex-end',
-            justifyContent: 'flex-start',
-          }}
-        >
-          {title}
-        </h1>
-        {children}
-      </div>
-    </div>
-  );
-};
-
-// TODO: Use the real modal instead.
-const Modal = styled('div', {});
 
 // TODO: Rebuild the HTML structure with separated Markdown files.
 export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
@@ -214,49 +143,8 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
 
   return (
     <>
-      <HelperModalOpenButton
-        onClick={() => setIsModalOpen(true)}
-      >
-        <IconHelp
-          width={16}
-          height={16}
-          strokeWidth={2.2}
-        />
-      </HelperModalOpenButton>
-      <Modal
-        // open={isModalOpen}
-        // onClose={() => setIsModalOpen(false)}
-      >
-        <HelperModalDiv>
-          <div
-            style={{
-              width: '100%',
-              flexShrink: 0,
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            <div style={{
-              padding: '21px 25px',
-              fontSize: 20,
-              fontWeight: '500',
-            }}>
-              Shortcut Commands Help
-            </div>
-            <div
-              className="helper-modal-close-btn"
-              onClick={() => setIsModalOpen(false)}
-            >
-              <span>Close</span>
-              <IconX
-                width={22}
-                height={22}
-                strokeWidth={2.5}
-              />
-            </div>
-          </div>
+      <div>
+        <div>
           <div
             style={{
               width: '100%',
@@ -271,9 +159,8 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
               rowGap: 30,
             }}
           >
-            <HelperModalContentContainer
+            <div
               title={'Get Started'}
-              icon={IconRocket}
             >
               <p>
                 This date picker is a powerful tool. If this is your first time using it, we recommend you to take some time to read through this.
@@ -290,10 +177,9 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
               <p>
                 After confirming, you can see the selected date in a readable format, so you can still make sure that you are doing the right thing. Alright, let&apos;s see what kind of magics you can do with us!
               </p>
-            </HelperModalContentContainer>
-            <HelperModalContentContainer
+            </div>
+            <div
               title={'Magic Modifier'}
-              icon={IconWand}
             >
               <p>
                 You can use the magic modifier to quickly select the date and time by thinking it in the most intuitive way.
@@ -316,10 +202,9 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
               <p>
                 It is also possible to use the <code>now</code> keyword to indicate the current time if you need to.
               </p>
-            </HelperModalContentContainer>
-            <HelperModalContentContainer
+            </div>
+            <div
               title={'Input Supercharge'}
-              icon={IconBolt}
             >
               <p>
                 The feature of <b>Input Supercharge</b> is simple: to eliminate the unnecessary input of the date and time.
@@ -342,10 +227,9 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
               <p>
                 Oh! You know what? We are not restricting the time format at all! When you want to select 9 PM, you can type <code>9 PM</code> with space, <code>9PM</code> without space, or even <code>21:00</code> in 24 hour format. All of them will work as expected. Feel unsafe on different formats? Just hit <code>Enter</code>, and then the final selections will all be shown in the same standard format.
               </p>
-            </HelperModalContentContainer>
-            <HelperModalContentContainer
+            </div>
+            <div
               title={'Quick Interval'}
-              icon={IconRotateClockwise2}
             >
               <p>
                 By default, the magic modifier of the start date will be based on the current time, and the magic modifier of the end date will be based on the start date (or current time if you do not have a start date).
@@ -356,10 +240,9 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
               <p>
                 But, if you want to modify the time based on the current time, then how can you do that? Well, we have introduced a modifier called <code>now</code>, which means the current time. So, if you want to set the end date to be 1 hour before now, not based on the start date, you can use <code>now</code> modifier first and then use hour modifier: <code>now -1h</code> (do not forget the space between every modifiers), which means subtract one hour from the current time.
               </p>
-            </HelperModalContentContainer>
-            <HelperModalContentContainer
+            </div>
+            <div
               title={'GMT and ISO 8601'}
-              icon={IconInfinity}
             >
               <p>
                 We understand that the date format you get might not be readable. Or it is not in the local timezone. No problem! We give you last two additional options to make it easier.
@@ -370,10 +253,10 @@ export const AmsDatePickerHelper = ({ onOpen, onClose }) => {
               <p>
                 Another case is that you are getting a time in GMT timezone from one of your colleagues. However, all date pickers are local-timezone-based, so you need to convert it to your local timezone. With the help of <code>gmt</code> modifier, you can do that with ease. For example, someone told you the time should be in GMT 01/01/2022 9PM. You have no idea what this is in your local timezone. Well, you can simply put <code>gmt 01/01/2022 9PM</code> in the input box, and hit <code>Enter</code>. The date picker will convert it to your local timezone automatically.
               </p>
-            </HelperModalContentContainer>
+            </div>
           </div>
-        </HelperModalDiv>
-      </Modal>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { Layout, RichStyle } from '../../support/stitches.config';
+import { Layout, RichStyle } from './support/date-picker-stitches';
 import React from 'react';
 import { AmsTransition, deepMerge } from './support/styled';
 import * as DatePicker from '@ams-js/headless';

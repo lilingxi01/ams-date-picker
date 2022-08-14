@@ -1,4 +1,4 @@
-import { RichStyle } from '../../../support/stitches.config';
+import { RichStyle } from './date-picker-stitches';
 
 type DeepMergeCandidate = RichStyle | undefined | null;
 

@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useRef, useState } from 'r
 import { styled } from '@stitches/react';
 import { isInDaylightSavingConflictTime } from '../../headless/src/processor.js';
 import { IconAlertCircle, IconCheck } from '@tabler/icons';
-import { Layout } from '../../support/stitches.config';
+import { Layout } from './support/date-picker-stitches';
 
 // TODO: rebuild entire headful package based on headless package.
 
