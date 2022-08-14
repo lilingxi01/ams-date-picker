@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "package": "cd packages/headless && yarn build && cd ../date-picker && yarn build && cd ../../",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.mdx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.mdx .",
+    "publish:headless": "cd packages/headless && yarn build && yarn publish --access public"
   },
   "repository": {
     "type": "git",
