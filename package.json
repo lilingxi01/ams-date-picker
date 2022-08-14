@@ -2,8 +2,9 @@
   "name": "ams-date-picker",
   "private": true,
   "scripts": {
+    "build": "pnpm -F website build",
+    "dev": "pnpm -F website dev",
     "package": "pnpm -F headless build && pnpm -F date-picker build && pnpm -F user-manual build",
-    "website": "pnpm -F website dev",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.mdx ./packages ./website"
   },
   "keywords": [

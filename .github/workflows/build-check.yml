@@ -20,26 +20,20 @@ jobs:
 
       - name: Run Install
         run: |
-          yarn
+          pnpm install
 
       - name: Lint Check
         run: |
-          yarn lint
+          pnpm lint
 
       - name: Package Build Check - Headless
         run: |
-          cd packages/headless
-          yarn
-          yarn build
-          cd ../..
+          pnpm -F headless build
 
       - name: Package Build Check - Date Picker
         run: |
-          cd packages/date-picker
-          yarn
-          yarn build
-          cd ../..
+          pnpm -F date-picker build
 
       - name: Website Build Check
         run: |
-          yarn build
+          pnpm build
