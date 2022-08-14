@@ -60,19 +60,15 @@ export default function Home() {
           zIndex: -1,
           // This is coming from https://cmdk.paco.me/.
           backgroundImage: `
-            radial-gradient(at 27% 37%, #3a8bfd 0, transparent 50%),
-            radial-gradient(at 97% 21%, #9772fe 0, transparent 50%),
-            radial-gradient(at 52% 99%, #fd3a4e 0, transparent 50%),
-            radial-gradient(at 10% 29%, #5afc7d 0, transparent 50%),
-            radial-gradient(at 97% 96%, #e4c795 0, transparent 50%),
-            radial-gradient(at 33% 50%, #8ca8e8 0, transparent 50%),
-            radial-gradient(at 79% 53%, #eea5ba 0, transparent 50%)
+            radial-gradient(at 27% 33%, #34d399 0, transparent 50%),
+            radial-gradient(at 54% 96%, #f59e0b 0, transparent 50%),
+            radial-gradient(at 10% 25%, #4ade80 0, transparent 50%),
+            radial-gradient(at 96% 96%, #facc15 0, transparent 50%),
+            radial-gradient(at 30% 55%, #84cc16 0, transparent 50%),
+            radial-gradient(at 78% 52%, #ef4444 0, transparent 50%)
           `,
           filter: 'blur(100px) saturate(160%)',
           opacity: 0.12,
-          '.dark &': {
-            opacity: 0.12,
-          },
         },
       }}
     >
