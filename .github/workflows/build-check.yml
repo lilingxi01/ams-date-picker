@@ -26,9 +26,19 @@ jobs:
         run: |
           yarn lint
 
-      - name: Package Build Check
+      - name: Package Build Check - Headless
         run: |
-          yarn package
+          cd packages/headless
+          yarn
+          yarn build
+          cd ../../
+
+      - name: Package Build Check - Date Picker
+        run: |
+          cd packages/date-picker
+          yarn
+          yarn build
+          cd ../../
 
       - name: Website Build Check
         run: |
