@@ -31,14 +31,14 @@ jobs:
           cd packages/headless
           yarn
           yarn build
-          cd ../../
+          cd ../..
 
       - name: Package Build Check - Date Picker
         run: |
           cd packages/date-picker
           yarn
           yarn build
-          cd ../../
+          cd ../..
 
       - name: Website Build Check
         run: |

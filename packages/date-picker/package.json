@@ -30,5 +30,8 @@
   "dependencies": {
     "@ams-js/headless": "^0.0.1",
     "@radix-ui/react-popover": "^0.1.6"
+  },
+  "devDependencies": {
+    "tsup": "^6.2.2"
   }
 }
