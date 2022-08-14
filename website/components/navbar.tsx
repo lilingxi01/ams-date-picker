@@ -134,7 +134,7 @@ export const AmsNavigationBar = () => {
                 lineHeight: 1.5,
               }}
             >
-              A modern, magical, and headless date picker component.
+              A modern, magical, and headless date picker for React.
             </Layout>
           </Layout>
         ) : (
