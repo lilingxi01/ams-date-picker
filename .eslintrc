@@ -1,6 +1,8 @@
 {
-  "parser": "@babel/eslint-parser",
-  "extends": ["plugin:mdx/recommended", "next/core-web-vitals", "@taci-tech"],
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["plugin:mdx/recommended", "@taci-tech"],
   "overrides": [
     {
       "files": "*.mdx",
@@ -23,8 +25,11 @@
   "rules": {
     "react-hooks/exhaustive-deps": "off",
     "operator-linebreak": ["error", "before"],
-    "no-unused-vars": "warn",
     "max-len": "off",
-    "quote-props": "off"
+    "quote-props": "off",
+    // For TypeScript:
+    "no-unused-vars": "off",
+    "react/display-name": "off",
+    "@typescript-eslint/no-unused-vars": "warn"
   }
 }

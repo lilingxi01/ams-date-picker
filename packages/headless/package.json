@@ -1,8 +1,6 @@
 {
-  "name": "@ams-js/user-manual",
+  "name": "@ams-js/headless",
   "version": "0.0.1",
-  "description": "The user manual component for a magic date picker component in React.",
-  "type": "module",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -10,10 +8,6 @@
   "files": [
     "dist"
   ],
-  "private": false,
-  "scripts": {
-    "build": "rm -rf dist && tsup src"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lilingxi01/ams-date-picker.git"
@@ -26,16 +20,14 @@
     "url": "https://github.com/lilingxi01/ams-date-picker/issues"
   },
   "homepage": "https://github.com/lilingxi01/ams-date-picker",
+  "scripts": {
+    "build": "rm -rf dist && tsup src"
+  },
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "tsup": "^6.2.2"
-  },
-  "dependencies": {
-    "@stitches/react": "^1.2.8"
   }
 }

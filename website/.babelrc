@@ -1,0 +1,15 @@
+{
+  "presets": [
+    "@babel/preset-react",
+    "next/babel"
+  ],
+  "plugins": [
+    "inline-react-svg",
+    ["babel-plugin-inline-import", {
+      "extensions": [
+        ".md",
+        ".mdx"
+      ]
+    }]
+  ]
+}

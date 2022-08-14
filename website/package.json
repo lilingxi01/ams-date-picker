@@ -1,0 +1,48 @@
+{
+  "name": "@ams-js/website",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@ams-js/headless": "workspace:^",
+    "@babel/polyfill": "^7.12.1",
+    "@fontsource/inter": "^4.5.12",
+    "@fontsource/source-serif-4": "^4.5.13",
+    "@mdx-js/loader": "^2.1.2",
+    "@mdx-js/react": "^2.1.2",
+    "@next/mdx": "^12.2.5",
+    "@radix-ui/colors": "^0.1.8",
+    "@radix-ui/react-dialog": "^1.0.0",
+    "@radix-ui/react-popover": "^1.0.0",
+    "@stitches/react": "^1.2.8",
+    "@tabler/icons": "^1.82.0",
+    "babel-plugin-inline-react-svg": "^2.0.1",
+    "moment": "^2.29.3",
+    "next": "12.1.5",
+    "next-mdx-remote": "^4.0.3",
+    "next-themes": "^0.2.0",
+    "next-transpile-modules": "^9.0.0",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "remark-gfm": "^3.0.1",
+    "webpack": "^5.74.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.12",
+    "@babel/preset-react": "^7.16.7",
+    "@types/node": "17.0.40",
+    "@types/react": "18.0.12",
+    "@types/react-dom": "18.0.5",
+    "babel-plugin-inline-import": "^3.0.0",
+    "eslint": "^8.15.0",
+    "eslint-config-next": "12.1.5",
+    "eslint-plugin-mdx": "^1.17.0",
+    "react-markdown": "^8.0.3",
+    "tsup": "^6.2.2",
+    "typescript": "^4.7.4"
+  }
+}

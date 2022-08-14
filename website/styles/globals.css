@@ -1,0 +1,81 @@
+html, body {
+    font-family: 'InterVariable', 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Helvetica Neue, sans-serif;
+}
+
+html {
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: clip;
+    overflow-y: scroll;
+}
+
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: clip;
+    position: relative;
+
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    --removed-body-scroll-bar-size: 0px;
+}
+
+.width-before-scroll-bar {
+    margin-right: var(--removed-body-scroll-bar-size) !important;
+}
+
+input, button, textarea, label {
+    font-family: 'InterVariable', 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Helvetica Neue, sans-serif;
+}
+
+* em {
+    font-family: 'Source Serif 4Variable', 'Source Serif 4', serif !important;
+    font-size: 1.02em; /* May need adjustment in the future (originally 1.12em) */
+    letter-spacing: 0.003em !important;
+    line-height: normal;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+* {
+    -webkit-font-smoothing: antialiased !important;
+    font-variation-settings: 'opsz' 30;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+}
+
+*::selection {
+    background-color: #0281f1 !important;
+    color: #fefefe !important;
+}
+
+*::-moz-selection {
+    background-color: #0281f1 !important;
+    color: #fefefe !important;
+}
+
+html.dark *::selection {
+    background-color: #fefefe !important;
+    color: #101012 !important;
+}
+
+html.dark *::-moz-selection {
+    background-color: #fefefe !important;
+    color: #101012 !important;
+}
