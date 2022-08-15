@@ -106,7 +106,7 @@ type InputItemObject = {
   trailingSpace?: boolean;
 };
 
-type TimeMachineSimulationProps = {
+type SimulationProps = {
   css?: RichStyle;
   text: string;
   slogan?: string;
@@ -114,13 +114,13 @@ type TimeMachineSimulationProps = {
   targetMoment: Moment;
 };
 
-export function TimeMachineSimulation({
+export function Simulation({
   css,
   text,
   slogan = 'Yes, it\'s that fast.',
   inputs,
   targetMoment: targetMomentProps,
-}: TimeMachineSimulationProps) {
+}: SimulationProps) {
   const [step, setStep] = useState<number>(0);
   const timeout = useRef<NodeJS.Timeout | null>(null);
   const targetMoment = useMemo<Moment>(() => targetMomentProps, [targetMomentProps]);
@@ -169,7 +169,6 @@ export function TimeMachineSimulation({
             <Layout
               className={'start-animation-div'}
               css={{
-                width: '100%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -182,11 +181,12 @@ export function TimeMachineSimulation({
                 letterSpacing: '$text',
                 '@sm': {
                   fontSize: '$4xl',
-                },
-                '&:hover': {
-                  color: '$primary',
+                  '&:hover': {
+                    color: '$primary',
+                  },
                 },
                 '&:active': {
+                  color: '$primary',
                   transform: 'scale(0.95)',
                 },
               }}
@@ -199,12 +199,21 @@ export function TimeMachineSimulation({
                   height: 30,
                   flexShrink: 0,
                   borderRadius: 999,
-                  backgroundColor: '$mauveA2',
+                  backgroundColor: '$mauveA4',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   transition: DefinedTransition.cubic(),
-                  '.start-animation-div:hover &': {
+                  '@sm': {
+                    '.start-animation-div:hover &': {
+                      backgroundColor: '$primary',
+                      '& .icon': {
+                        color: '$white',
+                        fill: '$white',
+                      },
+                    },
+                  },
+                  '.start-animation-div:active &': {
                     backgroundColor: '$primary',
                     '& .icon': {
                       color: '$white',
@@ -215,8 +224,8 @@ export function TimeMachineSimulation({
                     width: 14,
                     height: 14,
                     strokeWidth: 4,
-                    color: '$mauve7',
-                    fill: '$mauve7',
+                    color: '$mauve9',
+                    fill: '$mauve9',
                     transition: DefinedTransition.cubic(),
                   },
                 }}
@@ -303,7 +312,7 @@ export function TimeMachineSimulation({
                       onAnimationComplete={() => {
                         if (outerIndex === inputItems.length - 1 && innerIndex === content.length - 1) {
                           stepTimer(2, 1.5, () => {
-                            stepTimer(3, 1);
+                            stepTimer(3, 0.8);
                           });
                         }
                       }}
@@ -368,8 +377,8 @@ export function TimeMachineSimulation({
             onAnimationStart={() => {
               if (step === 3) {
                 stepTimer(4, 0.3, () => {
-                  stepTimer(5, 0.5, () => {
-                    stepTimer(6, 3.5);
+                  stepTimer(5, 0.2, () => {
+                    stepTimer(6, 3);
                   });
                 });
               }
