@@ -283,7 +283,7 @@ export function TwoLineSimulation({
                 animate={{
                   opacity: 1,
                   height: 'auto',
-                  marginTop: 35,
+                  marginTop: 40,
                 }}
                 transition={{
                   duration: 0.5,
@@ -350,10 +350,35 @@ export function TwoLineSimulation({
                       ))}
                     </InputContent>
                   )) : (
-                    <InputContent>
-                      {/* For animation purpose only. The core algorithm uses JavaScript Date rather than moment. */}
-                      {targetMoments[1].format('MM/DD/YYYY hh:mm a')}
-                    </InputContent>
+                    <>
+                      <InputLabel
+                        css={{
+                          bottom: '100%',
+                          width: '100%',
+                          color: '$primary',
+                          fontSize: '$sm',
+                        }}
+                      >
+                        <motion.div
+                          initial={{
+                            opacity: 0,
+                          }}
+                          animate={{
+                            opacity: 1,
+                          }}
+                          transition={{
+                            delay: 1,
+                            duration: 0.5,
+                          }}
+                        >
+                          Boom! You are all set.
+                        </motion.div>
+                      </InputLabel>
+                      <InputContent>
+                        {/* For animation purpose only. The core algorithm uses JavaScript Date rather than moment. */}
+                        {targetMoments[1].format('MM/DD/YYYY hh:mm a')}
+                      </InputContent>
+                    </>
                   )}
                 </Layout>
               </motion.div>
@@ -389,13 +414,13 @@ export function TwoLineSimulation({
               if (step === 3) {
                 stepTimer(4, 0.3, () => {
                   stepTimer(5, 0.2, () => {
-                    stepTimer(6, 1.5);
+                    stepTimer(6, 1.0);
                   });
                 });
               } else if (step === 8) {
                 stepTimer(9, 0.3, () => {
                   stepTimer(10, 0.2, () => {
-                    stepTimer(11, 3.5);
+                    stepTimer(11, 5.5);
                   });
                 });
               }

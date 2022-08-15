@@ -313,9 +313,9 @@ export default function Home() {
         </SectionTip>
         <SectionTitle>Prefer classic? Make it a modern one!</SectionTitle>
         <SectionSubtitle>
-          You don&apos;t really like this game-changing date picker? Not problem! We will never change your
+          You don&apos;t really like this game-changing date picker? No problem! We will never try to change your
           habit. With Ams Date Picker, you still have the classic GUI date selector and it feels
-          even smoother after we fine-tuned it. It becomes a modern one.
+          even smoother after we fine-tuned it. It now becomes a modern one.
         </SectionSubtitle>
       </SectionContainer>
       <Divider />

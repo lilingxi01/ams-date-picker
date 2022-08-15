@@ -292,6 +292,12 @@ export function Simulation({
                         delay: waitTimeBeforeInput + outerIndex * delayPerWord - 0.6,
                         duration: durationPerCharacter * content.length + (delayPerWord - 1.2) + 0.1 * (content.length - 1),
                       }}
+                      onAnimationComplete={() => {
+                        if (outerIndex === inputItems.length - 1) {
+                          setStep(2);
+                          stepTimer(3, 0.5);
+                        }
+                      }}
                     >
                       {label}
                     </motion.div>
@@ -309,13 +315,6 @@ export function Simulation({
                         delay: waitTimeBeforeInput + innerIndex * 0.1 + outerIndex * delayPerWord,
                         duration: durationPerCharacter,
                       }}
-                      onAnimationComplete={() => {
-                        if (outerIndex === inputItems.length - 1 && innerIndex === content.length - 1) {
-                          stepTimer(2, 1.5, () => {
-                            stepTimer(3, 0.8);
-                          });
-                        }
-                      }}
                     >
                       {char}
                     </motion.span>
@@ -327,8 +326,7 @@ export function Simulation({
                     css={{
                       bottom: '100%',
                       color: '$primary',
-                      padding: '10px 0',
-                      fontSize: '$base',
+                      fontSize: '$sm',
                     }}
                   >
                     <motion.div
@@ -339,11 +337,11 @@ export function Simulation({
                         opacity: 1,
                       }}
                       transition={{
-                        delay: 0.8,
-                        duration: 0.6,
+                        delay: 1,
+                        duration: 0.5,
                       }}
                     >
-                      It looks good, right?
+                      Boom! You are all set.
                     </motion.div>
                   </InputLabel>
                   <InputContent>
@@ -378,7 +376,7 @@ export function Simulation({
               if (step === 3) {
                 stepTimer(4, 0.3, () => {
                   stepTimer(5, 0.2, () => {
-                    stepTimer(6, 3);
+                    stepTimer(6, 5.0);
                   });
                 });
               }
