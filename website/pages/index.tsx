@@ -197,7 +197,7 @@ export default function Home() {
           The most <b>modern</b>, <b>efficient</b>, and <b>intuitive</b> way to select the date and time.
         </HeroSubtitle>
         <HeroSubtitle>
-          Now, let&apos;s <b>re-imagine</b> the date picker in your stack.
+          Now, let&apos;s <b>re-imagine</b> the date picker in your tech stack.
         </HeroSubtitle>
       </Layout>
       <Divider />
@@ -210,7 +210,7 @@ export default function Home() {
         <SectionSubtitle>
           Ideas in your mind may not be specific dates at all time. They usually are
           a rough idea like "yesterday 9pm" or "10 minutes ago". With Ams Date Picker, you are able to
-          directly use these information in a date picker – you don&apos;t have to convert it anymore.
+          directly use these information – you don&apos;t have to convert them anymore.
         </SectionSubtitle>
         <Simulation
           css={{
