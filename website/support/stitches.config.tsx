@@ -174,3 +174,13 @@ export type Polymorphic = string | React.ComponentType<any>;
 export function mergeCss(candidates: string[]): string {
   return candidates.join(', ');
 }
+
+export type RichNodeType = (
+  React.ReactElement<any>
+  | React.ReactNode
+  | React.ReactNode[]
+  | string
+  | null
+  );
+
+export type RichStyle = { [key: string]: any };

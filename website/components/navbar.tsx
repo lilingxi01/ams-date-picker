@@ -4,10 +4,10 @@ import { useRouter } from 'next/router';
 import { Layout, LinkLayout, styled } from '../support/stitches.config';
 import { DefinedContainer } from './container';
 import Logo from './svg/logo.svg';
-import Icon from './svg/icon.svg';
 import { DefinedTransition } from '../support/transition';
 import { MiniColorModeSwitcher } from './color-mode-switcher';
 import { IconChevronRight } from '@tabler/icons';
+import { AmsIcon } from './icon';
 
 const AmsLogo = styled(Logo, {
   width: 180,
@@ -32,13 +32,6 @@ const AmsLogo = styled(Logo, {
       stroke: '$mauve12 !important',
     },
   },
-});
-
-const AmsIcon = styled(Icon, {
-  width: 38,
-  height: 32,
-  userSelect: 'none',
-  pointerEvents: 'none',
 });
 
 type NavigationItemObject = {
@@ -128,10 +121,13 @@ export const AmsNavigationBar = () => {
             <AmsLogo viewBox={'0 0 418 50'} />
             <Layout
               css={{
-                fontSize: '$sm',
+                fontSize: '$xs',
                 fontWeight: 400,
                 color: '$mauve9',
                 lineHeight: 1.5,
+                '@sm': {
+                  fontSize: '$sm',
+                },
               }}
             >
               A modern, magical, and headless date picker for React.

@@ -21,6 +21,7 @@
     "@stitches/react": "^1.2.8",
     "@tabler/icons": "^1.82.0",
     "babel-plugin-inline-react-svg": "^2.0.1",
+    "framer-motion": "^7.1.0",
     "moment": "^2.29.3",
     "next": "12.1.5",
     "next-mdx-remote": "^4.0.3",

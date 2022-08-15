@@ -11,7 +11,10 @@ export const AmsWebsiteFooter = () => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '20px 0',
+        paddingTop: 60,
+        '@sm': {
+          paddingTop: 80,
+        },
       }}
     >
       <Layout
