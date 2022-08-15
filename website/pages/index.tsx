@@ -5,7 +5,8 @@ import { DefinedContainer } from '../components/container';
 import { DefinedSEO } from '../components/seo';
 import { Divider } from '../components/divider';
 import { IconBolt, IconCommand, IconCone, IconInfinity } from '@tabler/icons';
-import { Simulation } from '../components/simulations/time-machine';
+import { Simulation } from '../components/simulations/simulation';
+import { TwoLineSimulation } from '../components/simulations/simulation-two';
 
 const HeroTitle = styled('h1', {
   margin: 0,
@@ -123,8 +124,8 @@ export default function Home() {
       <Layout
         css={{
           width: '100%',
-          paddingTop: 75,
-          paddingBottom: 65,
+          paddingTop: 72,
+          paddingBottom: 70,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
@@ -133,8 +134,8 @@ export default function Home() {
           '@md': {
             alignItems: 'center',
             textAlign: 'center',
-            paddingTop: 120,
-            paddingBottom: 116,
+            paddingTop: 130,
+            paddingBottom: 130,
           },
           position: 'relative',
           zIndex: 0,
@@ -209,7 +210,7 @@ export default function Home() {
         <SectionSubtitle>
           Ideas in your mind may not be specific dates at all time. They usually are
           a rough idea like "yesterday 9pm" or "10 minutes ago". With Ams Date Picker, you are able to
-          directly use these information in a traditional date picker – you don&apos;t have to convert anymore.
+          directly use these information in a date picker – you don&apos;t have to convert it anymore.
         </SectionSubtitle>
         <Simulation
           css={{
@@ -239,8 +240,8 @@ export default function Home() {
         <SectionTitle>Break the rules, move in lightspeed.</SectionTitle>
         <SectionSubtitle>
           We all hate doing useless works, but we barely evolved our date picker, which requires us to input
-          all redundant information at all time. With Ams Date Picker, you are able to eliminate unnecessary
-          information and focus on the important one.
+          all redundant information everytime. With Ams Date Picker, you are able to eliminate unnecessary
+          information and focus only on the important one.
         </SectionSubtitle>
         <Simulation
           css={{
@@ -277,12 +278,38 @@ export default function Home() {
           With Ams Date Picker, you are able to directly input the duration, and we will do the computation
           task for you. Computing the end time will be the past forever.
         </SectionSubtitle>
+        <TwoLineSimulation
+          text={'186 min. duration'}
+          inputs={{
+            line1: [
+              {
+                content: '+1d',
+                label: 'Tomorrow',
+                trailingSpace: true,
+              },
+              {
+                content: '8:46',
+                label: 'At 8:46 AM',
+              },
+            ],
+            line2: [
+              {
+                content: '+186m',
+                label: 'Add 186 min. as duration',
+              },
+            ],
+          }}
+          targetMoments={{
+            line1: moment().add(1, 'days').set('hour', 8).set('minute', 46),
+            line2: moment().add(1, 'days').set('hour', 8).set('minute', 46).add(186, 'minutes'),
+          }}
+        />
       </SectionContainer>
       <Divider />
       <SectionContainer>
         <SectionTip>
           <IconCommand />
-          <span>Modern Selector</span>
+          <span>Modern Selector (Coming soon)</span>
         </SectionTip>
         <SectionTitle>Prefer classic? Make it a modern one!</SectionTitle>
         <SectionSubtitle>

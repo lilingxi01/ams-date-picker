@@ -10,7 +10,7 @@ const waitTimeBeforeInput: number = 2;
 const durationPerCharacter: number = 0.5;
 const delayPerWord: number = 2.3;
 
-const SimulationContainer = styled('div', {
+export const SimulationContainer = styled('div', {
   width: '100%',
   height: 240,
   position: 'relative',
@@ -24,7 +24,7 @@ const SimulationContainer = styled('div', {
   },
 });
 
-const StepContainer = styled(motion.div, {
+export const StepContainer = styled(motion.div, {
   position: 'absolute',
   top: 0,
   left: 0,
@@ -44,7 +44,7 @@ const StepContainer = styled(motion.div, {
   },
 });
 
-const InputContainer = styled(motion.div, {
+export const InputContainer = styled(motion.div, {
   position: 'absolute',
   top: 0,
   left: 0,
@@ -60,7 +60,7 @@ const InputContainer = styled(motion.div, {
   color: '$mauve12',
 });
 
-const InputContent = styled('div', {
+export const InputContent = styled('div', {
   height: '100%',
   position: 'relative',
   fontSize: '$lg',
@@ -71,7 +71,7 @@ const InputContent = styled('div', {
   alignItems: 'center',
 });
 
-const InputLabel = styled('div', {
+export const InputLabel = styled('div', {
   position: 'absolute',
   bottom: 'calc(100% + 10px)',
   left: 0,
@@ -83,7 +83,7 @@ const InputLabel = styled('div', {
   whiteSpace: 'nowrap',
 });
 
-const EnterButton = styled(motion.div, {
+export const EnterButton = styled(motion.div, {
   width: 72,
   height: 38,
   position: 'absolute',
@@ -100,7 +100,7 @@ const EnterButton = styled(motion.div, {
   },
 });
 
-type InputItemObject = {
+export type InputItemObject = {
   content: string;
   label: string;
   trailingSpace?: boolean;
