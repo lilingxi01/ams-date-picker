@@ -5,6 +5,7 @@ import { DefinedContainer } from '../components/container';
 import { DefinedSEO } from '../components/seo';
 import { Divider } from '../components/divider';
 import { IconBolt, IconCommand, IconCone, IconInfinity } from '@tabler/icons';
+import { TimeMachineSimulation } from '../components/simulations/time-machine';
 
 const HeroTitle = styled('h1', {
   margin: 0,
@@ -193,7 +194,25 @@ export default function Home() {
           <IconInfinity />
           <span>Time Machine</span>
         </SectionTip>
-        <SectionTitle>Go to the time you are imagining, fast.</SectionTitle>
+        <SectionTitle>Flash into the moment in your mind, fast.</SectionTitle>
+        <TimeMachineSimulation
+          css={{
+            marginTop: 25,
+          }}
+          text={'Yesterday 9 PM'}
+          inputs={[
+            {
+              content: '-1d',
+              label: 'Yesterday',
+              trailingSpace: true,
+            },
+            {
+              content: '9pm',
+              label: '9:00 PM',
+            },
+          ]}
+          targetMoment={moment().subtract(1, 'days').set('hour', 21).set('minute', 0)}
+        />
       </SectionContainer>
       <Divider />
       <SectionContainer>
@@ -202,6 +221,28 @@ export default function Home() {
           <span>Input Supercharge</span>
         </SectionTip>
         <SectionTitle>Break the rules, move in lightspeed.</SectionTitle>
+        <TimeMachineSimulation
+          css={{
+            marginTop: 25,
+          }}
+          text={'August 1st at 13:30'}
+          inputs={[
+            {
+              content: '08/',
+              label: 'August',
+            },
+            {
+              content: '01',
+              label: '1st',
+              trailingSpace: true,
+            },
+            {
+              content: '13:30',
+              label: '1:30 PM',
+            },
+          ]}
+          targetMoment={moment().set('months', 8).set('day', 1).set('hour', 13).set('minute', 30)}
+        />
       </SectionContainer>
       <Divider />
       <SectionContainer>
