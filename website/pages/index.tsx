@@ -215,7 +215,7 @@ export default function Home() {
           css={{
             marginTop: 25,
           }}
-          text={'Yesterday 9 PM'}
+          text={'Yesterday 9:30 PM'}
           inputs={[
             {
               content: '-1d',
@@ -223,11 +223,11 @@ export default function Home() {
               trailingSpace: true,
             },
             {
-              content: '9pm',
-              label: '9:00 PM',
+              content: '9:30pm',
+              label: 'At 9:30 PM',
             },
           ]}
-          targetMoment={moment().subtract(1, 'days').set('hour', 21).set('minute', 0)}
+          targetMoment={moment().subtract(1, 'days').set('hour', 21).set('minute', 30)}
         />
       </SectionContainer>
       <Divider />
@@ -246,7 +246,7 @@ export default function Home() {
           css={{
             marginTop: 25,
           }}
-          text={'August 1st at 13:30'}
+          text={'August 1st at 1 PM'}
           inputs={[
             {
               content: '08/',
@@ -258,11 +258,11 @@ export default function Home() {
               trailingSpace: true,
             },
             {
-              content: '13:30',
-              label: '13:30 (24hr)',
+              content: '1pm',
+              label: 'At 1:00 PM',
             },
           ]}
-          targetMoment={moment().set('months', 8).set('day', 1).set('hour', 13).set('minute', 30)}
+          targetMoment={moment().month(7).date(1).set('hour', 13).set('minute', 0)}
         />
       </SectionContainer>
       <Divider />
