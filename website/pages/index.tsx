@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import moment from 'moment';
 import { Layout, styled } from '../support/stitches.config';
 import { DefinedContainer } from '../components/container';
 import { DefinedSEO } from '../components/seo';
 import { Divider } from '../components/divider';
 import { IconBolt, IconCommand, IconCone, IconInfinity } from '@tabler/icons';
-import { TimeMachineSimulation } from '../components/simulations/time-machine';
+import { Simulation } from '../components/simulations/time-machine';
 
 const HeroTitle = styled('h1', {
   margin: 0,
@@ -31,7 +31,6 @@ const HeroSubtitle = styled('div', {
   fontSize: '$sm',
   fontWeight: 400,
   color: '$mauveA9',
-  letterSpacing: '$text',
   lineHeight: 1.5,
   '& b': {
     fontWeight: 400,
@@ -94,9 +93,21 @@ const SectionTitle = styled('div', {
   },
 });
 
-export default function Home() {
-  const [date, setDate] = useState(moment());
+const SectionSubtitle = styled('div', {
+  fontSize: '$sm',
+  fontWeight: 400,
+  color: '$mauveA9',
+  lineHeight: 1.55,
+  '@sm': {
+    fontSize: '$base',
+  },
+  '& strong': {
+    fontWeight: 500,
+    fontSize: '1em',
+  },
+});
 
+export default function Home() {
   return (
     <DefinedContainer
       css={{
@@ -185,7 +196,7 @@ export default function Home() {
           The most <b>modern</b>, <b>efficient</b>, and <b>intuitive</b> way to select the date and time.
         </HeroSubtitle>
         <HeroSubtitle>
-          It is time to <b>re-engineer</b> the date picker for your stack.
+          Now, let&apos;s <b>re-imagine</b> the date picker in your stack.
         </HeroSubtitle>
       </Layout>
       <Divider />
@@ -194,8 +205,13 @@ export default function Home() {
           <IconInfinity />
           <span>Time Machine</span>
         </SectionTip>
-        <SectionTitle>Flash into the moment in your mind, fast.</SectionTitle>
-        <TimeMachineSimulation
+        <SectionTitle>Flash into the moment you need, fast.</SectionTitle>
+        <SectionSubtitle>
+          Ideas in your mind may not be specific dates at all time. They usually are
+          a rough idea like "yesterday 9pm" or "10 minutes ago". With Ams Date Picker, you are able to
+          directly use these information in a traditional date picker – you don&apos;t have to convert anymore.
+        </SectionSubtitle>
+        <Simulation
           css={{
             marginTop: 25,
           }}
@@ -221,7 +237,12 @@ export default function Home() {
           <span>Input Supercharge</span>
         </SectionTip>
         <SectionTitle>Break the rules, move in lightspeed.</SectionTitle>
-        <TimeMachineSimulation
+        <SectionSubtitle>
+          We all hate doing useless works, but we barely evolved our date picker, which requires us to input
+          all redundant information at all time. With Ams Date Picker, you are able to eliminate unnecessary
+          information and focus on the important one.
+        </SectionSubtitle>
+        <Simulation
           css={{
             marginTop: 25,
           }}
@@ -238,7 +259,7 @@ export default function Home() {
             },
             {
               content: '13:30',
-              label: '1:30 PM',
+              label: '13:30 (24hr)',
             },
           ]}
           targetMoment={moment().set('months', 8).set('day', 1).set('hour', 13).set('minute', 30)}
@@ -251,6 +272,11 @@ export default function Home() {
           <span>Computational Duration</span>
         </SectionTip>
         <SectionTitle>Computing a future? A past.</SectionTitle>
+        <SectionSubtitle>
+          Do you feel tired when you want to select a duration and you have to compute the end time yourself?
+          With Ams Date Picker, you are able to directly input the duration, and we will do the computation
+          task for you. Computing the end time will be the past forever.
+        </SectionSubtitle>
       </SectionContainer>
       <Divider />
       <SectionContainer>
@@ -258,7 +284,37 @@ export default function Home() {
           <IconCommand />
           <span>Modern Selector</span>
         </SectionTip>
-        <SectionTitle>Prefer traditional? Make it a modern one!</SectionTitle>
+        <SectionTitle>Prefer classic? Make it a modern one!</SectionTitle>
+        <SectionSubtitle>
+          You don&apos;t really like this game-changing date picker? Not problem! We will never change your
+          habit. With Ams Date Picker, you still have the classic GUI date selector and it feels
+          even smoother after we fine-tuned it. It becomes a modern one.
+        </SectionSubtitle>
+      </SectionContainer>
+      <Divider />
+      <SectionContainer
+        css={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Layout
+          css={{
+            padding: 10,
+            fontSize: '$sm',
+            fontWeight: 400,
+            color: '$mauveA9',
+            letterSpacing: '$text',
+            lineHeight: 1.55,
+            '@sm': {
+              fontSize: '$base',
+            },
+          }}
+        >
+          The first minor version will be release soon. Stay tuned.
+        </Layout>
       </SectionContainer>
     </DefinedContainer>
   );
