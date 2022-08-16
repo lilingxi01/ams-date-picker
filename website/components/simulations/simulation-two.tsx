@@ -11,7 +11,6 @@ import {
   InputContent,
   InputItemObject,
   InputLabel,
-  SimulationContainer,
   StepContainer,
 } from './simulation';
 

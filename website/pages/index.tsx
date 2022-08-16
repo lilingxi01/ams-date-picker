@@ -279,6 +279,9 @@ export default function Home() {
           task for you. Computing the end time will be the past forever.
         </SectionSubtitle>
         <TwoLineSimulation
+          css={{
+            marginTop: 25,
+          }}
           text={'186 min. duration'}
           inputs={{
             line1: [
