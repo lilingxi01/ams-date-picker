@@ -9,6 +9,8 @@ import { MiniColorModeSwitcher } from './color-mode-switcher';
 import { IconChevronRight } from '@tabler/icons';
 import { AmsIcon } from './icon';
 
+const version: string = '0.0.1';
+
 const AmsLogo = styled(Logo, {
   width: 180,
   height: 25,
@@ -145,7 +147,7 @@ export const AmsNavigationBar = () => {
                   },
                 }}
               >
-                v0.0.1
+                v{version}
               </Layout>
             </Layout>
             <Layout
