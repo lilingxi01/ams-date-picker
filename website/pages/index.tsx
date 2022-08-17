@@ -18,7 +18,7 @@ import { LiveDemo } from '../components/demo';
 import { DefinedTransition } from '../support/transition';
 import Link from 'next/link';
 
-const sampleCode = `
+const sampleCode: string = `
 import * as DatePicker from '@ams-js/headless';
 
 <DatePicker.Root

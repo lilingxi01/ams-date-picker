@@ -9,7 +9,7 @@ import { MiniColorModeSwitcher } from './color-mode-switcher';
 import { IconChevronRight } from '@tabler/icons';
 import { AmsIcon } from './icon';
 
-const version: string = '0.0.1';
+const version: string = '0.0.5';
 
 const AmsLogo = styled(Logo, {
   width: 180,
