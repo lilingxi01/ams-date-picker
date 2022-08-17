@@ -1,6 +1,6 @@
 {
   "name": "@ams-js/website",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@ams-js/headless": "workspace:^",
+    "@ams-js/headless": "workspace:*",
     "@babel/polyfill": "^7.12.1",
     "@fontsource/inter": "^4.5.12",
     "@fontsource/source-serif-4": "^4.5.13",
