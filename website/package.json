@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "pnpm -F headless build && next build",
     "start": "next start"
   },
   "dependencies": {
-    "@ams-js/headless": "^0.0.2",
+    "@ams-js/headless": "workspace:*",
     "@babel/polyfill": "^7.12.1",
     "@fontsource/inter": "^4.5.12",
     "@fontsource/source-serif-4": "^4.5.13",
