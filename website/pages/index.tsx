@@ -406,7 +406,14 @@ export default function Home() {
           marginBottom: 15,
         }}
       >
-        <SimulationContainer>
+        <SimulationContainer
+          css={{
+            height: 260,
+            '@sm': {
+              height: 310,
+            },
+          }}
+        >
           <SectionTip
             css={{
               position: 'absolute',
@@ -438,6 +445,19 @@ export default function Home() {
             <span>Try it yourself</span>
           </SectionTip>
           <LiveDemo />
+          <SectionSubtitle
+            css={{
+              color: '$mauveA8',
+              fontSize: '$xxs',
+              position: 'absolute',
+              bottom: 11,
+              left: 13,
+              right: 13,
+              textAlign: 'center',
+            }}
+          >
+            Please press enter/return after typing~
+          </SectionSubtitle>
         </SimulationContainer>
       </SectionContainer>
       <Divider />
