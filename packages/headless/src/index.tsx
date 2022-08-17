@@ -54,7 +54,7 @@ export const defaultDateOptions = {
 export type AmsHeadlessRootProps = AmsHeadlessCommonProps & {
   children?: RootChildrenType;
   date?: Date | null;
-  baseDate?: Date;
+  baseDate?: Date | null;
   onDateChange?: (newDate: Date | null) => void;
   onError?: (error: Error) => void;
   dateOptions?: { [key: string]: any }; // TODO: standardize it.

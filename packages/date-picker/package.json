@@ -22,12 +22,14 @@
   },
   "homepage": "https://github.com/lilingxi01/ams-date-picker",
   "scripts": {
-    "build": "rm -rf dist && tsup src"
+    "build": "rm -rf dist && tsup src",
+    "dev": "rm -rf dist && tsup src --watch",
+    "version": "npm version"
   },
   "peerDependencies": {
     "@tabler/icons": ">=1.80.0",
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "dependencies": {
     "@ams-js/headless": "workspace:^",

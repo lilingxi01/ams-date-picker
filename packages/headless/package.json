@@ -1,6 +1,6 @@
 {
   "name": "@ams-js/headless",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -23,11 +23,12 @@
   "homepage": "https://github.com/lilingxi01/ams-date-picker",
   "scripts": {
     "build": "rm -rf dist && tsup src",
-    "dev": "rm -rf dist && tsup src --watch"
+    "dev": "rm -rf dist && tsup src --watch",
+    "version": "npm version"
   },
   "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "devDependencies": {
     "tsup": "^6.2.2"
