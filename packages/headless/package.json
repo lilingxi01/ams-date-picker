@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/lilingxi01/ams-date-picker",
   "scripts": {
-    "build": "rm -rf dist && tsup src"
+    "build": "rm -rf dist && tsup src",
+    "dev": "rm -rf dist && tsup src --watch"
   },
   "peerDependencies": {
     "react": "^18.0.0",
