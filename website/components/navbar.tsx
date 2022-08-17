@@ -115,22 +115,51 @@ export const AmsNavigationBar = () => {
               flexDirection: 'column',
               alignItems: 'flex-start',
               justifyContent: 'flex-end',
-              rowGap: 3,
+              rowGap: 4,
             }}
           >
-            <AmsLogo viewBox={'0 0 418 50'} />
+            <Layout
+              css={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'flex-end',
+                justifyContent: 'flex-start',
+                columnGap: 10,
+              }}
+            >
+              <AmsLogo viewBox={'0 0 418 50'} />
+              <Layout
+                css={{
+                  backgroundColor: '$mauveA1',
+                  border: '1px solid $fadedBorder',
+                  borderRadius: 999,
+                  transform: 'translateY(-0.8px)',
+                  padding: '3px 8px',
+                  fontSize: '$smallest',
+                  fontWeight: 500,
+                  letterSpacing: '0.02em',
+                  color: '$mauveA11',
+                  '@sm': {
+                    fontSize: '$xxs',
+                    transform: 'translateY(-2.5px)',
+                  },
+                }}
+              >
+                v0.0.1
+              </Layout>
+            </Layout>
             <Layout
               css={{
                 fontSize: '$xs',
                 fontWeight: 400,
-                color: '$mauve9',
+                color: '$mauveA9',
                 lineHeight: 1.5,
                 '@sm': {
                   fontSize: '$sm',
                 },
               }}
             >
-              A modern, magical, and headless date picker for React.
+              <span>A modern, magical, and headless date picker for React.</span>
             </Layout>
           </Layout>
         ) : (

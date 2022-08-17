@@ -159,7 +159,7 @@ export default function Home() {
           '@md': {
             alignItems: 'center',
             textAlign: 'center',
-            paddingTop: 125,
+            paddingTop: 128,
             paddingBottom: 110,
           },
           position: 'relative',
@@ -203,7 +203,7 @@ export default function Home() {
           <Layout
             css={{
               fontSize: '$xxs',
-              fontWeight: 400,
+              fontWeight: 500,
               color: '$mauve11',
               letterSpacing: '$text',
               '& b': {
@@ -238,7 +238,7 @@ export default function Home() {
             cursor: 'copy',
             userSelect: 'none',
             '@sm': {
-              marginTop: 70,
+              marginTop: 72,
               '&:hover': {
                 backgroundColor: '$mauveA4',
               },
