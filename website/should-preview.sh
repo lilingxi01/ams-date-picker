@@ -3,7 +3,7 @@
 echo "VERCEL_GIT_COMMIT_REF: $VERCEL_GIT_COMMIT_REF"
 
 ## Do not automatically trigger build when pull-requesting into `deploy` branch.
-if [[ "$VERCEL_GIT_COMMIT_REF" == "main" || "$VERCEL_GIT_COMMIT_REF" == "lilingxi01-website" ]] ; then
+if [[ "$VERCEL_GIT_COMMIT_REF" == "main" || "$VERCEL_GIT_COMMIT_REF" == "candidate/"* ]] ; then
   # Proceed with the build.
     echo "✅ - Preview build can proceed"
   exit 1;

@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const withTM = require('next-transpile-modules')(['remark-gfm']); // pass the modules you would like to see transpiled
+const withTM = require('next-transpile-modules')(['remark-gfm', '@ams-js/headless']); // pass the modules you would like to see transpiled
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   reactStrictMode: true,

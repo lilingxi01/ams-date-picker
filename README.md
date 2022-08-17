@@ -1,14 +1,76 @@
 ![AmsDatePicker Cover](https://imagedelivery.net/Dr98IMl5gQ9tPkFM5JRcng/d6bffcf4-bee4-4235-de19-b68a0be89800/HD)
 
-![WIP](https://img.shields.io/badge/Release-Work%20in%20progress-red.svg?style=flat-square)
+![WIP](https://img.shields.io/badge/Headless-0.0.5-blue.svg?style=flat-square) ![WIP](https://img.shields.io/badge/Styled-Work%20in%20progress-red.svg?style=flat-square)
 
 # Get Started
 
-Ams Date Picker (in code known as `AmsDatePicker`) is a simple date picker component for React. It not only provides a modern look of date/time picker, but also provides a bunch of powerful magic modifiers to boost the user experience while inputting a date/time.
+Ams Date Picker (in code known as `AmsDatePicker`) is a powerful date picker component for React. It not only provides a modern look of date/time picker, but also provides a bunch of powerful features to boost the user experience while inputting a date/time.
 
 # WIP ([Roadmap](https://github.com/lilingxi01/ams-date-picker/issues/2))
 
 This project is still **in development**. It is not yet ready for use. We will release it as soon as it is ready. Stay tuned and check back soon!
+
+# Usage
+
+For now, we only have Input component available. In the future, we will have Date Selector component and more plugins, which will also be used within `<DatePicker.Root>`.
+
+### Single Date Input (Headless)
+
+```tsx
+import * as DatePicker from '@ams-js/headless';
+
+export const MyDatePicker = () => {
+  const [dateState, setDateState] = useState<Date | null>(null);
+  return (
+    <DatePicker.Root
+      date={dateState}
+      onDateChange={setDateState}
+      onError={(error) => console.error(error)}
+      dateOptions={{ ... }} // You can customize as JavaScript Date options.
+    >
+      <DatePicker.Input
+        {/* Any <input> prop is allowed */}
+      />
+    </DatePicker.Root>
+  );
+};
+```
+
+### Range Date Input (Headless)
+
+```tsx
+import * as DatePicker from '@ams-js/headless';
+
+export const MyRangeDatePicker = () => {
+  const [firstDate, setFirstDate] = useState<Date | null>(null);
+  const [secondDate, setSecondDate] = useState<Date | null>(null);
+  return (
+    <div>
+      <DatePicker.Root
+        date={firstDate}
+        onDateChange={setFirstDate}
+        onError={(error) => console.error(error)}
+        dateOptions={{ ... }} // You can customize as JavaScript Date options.
+      >
+        <DatePicker.Input
+          {/* Any <input> prop is allowed */}
+        />
+      </DatePicker.Root>
+      <DatePicker.Root
+        date={secondDate}
+        baseDate={firstDate} // So all modifiers of the second date will be based on the first date.
+        onDateChange={setSecondDate}
+        onError={(error) => console.error(error)}
+        dateOptions={{ ... }} // You can customize as JavaScript Date options.
+      >
+        <DatePicker.Input
+          {/* Any <input> prop is allowed */}
+        />
+      </DatePicker.Root>
+    </div>
+  );
+};
+```
 
 # Design Prototype
 
