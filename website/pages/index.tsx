@@ -1,12 +1,37 @@
 import React from 'react';
 import moment from 'moment';
-import { Layout, styled } from '../support/stitches.config';
+import { Layout, LinkLayout, styled } from '../support/stitches.config';
 import { DefinedContainer } from '../components/container';
 import { DefinedSEO } from '../components/seo';
 import { Divider } from '../components/divider';
-import { IconBolt, IconCommand, IconCone, IconInfinity } from '@tabler/icons';
-import { Simulation } from '../components/simulations/simulation';
+import {
+  IconAccessible,
+  IconBolt, IconBrandGithub, IconCode,
+  IconCommand,
+  IconCone,
+  IconInfinity,
+  IconSquareRotated,
+} from '@tabler/icons';
+import { Simulation, SimulationContainer } from '../components/simulations/simulation';
 import { TwoLineSimulation } from '../components/simulations/simulation-two';
+import { LiveDemo } from '../components/demo';
+import { DefinedTransition } from '../support/transition';
+import Link from 'next/link';
+
+const sampleCode = `
+import * as DatePicker from '@ams-js/headless';
+
+<DatePicker.Root
+  date={...}
+  baseDate={...}
+  onDateChange={(date: Date) => {...}}
+>
+  <DatePicker.Input
+    placeholder={'...'}
+  />
+  {/* More composable modules coming soon */}
+</DatePicker.Root>
+`;
 
 const HeroTitle = styled('h1', {
   margin: 0,
@@ -73,8 +98,8 @@ const SectionTip = styled('div', {
   '@sm': {
     fontSize: '$sm',
     '& .icon': {
-      width: 21,
-      height: 21,
+      width: 20,
+      height: 20,
       strokeWidth: 2.1,
       marginBottom: -1,
       lineHeight: 0,
@@ -134,8 +159,8 @@ export default function Home() {
           '@md': {
             alignItems: 'center',
             textAlign: 'center',
-            paddingTop: 130,
-            paddingBottom: 130,
+            paddingTop: 125,
+            paddingBottom: 110,
           },
           position: 'relative',
           zIndex: 0,
@@ -149,13 +174,13 @@ export default function Home() {
             zIndex: -1,
             // This is coming from https://cmdk.paco.me/.
             backgroundImage: `
-            radial-gradient(at 27% 33%, #34d399 0, transparent 50%),
-            radial-gradient(at 54% 96%, #f59e0b 0, transparent 50%),
-            radial-gradient(at 10% 25%, #4ade80 0, transparent 50%),
-            radial-gradient(at 96% 96%, #facc15 0, transparent 50%),
-            radial-gradient(at 30% 55%, #84cc16 0, transparent 50%),
-            radial-gradient(at 78% 52%, #ef4444 0, transparent 50%)
-          `,
+              radial-gradient(at 27% 33%, #34d399 0, transparent 50%),
+              radial-gradient(at 54% 96%, #f59e0b 0, transparent 50%),
+              radial-gradient(at 10% 25%, #4ade80 0, transparent 50%),
+              radial-gradient(at 96% 96%, #facc15 0, transparent 50%),
+              radial-gradient(at 30% 55%, #84cc16 0, transparent 50%),
+              radial-gradient(at 78% 52%, #ef4444 0, transparent 50%)
+            `,
             filter: 'blur(100px) saturate(160%)',
             opacity: 0.11,
             transform: 'translateZ(0)',
@@ -199,6 +224,46 @@ export default function Home() {
         <HeroSubtitle>
           Now, let&apos;s <b>re-imagine</b> the date picker in your tech stack.
         </HeroSubtitle>
+        <Layout
+          css={{
+            marginTop: 48,
+            fontSize: '$xs',
+            letterSpacing: '0.01em',
+            fontWeight: 500,
+            color: '$mauve12',
+            transition: DefinedTransition.cubic(),
+            padding: '12px 16px',
+            borderRadius: 999,
+            backgroundColor: '$mauveA2',
+            cursor: 'copy',
+            userSelect: 'none',
+            '@sm': {
+              marginTop: 70,
+              '&:hover': {
+                backgroundColor: '$mauveA4',
+              },
+            },
+            '&:active': {
+              transform: 'scale(0.96)',
+            },
+          }}
+          onClick={() => {
+            // copy the content.
+            navigator.clipboard.writeText('@ams-js/headless');
+          }}
+        >
+          {'@ams-js/headless'}
+        </Layout>
+        <Layout
+          css={{
+            fontSize: '$xxs',
+            fontWeight: 400,
+            color: '$mauveA9',
+            letterSpacing: '$text',
+          }}
+        >
+          Use npm, yarn, pnpm, or the one you like.
+        </Layout>
       </Layout>
       <Divider />
       <SectionContainer>
@@ -250,11 +315,11 @@ export default function Home() {
           text={'August 1st at 1 PM'}
           inputs={[
             {
-              content: '08/',
+              content: '8/',
               label: 'August',
             },
             {
-              content: '01',
+              content: '1',
               label: '1st',
               trailingSpace: true,
             },
@@ -322,29 +387,267 @@ export default function Home() {
         </SectionSubtitle>
       </SectionContainer>
       <Divider />
+      <SectionContainer>
+        <SectionTip>
+          <IconAccessible />
+          <span>Composable & Unstyled</span>
+        </SectionTip>
+        <SectionTitle>The best one should always be brand-less.</SectionTitle>
+        <SectionSubtitle>
+          That means – you have the full control over how it looks and how it feels. From now on, you don&apos;t need to worry about
+          being styled by another company – your user will love it so much because it will be as same as your other components.
+          (But, we will also have a well-designed, styled version coming soon.)
+        </SectionSubtitle>
+      </SectionContainer>
+      <Divider />
+      <SectionContainer
+        css={{
+          marginTop: 15,
+          marginBottom: 15,
+        }}
+      >
+        <SimulationContainer>
+          <SectionTip
+            css={{
+              position: 'absolute',
+              top: 16,
+              left: 16,
+              color: '$mauveA12',
+              fontSize: '$sm',
+              fontWeight: 500,
+              columnGap: 8,
+              '& .icon': {
+                width: 16,
+                height: 16,
+                strokeWidth: 2.0,
+                lineHeight: 0,
+              },
+              '@sm': {
+                fontSize: '$sm',
+                '& .icon': {
+                  width: 18,
+                  height: 18,
+                  strokeWidth: 1.9,
+                  marginBottom: -1,
+                  lineHeight: 0,
+                },
+              },
+            }}
+          >
+            <IconSquareRotated />
+            <span>Try it yourself</span>
+          </SectionTip>
+          <LiveDemo />
+        </SimulationContainer>
+      </SectionContainer>
+      <Divider />
       <SectionContainer
         css={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
+          rowGap: 8,
+          marginTop: 15,
+          marginBottom: 25,
+          position: 'relative',
+          zIndex: 0,
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: -1,
+            // This is coming from https://cmdk.paco.me/.
+            backgroundImage: `
+              radial-gradient(at 27% 33%, #34d399 0, transparent 50%),
+              radial-gradient(at 54% 96%, #f59e0b 0, transparent 50%),
+              radial-gradient(at 10% 25%, #4ade80 0, transparent 50%),
+              radial-gradient(at 96% 96%, #facc15 0, transparent 50%),
+              radial-gradient(at 30% 55%, #84cc16 0, transparent 50%),
+              radial-gradient(at 78% 52%, #ef4444 0, transparent 50%)
+            `,
+            filter: 'blur(100px) saturate(160%)',
+            opacity: 0.11,
+            transform: 'translateZ(0)',
+          },
         }}
       >
         <Layout
           css={{
-            padding: 10,
-            fontSize: '$sm',
+            width: '100%',
+            overflow: 'clip',
+            backgroundColor: '$whiteA8',
+            boxShadow: '$card',
+            borderRadius: '$lg',
+            border: '1px solid $mauveA4',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            '.dark &': {
+              backgroundColor: '$blackA7',
+            },
+            '& pre': {
+              width: '100%',
+              margin: 0,
+              padding: '6px 16px 20px 16px',
+              color: '$mauveA11',
+              fontSize: 11,
+              lineHeight: 1.5,
+              fontFamily: '$mono',
+              overflowX: 'auto',
+              '@sm': {
+                fontSize: 12,
+              },
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              },
+              // hide scrollbar.
+              MsOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+            },
+          }}
+        >
+          <SectionTip
+            css={{
+              color: '$mauveA12',
+              userSelect: 'none',
+              fontSize: '$sm',
+              fontWeight: 500,
+              padding: '16px 16px 0 16px',
+              columnGap: 8,
+              '& .icon': {
+                width: 16,
+                height: 16,
+                strokeWidth: 2.0,
+                lineHeight: 0,
+              },
+              '@sm': {
+                fontSize: '$sm',
+                '& .icon': {
+                  width: 18,
+                  height: 18,
+                  strokeWidth: 1.9,
+                  marginBottom: -1,
+                  lineHeight: 0,
+                },
+              },
+            }}
+          >
+            <IconCode />
+            <span>Run it yourself</span>
+          </SectionTip>
+          <pre>{sampleCode}</pre>
+        </Layout>
+        <Layout
+          css={{
+            marginTop: 70,
+            fontSize: '$xs',
+            letterSpacing: '0.01em',
+            fontWeight: 500,
+            color: '$mauve12',
+            transition: DefinedTransition.cubic(),
+            padding: '12px 16px',
+            borderRadius: 999,
+            backgroundColor: '$mauveA2',
+            cursor: 'copy',
+            userSelect: 'none',
+            '@sm': {
+              marginTop: 70,
+              '&:hover': {
+                backgroundColor: '$mauveA4',
+              },
+            },
+            '&:active': {
+              transform: 'scale(0.96)',
+            },
+          }}
+          onClick={() => {
+            // copy the content.
+            navigator.clipboard.writeText('@ams-js/headless');
+          }}
+        >
+          {'@ams-js/headless'}
+        </Layout>
+        <Layout
+          css={{
+            fontSize: '$xxs',
             fontWeight: 400,
             color: '$mauveA9',
             letterSpacing: '$text',
-            lineHeight: 1.55,
+          }}
+        >
+          Use npm, yarn, pnpm, or the one you like.
+        </Layout>
+      </SectionContainer>
+      <Divider />
+      <SectionContainer
+        css={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          rowGap: 16,
+          marginTop: 50,
+          marginBottom: 30,
+        }}
+      >
+        <Layout
+          css={{
+            fontSize: '$sm',
+            fontWeight: 400,
+            color: '$mauveA10',
+            letterSpacing: '$text',
             '@sm': {
               fontSize: '$base',
             },
           }}
         >
-          The first minor version will be release soon. Stay tuned.
+          Want to contribute or report an issue?
         </Layout>
+        <Link href={'https://github.com/lilingxi01/ams-date-picker'} passHref={true}>
+          <LinkLayout
+            rel={'noopener noreferrer'}
+            target={'_blank'}
+            css={{
+              fontSize: '$xs',
+              fontWeight: 400,
+              color: '$mauveA11',
+              transition: DefinedTransition.cubic(),
+              padding: '13px 17px',
+              borderRadius: 999,
+              backgroundColor: '$mauveA2',
+              cursor: 'pointer',
+              userSelect: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              columnGap: 7,
+              '@sm': {
+                '&:hover': {
+                  backgroundColor: '$mauveA4',
+                  color: '$mauveA12',
+                },
+              },
+              '&:active': {
+                transform: 'scale(0.96)',
+              },
+            }}
+          >
+            <IconBrandGithub
+              width={18}
+              height={18}
+              strokeWidth={1.6}
+              style={{
+                marginLeft: -1,
+              }}
+            />
+            <span>{'lilingxi01/ams-date-picker'}</span>
+          </LinkLayout>
+        </Link>
       </SectionContainer>
     </DefinedContainer>
   );
