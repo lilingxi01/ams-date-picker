@@ -10,6 +10,23 @@ Ams Date Picker (in code known as `AmsDatePicker`) is a powerful date picker com
 
 This project is still **in development**. It is not yet ready for use. We will release it as soon as it is ready. Stay tuned and check back soon!
 
+# Installation
+
+For `npm` user:
+```bash
+npm install @ams-js/headless
+```
+
+For `yarn` user:
+```bash
+yarn add @ams-js/headless
+```
+
+For `pnpm` user:
+```bash
+pnpm add @ams-js/headless
+```
+
 # Usage
 
 For now, we only have Input component available. In the future, we will have Date Selector component and more plugins, which will also be used within `<DatePicker.Root>`.
