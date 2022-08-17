@@ -12,7 +12,7 @@ export type RootChildrenType = (
 type AmsHeadlessContextObject = {
   date: Date | null;
   setDate: (date: Date | null) => void;
-  baseDate: Date;
+  baseDateGenerator: () => Date;
   dateOptions?: { [key: string]: any }; // TODO: standardize it.
   onError: (error: any) => void; // TODO: standardize it.
 };
@@ -20,7 +20,7 @@ type AmsHeadlessContextObject = {
 const AmsHeadlessContext = createContext<AmsHeadlessContextObject>({
   date: null,
   setDate: () => {},
-  baseDate: new Date(),
+  baseDateGenerator: () => new Date(),
   onError: () => {},
 });
 
@@ -69,7 +69,9 @@ export const Root = ({
   dateOptions,
 }: AmsHeadlessRootProps) => {
   const [dateState, setDateState] = useState<Date | null>(date ?? null);
-  const baseDateMemo = useMemo<Date>(() => baseDate ?? new Date(), [baseDate]);
+  const baseDateGenerator = useMemo<() => Date>(() => {
+    return () => baseDate ?? new Date();
+  }, [baseDate]);
   const dateOptionsMemo = useMemo(() => dateOptions ?? defaultDateOptions, [dateOptions]);
   useEffect(() => {
     if (date !== undefined) {
@@ -86,13 +88,14 @@ export const Root = ({
       value={{
         date: dateState,
         setDate: setDateState,
-        baseDate: baseDateMemo,
+        baseDateGenerator: baseDateGenerator,
         dateOptions: dateOptionsMemo,
         onError: (error: Error) => {
           if (onError && typeof onError === 'function') {
             onError(error);
           } else {
-            throw error;
+            console.error(error);
+            // throw error;
           }
         },
       }}
@@ -115,14 +118,13 @@ export type AmsHeadlessInputProps = AmsHeadlessCommonProps & {
 };
 
 export const Input = React.forwardRef(({
-  style,
   onChange,
   onKeyPress,
   onFocus,
   onBlur,
   ...props
 }: AmsHeadlessInputProps, forwardRef: ForwardedRef<HTMLInputElement>) => {
-  const { date, setDate, baseDate, dateOptions, onError } = useAmsHeadlessContext();
+  const { date, setDate, baseDateGenerator, dateOptions, onError } = useAmsHeadlessContext();
 
   const [inputValue, setInputValue] = useState<string>('');
 
@@ -137,7 +139,7 @@ export const Input = React.forwardRef(({
   // This function is a callback when the input is finished by user (on finalizing or on blurring).
   const onInputFinish = (text) => {
     try {
-      const parsedDate = parseDate(text, baseDate);
+      const parsedDate = parseDate(text, baseDateGenerator());
       setDate(parsedDate);
     } catch (e) {
       onError(e);

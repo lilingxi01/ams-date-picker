@@ -206,8 +206,8 @@ export function parseDate(userInput: string, baseDate: Date): Date {
       const time = matches[0].replace(/(am|pm)/g, '');
       const timeArray = time.split(':');
       const hour = parseInt(timeArray[0]);
-      const minute = parseInt(timeArray[1]) ?? 0;
-      const second = parseInt(timeArray[2]) ?? 0;
+      const minute = parseInt(timeArray[1] ?? '0');
+      const second = parseInt(timeArray[2] ?? '0');
 
       if (hour >= 24) {
         throw new Error('Invalid hour. The hour must be between 0 and 23.');
@@ -234,9 +234,9 @@ export function parseDate(userInput: string, baseDate: Date): Date {
       // Parse the date.
       const matches = dateMatches;
       const dateArray = matches[1].split('/');
-      const month = parseInt(dateArray[0]) ?? 1;
-      const day = parseInt(dateArray[1]) ?? 1;
-      const year = parseInt(dateArray[2]) ?? updatedDate.getFullYear();
+      const month = parseInt(dateArray[0] ?? '1');
+      const day = parseInt(dateArray[1] ?? '1');
+      const year = parseInt(dateArray[2] ?? updatedDate.getFullYear());
 
       // Throw errors if the date is invalid.
       if (month > 12) {
